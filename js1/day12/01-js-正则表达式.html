@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 正则表达式(regular expression),一种引用类型,用来做字符串匹配->分组/检测/替换
+	
+	//1\直接量
+	var reg=/a/;
+	var str="fgdkah";
+	
+	console.log( reg.test(str) );//true
+	
+	//2\new RegExp--参数1传参为匹配规则,参数2可传参为属性
+	var myreg=new RegExp("aa","igm");
+	
+	console.log(  myreg.test(str)  );//false
+	
+	
+	
+</script>
+</body>
+</html>

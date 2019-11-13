@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Boolean():将其它数据类型转换为Boolean型
+        var str = 'adasfs';
+        console.log(Boolean(str));//true
+        str = '';
+        console.log(Boolean(str));//false
+        console.log(Boolean(null));//false
+        // 转换为false值：''  null  undefined  +0  0  -0  NaN 
+        console.log(Boolean(undefined));
+        console.log(Boolean(NaN));
+    </script>
+</body>
+</html>

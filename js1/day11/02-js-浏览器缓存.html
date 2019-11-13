@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//浏览器缓存	
+	// document.cookie	数据大小有限制,每一次网络请求都会向服务器发出该数据,可以设置失效时间
+	
+	// localStorage		数据大小可以比较大,和整个应用程序相关,手动删除数据才会删除
+	// sessionStorage	数据大小可以比较大,只跟当前页面有关,只要页面关闭,缓存即被删除
+	
+	//网络请求都携带cookie,多用于做身份验证
+	document.cookie="username=John Doe";
+	console.log(document.cookie)
+	
+	
+	//本地存储,多页面传值,跟整个应用相关
+	localStorage.setItem("userN","sish");
+	console.log( localStorage.getItem("userN") )
+	
+	//会话存储,单页面传值,只跟当前页面有关,
+	sessionStorage.setItem("passW","131497abc");
+	console.log( sessionStorage.getItem("passW") )
+	
+	
+	
+</script>
+</body>
+</html>

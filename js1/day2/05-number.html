@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var num1 = 1213,num2 = 12.12;
+        console.log(typeof num2);
+
+        var a=0.1,b=0.2,c=0.3,d=0.4;
+        console.log(b-a);//0.1
+        console.log(c-b);//js计算的一个bug
+        console.log(d-c);
+
+        // 解决办法
+        // 转换为整数
+        console.log((c*10-b*10)/10);
+        // .toFixed()保留小数位
+        console.log((c-b).toFixed(1));
+        // Math.ceil()向上取整   Math.floor()向下取整
+        console.log(Math.ceil(b));//1
+        console.log(Math.floor(c));//0
+        // Math.round()四舍五入
+        console.log(Math.round(b));
+        // Math.random() 0-1的随机数  包含0  不包含1
+        console.log(Math.random());
+        // 0-100     1.0000000000    100.000000000      0.000000000000  
+        console.log(Math.ceil(Math.random()*100));
+        // Math.max()
+        console.log(Math.max(1,23,14,24,1.2));
+        console.log(Math.min(1,23,14,24,1.2));
+        console.log(Math.PI);
+    </script>
+</body>
+</html>

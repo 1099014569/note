@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var str = 'das fsg fadf';
+        // 获取字符串的长度
+        console.log(str.length);
+
+        // String()可以将任何的数据类型转换为字符串
+        console.log(String(null));
+        console.log(null);
+
+        var mystr = 12145,mystr2=null,arr=[2,1,'dsfssg'];
+        console.log(mystr.toString());
+        // toString()不可以将null undefined转换为字符串
+        // console.log(mystr2.toString());
+        console.log(arr);
+        console.log(arr.toString());
+        console.log(arr.toString().length);
+        var arrstr = arr.toString();
+        // split()把字符串切割成数组
+        console.log(arrstr.split('d'));
+        var url = 'https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_8718708835162655846%22%7D&n_type=0&p_from=1';
+        console.log(url.split('?')[1].split('&'));
+
+        var name='胡歌',age=36;
+        // es5
+        console.log(name+'的年龄是:'+age+'岁');
+        // es6
+        console.log(`${name}的年龄是:${age}岁`);
+        // es5
+        console.log('第一行\
+        第二行\
+        第三行');
+        // es6
+        console.log(`
+            第一行
+            第二行
+
+        `);
+
+    </script>
+</body>
+</html>

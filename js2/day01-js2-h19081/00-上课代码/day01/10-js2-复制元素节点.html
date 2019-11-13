@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="outer">
+			<!-- 以下都是div 标签的儿子/后代元素 -->
+			<p>文段内容</p>
+			<div></div>
+			<img src="" >
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			var myUl=document.getElementsByTagName("ul")[0];
+			
+			//cloneNode() 参数为假值是肤浅复制,参数为真值就是复制该节点以及其儿子/后代节点
+			var newUl=myUl.cloneNode(true);
+			
+			console.log(newUl)
+			
+			document.body.appendChild(newUl)
+			
+		</script>
+	</body>
+</html>

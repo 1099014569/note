@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var a = 0;
+        forhere:
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                if(j == 5){
+                    continue forhere;
+                    //体会continue后面加和不加语句标签的区别；
+                    //体会break后面加和不加语句标签的区别；
+                }
+                a++;
+            }
+        }
+        console.log(a);
+
+        cars=["BMW","Volvo","Saab","Ford"];
+        list:{
+            document.write(cars[0] + "<br>"); 
+            document.write(cars[1] + "<br>"); 
+            document.write(cars[2] + "<br>"); 
+            break list;
+            document.write(cars[3] + "<br>"); 
+            document.write(cars[4] + "<br>"); 
+            document.write(cars[5] + "<br>"); 
+        }
+
+        /* function factorial (n) {
+            if(isNaN(n)) throw new Error('请输入数字，HOHO');
+            if(n == 1) return 1;
+            return n*factorial(n-1);//递归
+        }
+        var n = factorial(3);
+        console.log(n);
+
+        var n = factorial('a05');
+        console.log(n);
+
+        var n = factorial(5);
+        console.log(n); */
+
+
+        // var d = 90;
+        try{
+            console.log(d);
+        }
+        catch(e){
+            console.log(e.name); //返回错误类型
+            console.log(e.message); //错误描述
+        }
+        finally{
+            console.log('大会到此结束');
+        }
+    </script>
+</body>
+</html>

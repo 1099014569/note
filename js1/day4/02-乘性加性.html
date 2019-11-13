@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 1.乘法*，结果一定是number类型，如果操作数是其它数据类型，就要转换为number类型再进行计算；
+        console.log(Infinity*0);//NaN
+
+        // 2.除法/，结果一定是number类型，如果操作数是其它数据类型，就要转换为number类型再进行计算；
+        console.log(Infinity/Infinity);//NaN   0/0
+        
+        // 3.取余%,结果一定是number类型，如果操作数是其它数据类型，就要转换为number类型再进行计算；
+        console.log(Infinity%0);//NaN
+        console.log(0%Infinity);//0
+
+        // 4.加法+，结果是number类型或者是string类型
+        console.log(Infinity +(- Infinity ));
+        // 5.减法-，结果一定是number类型
+
+    </script>
+</body>
+</html>

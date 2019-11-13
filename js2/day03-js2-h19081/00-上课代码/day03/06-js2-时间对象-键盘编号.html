@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 580px;
+			}
+			
+			img {
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567594348786&di=57c5e2f1aa11158578a13835b14fd2f7&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F01%2F30%2F40%2F09%2F58b92ff47cdea.png" width="120px" height="120px" >
+		
+		<script type="text/javascript">
+			
+			document.body.onclick=function(ev){
+				console.log(ev.target)
+				console.log(ev.pageX,ev.pageY);//相对于整个页面的偏移量
+				console.log(ev.clientX,ev.clientY);//相对于页面可视化区域的偏移量
+				console.log(ev.offsetX,ev.offsetY);//相对于目标元素的偏移量
+			}
+			
+			
+			
+			var myImg=document.querySelector("img");
+			// onkeypress 只监听字符类按键
+			
+			window.onkeydown=function(ev){
+				console.log(ev.which)
+				
+				console.log(ev.target)
+				
+				// 38上		40下	37左	39右
+				switch(ev.which){
+					case 38:
+							myImg.style.top=parseInt(getComputedStyle(myImg,null).top)-7+"px"
+							break;
+					case 40:
+							myImg.style.top=parseInt(getComputedStyle(myImg,null).top)+7+"px"
+							break;
+					
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

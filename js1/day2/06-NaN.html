@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        console.log(typeof 2/0);//NaN
+        console.log(typeof 0/0);//NaN
+        console.log(typeof undefined/true);//NaN
+        console.log(typeof 1/0);//NaN
+        console.log(typeof (4/0));//number
+        console.log(typeof typeof 1213);//string
+        console.log('true');
+        console.log(NaN/10);//NaN
+        console.log(NaN == NaN);
+        // isNaN()判断一个东西是不是数字  是：false
+        console.log(isNaN(NaN));//true
+        console.log(isNaN('etdtdg'));//true
+        console.log(isNaN('1324'));//false
+
+    </script>
+</body>
+</html>

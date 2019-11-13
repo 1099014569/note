@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// function test(a,b) {
+			// 	console.log(a);//1
+			// 	c=0;
+			// 	var c;
+			// 	a=3;
+			// 	b=2;
+			// 	console.log(b);//2
+			// 	function b() {}
+			// 	function d() {}
+			// 	console.log(b);//2
+			//  }
+			//  test(1);
+
+			// 			function test(a, b) {
+			// 				console.log(a);//function a() {}
+			// 				console.log(b);//undefined
+			// 				var b = 234;
+			// 				console.log(b);//234
+			// 				a = 123;
+			// 				console.log(a);//123
+			// 
+			// 				function a() {}
+			// 				var a;
+			// 				b = 234;
+			// 				var b = function() {}
+			// 				console.log(a);//123
+			// 				console.log(b);//function() {}
+			// 			}
+			// 			test(1);
+
+		
+			var a = 5;
+			//函数内部访问变量时,优先访问自己局部空间里的变量
+			//当函数内部没有该变量时,再逐层向外查找变量
+			function test() {
+				//var this={__Proto__:test.prototype}
+				a = 0;
+				alert(a);//0	0
+				alert(this.a);//5	undefined
+				var a;
+				alert(a);//0	0
+				//return this;
+			}
+
+			//每一次函数调用都会执行一次新的函数预编译
+			test();
+			new test();
+			
+			
+		</script>
+	</body>
+</html>

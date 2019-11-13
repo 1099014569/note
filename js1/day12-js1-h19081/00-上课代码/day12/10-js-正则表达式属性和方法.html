@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//i--ignoreCase g--global m--multiline 在正则表达式创建时值被定义
+			var reg=/abcd/ig;
+			
+			console.log(reg.multiline)
+			reg.multiline=true;
+			console.log(reg.multiline)
+			
+			//lastIndex 定义正则表达式exec 开始查找的位置
+			console.log(reg.lastIndex);
+			reg.lastIndex=10;
+			console.log(reg.lastIndex);
+			
+			var str="fkalabcdgifahabcdkjhkabcd";
+			//exce--execute
+			console.log( reg.exec(str) );//["abcd", index: 13, input: "fkalabcdgifahabcdkjhkabcd", groups: undefined]
+			console.log(reg.lastIndex)
+			
+			{console.log( reg.exec(str) )
+			console.log(reg.lastIndex)
+
+			console.log( reg.exec(str) );//null
+			console.log(reg.lastIndex);//0
+
+			
+			console.log( str.match(reg) )}
+			
+			var str1 =
+				'JavaScript 是属于网络的脚本语言！JavaScript 被数百万计的网页用来改进设计、验证表单、检测浏览器、创建cookies，以及更多JavaScript的应用。JavaScript 是因特网上最流行的脚本语言。JavaScript很容易使用！你一定会喜欢它的！';
+			var reg1=/JavaScript/igm,time=0,arr;
+			while(  (arr=reg1.exec(str1))!=null  ){//reg1.lastIndex<=str1.lastIndexOf("JavaScript")
+				
+				document.write(`JavaScript第${++time}次出现是在${arr.index}的位置<br\>`);
+			}
+			document.write(`JavaScript总共出现了${time}次`);
+
+			
+			//当正则表达式没有global属性时，lastIndex属性值始终为0，故 exec 方法每一次都只能从头开始查找
+			//当正则表达式 规则部分含有括号时, exec 方法返回的数组里,索引为0 的位置为匹配规则的字符,
+			//之后的索引位置挨个为每个括号的反向引用值
+			var reg3=/(\w)(\1)/img;
+			var str3="aabbccgdajgdd";
+			
+			console.log( reg3.exec(str3) )//["aa", "a","a", index: 0, input: "aabbccgdajgdd", groups: undefined]
+			console.log( reg3.exec(str3) )
+			console.log( reg3.exec(str3) )
+			
+			console.log(reg3.source);//(\w)(\1)
+
+			
+		</script>
+	</body>
+</html>

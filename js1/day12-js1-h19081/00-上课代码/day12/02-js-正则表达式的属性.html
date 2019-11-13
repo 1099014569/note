@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//i--ignoreCase
+			var reg1=/a/i;
+			var str1="ABCD";
+			
+			console.log( reg1.test(str1) )
+			
+			//m--multiline  g--global
+			var reg2=/f$/igm;   ///^a/mgi;//^--表示行起始位置  $--表示行结束位置
+			var str2=`fgksh
+akgshlf
+ABCD
+akfsl`;
+			console.log( reg2.test(str2) )
+
+			//正则表达式的方法 test() ---参数是字符串,返回的是布尔值
+			//字符串的方法     match()---参数是正则表达式，返回数组
+			console.log( str1.match(reg1) )//["A", index: 0, input: "ABCD", groups: undefined]
+			console.log( str2.match(reg2) )//["a", "a"]
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

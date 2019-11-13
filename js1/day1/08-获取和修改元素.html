@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">div1</div>
+    <div class="mydiv">div2</div>
+    <div class="mydiv">div3</div>
+
+    <script>
+        console.log(document);
+        // 获取类名为mydiv的第一个元素
+        console.log(document.querySelector('.mydiv'));
+        // 获取类名为mydiv的所有元素
+        console.log(document.querySelectorAll('.mydiv'));
+
+        document.querySelector('.mydiv').innerHTML = '新内容';
+        // 获取到第三个元素
+        document.querySelectorAll('.mydiv')[2].innerHTML = '新内容div3';
+        // 改变样式
+        document.querySelector('.mydiv').style.color = 'red';
+        document.querySelectorAll('.mydiv')[1].style.fontSize = '30px';
+    </script>
+</body>
+</html>

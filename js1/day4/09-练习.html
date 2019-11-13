@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">
+
+    </div>
+    <script>
+        var obj = {
+            content:[{
+                id:1,
+                name:'酒店1',
+                img:[
+                    'http://img1.imgtn.bdimg.com/it/u=1563980539,1672265910&fm=26&gp=0.jpg',
+                    'http://img2.imgtn.bdimg.com/it/u=1827962122,3613379018&fm=26&gp=0.jpg',
+                    'http://img0.imgtn.bdimg.com/it/u=2754950309,2133495749&fm=26&gp=0.jpg'
+                ]
+            },{
+                id:2,
+                name:'酒店2',
+                img:[
+                    'http://img1.imgtn.bdimg.com/it/u=1563980539,1672265910&fm=26&gp=0.jpg',
+                    'http://img2.imgtn.bdimg.com/it/u=1827962122,3613379018&fm=26&gp=0.jpg',
+                    'http://img0.imgtn.bdimg.com/it/u=2754950309,2133495749&fm=26&gp=0.jpg'
+                ]
+            },{
+                id:3,
+                name:'酒店3',
+                img:[
+                    'http://img1.imgtn.bdimg.com/it/u=1563980539,1672265910&fm=26&gp=0.jpg',
+                    'http://img2.imgtn.bdimg.com/it/u=1827962122,3613379018&fm=26&gp=0.jpg',
+                    'http://img0.imgtn.bdimg.com/it/u=2754950309,2133495749&fm=26&gp=0.jpg'
+                ]
+            }],
+            success:true
+        }
+        var str = '';
+        if(obj.success){
+            for(var i=0;i<obj.content.length;i++){
+                console.log(obj.content[i]);
+                str += '<h3>'+obj.content[i].name+'</h3>';
+                for(var j=0;j<obj.content[i].img.length;j++){
+                    str += '<img src="'+obj.content[i].img[j]+'"/>'
+                }
+                console.log(str)
+            }
+        }
+        var mydiv = document.querySelector('.mydiv');
+        mydiv.innerHTML = str;
+    </script>
+</body>
+</html>

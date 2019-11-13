@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div style="width: 100px;height: 100px;background-color: red;" onclick="alert('hello')">
+	
+</div>
+
+<form action="" method="post">
+	用户名：<input type="text" value="">
+	<br>
+	密码：<input type="password" />
+	<br>
+	籍贯：
+	<select>
+		<option value ="">==请选择省份==</option>
+		<option value="sc">四川</option>
+		<option value="gz">贵州</option>
+		<option value="hb">湖北</option>
+		<option value="ln">辽宁</option>
+	</select>
+	<br>
+	自我介绍：
+	<textarea rows="25" cols="150">	
+	</textarea>
+	<input type="submit" value="注册" name="" />
+	<input type="reset" name="" id="" />
+</form>
+<script type="text/javascript">
+	console.log(document.forms[0].onsubmit)
+	
+	document.forms[0].onsubmit=function(){
+		var userN=document.getElementsByTagName("input")[0].value;
+		var passW=document.getElementsByTagName("input")[1].value;
+		if(userN.length<6){
+			alert("用户名6位以上，不合规范");
+			return false;
+		}
+		if(! (/^(?=.*\d+)(?=.*[a-zA-Z]+)(?=.*\W+).{6,16}$/igm).test(passW) ){
+			alert("密码6~16位，必须包含数字，字母，特殊字符！");
+			return false
+		}
+	}
+	
+	document.forms[0].onreset=function(){
+		if( ! confirm("是否确认需要重置？")  ){
+			return false;
+		}
+	}
+	
+	
+	var mySelect=document.getElementsByTagName("select")[0]
+	console.log(mySelect)
+	
+</script>
+</body>
+</html>

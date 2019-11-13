@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.box{
+    margin: 50px;
+    width: 360px;
+    height: 360px;
+    background-color: white;
+    border: 1px solid #DFDFDF;
+    position: relative;
+}
+.max{
+    border: 1PX solid #DFDFDF;
+    /* background-image: url(./img/max.jpg);
+    background-repeat: no-repeat; */
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 410px;
+    top: 50px;
+    display: none;
+    overflow: hidden;
+}
+.bImg{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.block{
+    width: 240px;
+    height: 240px;
+    background-color: yellow;
+    opacity: 0.3;
+    border: 1px solid #DFDFDF;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    cursor: move;
+}

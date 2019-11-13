@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<pre>
+	变量声明
+	解析赋值
+	箭头函数
+	class 类
+	promise 对象
+</pre>
+<script type="text/javascript">
+	"use strict"
+	// let const 声明变量
+	
+	// console.log(a);//1、没有变量提升，会报错
+	let a=100;
+	console.log(a)
+	
+	if(a){
+		let b=200;//2、块级作用域
+		console.log(b);
+	}
+	// console.log(b);//2、块级作用域， b is not defined
+	
+	for(let i=0;i<5;i++){//let 声明的变量只具有块级作用域,.可以用来解决闭包问题
+		setTimeout(function(){
+			console.log(i)
+		},i*1000)
+	}
+	
+	//3\ 在同一个作用域下,let 不允许声明两个同名变量
+	// var aa=100;
+	// var aa=100;
+	// let bb=100;
+	// let bb=100;
+	
+	
+	var outer=100;
+	if(outer){
+		console.log(outer);
+		let outer=200;
+	}
+	
+	
+	
+	
+	//常量:在声明必须赋值，不能改
+	const PI=3.1415926;
+	console.log(PI);
+	// PI=PI.toFixed(2);
+	
+	
+	const myObj={};
+	myObj.name="abcd";
+	
+	
+	
+	
+</script>
+</body>
+</html>

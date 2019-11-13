@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//1\创建方式:直接量
+	var arr1=[1,false,"abc"];//new Array
+	console.log(arr1)
+	
+	//2\创建方式:构造函数
+	//new Array传参为正整数,对应是新数组的长度;传参为多个值,对应是新数组的每一项
+	var arr2=new Array(4,false,"fgaj");//new Array(4)
+	console.log(arr2)
+	
+	//数组的length 可读可改;js 数组长度任意修改增添
+	console.log(arr1.length);
+	arr1.length=100;
+	console.log(arr1.length);
+	
+	//3\ 数组元素的读写:	数组[索引]
+	arr1[105]="fagkhd";
+	console.log(arr1.length);//106
+	
+	console.log(arr1[50]);//undefined
+	
+	// arr[arr.length-1]对应一定是数组最后一项
+</script>
+</body>
+</html>

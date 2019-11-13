@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//reduce 累加方法,参数1是一个函数,参数2设置初始值;参数2可选
+			/*
+				function(pre,item,index,arr){
+					
+				}
+			*/
+		   //求累加和,累积乘,最大值
+			var arr=[1,4,8,1,0,7,3];
+			var sum=arr.reduce(function(a,b,c,d){
+				return a>b?a:b;
+			})
+			
+			console.log(sum)
+			
+			
+		</script>
+	</body>
+</html>

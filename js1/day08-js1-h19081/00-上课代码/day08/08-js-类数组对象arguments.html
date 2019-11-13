@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+//arguments 写在函数内部,接收函数实参
+// function fn(){
+// 	console.log( arguments )
+// }
+// 
+// fn(1,2,3,4,56,1);
+
+//变相的使用arguments 实现js 的函数重载
+function add(){
+	var sum=0;
+	for(var i=0;i<arguments.length;i++){
+		sum+=arguments[i]
+	}
+	return sum;
+}
+
+console.log(add(4,3));
+console.log(add(4,3,2));
+console.log(add(4,3,2,1));
+
+
+
+
+
+// // window-GO{
+// // 	add:function add(a,b,c,d){
+// // 		return a+b+c+d;
+// // 	}
+// // }
+// 
+// //js 不允许函数重载
+// function add(a,b){
+// 	return a+b;
+// }
+// 
+// function add(a,b,c){
+// 	return a+b+c;
+// }
+// 
+// function add(a,b,c,d){
+// 	return a+b+c+d;
+// }
+// 
+// console.log( add(1,2,3) )//NaN
+
+
+
+</script>
+</body>
+</html>

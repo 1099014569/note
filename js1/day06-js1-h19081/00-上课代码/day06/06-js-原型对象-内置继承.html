@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			//原型：概念--构造函数,都有一个prototype 属性,是一个对象;该对象上有一个constructor属性，值就是函数本身。
+			//		特点--它是构造函数构造出来的对象的公共祖先.
+		</pre>
+		<script type="text/javascript">
+			var obj1={};
+			var obj2={};
+			console.log(obj1.__proto__  == obj2.__proto__);
+			
+			
+			// Cat.prototype={constructor:Cat}
+			function Cat(name){
+				this.name=name;
+				this.color="gray";
+				this.sayHello=function(){
+					console.log("喵~")
+				}
+			}
+			console.log(Cat.prototype)
+			var cat1=new Cat("小明");
+			var cat2=new Cat("小华");
+			
+			console.log(cat1.__proto__==cat2.__proto__,cat2.__proto__==Cat.prototype)
+			console.log(cat1.constructor,cat2.constructor)
+			
+			//访问一个对象的属性,先找自己有没有,当自己没有时沿着原型__proto__去找
+			console.log(cat1.toString==Object.prototype.toString)
+			
+		</script>
+	</body>
+</html>

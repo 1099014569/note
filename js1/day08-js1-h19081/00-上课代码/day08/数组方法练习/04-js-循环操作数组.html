@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>4、将数组中的商品价格总和显示到下面文段中：</pre>
+		<p id="forEach"></p>
+		<hr>
+		<script src="00-源数据.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var sum=0;
+			arrProduct.forEach(function(item){
+				
+				sum+=item.price
+			})
+			
+			document.querySelector("#forEach").innerHTML=sum
+			
+			
+		</script>
+		
+	</body>
+</html>

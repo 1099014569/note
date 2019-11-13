@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var reg=/[\D]/igm;
+			var str="dukask1947619";
+			
+			console.log(str.match(reg))// ["d", "u", "k", "a", "s", "k"]
+			
+			var str1="day day study day day up";
+			var reg1=/\b\w/igm;  ///^\w|\s\w/igm;
+			console.log(str1.match(reg1))
+			
+			//匹配XXYY
+			var str2="aabbfjgccdd  ffgg"
+			var reg2=/(\w)\1(\w)\2/igm
+			console.log(str2.match(reg2));//["aabb", "ccdd", "ffgg"]
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str=`abcdaaabbbccefgodeffg`
+			var Carr=str.split("");
+			
+			// Carr.forEach(function(item, index) {
+			// 	if (Carr.indexOf(item) !== index) {
+			// 		delete Carr[index];
+			// 	}
+			// })
+			// console.log(Carr)
+			
+			// var obj={};//对象属性是唯一的
+			// Carr.forEach(function(item){
+			// 	obj[item]=100;
+			// })
+			// 
+			// Carr.length=0;
+			// for(var x in obj){
+			// 	Carr.push(x)
+			// }
+			// console.log(Carr)
+			
+			
+			
+			// 自定义一个函数实现JSON.stringify 的功能，将一个对象转为JSON格式的字符串
+			// var obj={name:`肖晗`,age:18,gender:`male`,sister:[1,2]}
+			// 
+			// console.log(JSON.stringify(obj))//{"name":"肖晗","age":18,"gender":"male"}
+			// 
+			// function myJsonStr(myobj){
+			// 	var str="{";
+			// 	for(var x in myobj){
+			// 		
+			// 		str+=`"${x}":${myobj[x]},`
+			// 		
+			// 	}
+			// 	str=str.substring(0,str.length-1)
+			// 	str+="}";
+			// 	
+			// 	return str;
+			// }
+			// console.log( myJsonStr(obj) )
+			
+			
+			// 自定义一个函数实现JSON.parse的功能，将一个JSON格式的字符串转为对象
+			var str=`{"name":'肖晗',"age":18, "gender":'male'}`
+			
+			function myJSONpar(jsonStr){
+				var obj={};
+				jsonStr=jsonStr.replace("{","");
+				console.log(jsonStr)
+				jsonStr=jsonStr.replace("}","");
+				var arr=jsonStr.split(",");
+				for(var i=0;i<arr.length;i++){
+					obj[arr[i].split(":")[0]]=arr[i].split(":")[1];
+				}
+				return obj;
+			}
+			
+			console.log( myJSONpar(str) )
+			
+			
+
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<div>
+			
+			<div></div>
+		</div>
+		<div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var mydiv=document.getElementsByTagName("div")[0];
+			
+			console.log(mydiv.parentElement);
+			console.log(mydiv.children);
+			//firstElementChild lastElementChild nextElementSibling previoueElemnetSibling
+			
+			//lastchild nextsibling previoueSibling
+			mydiv.__proto__.__proto__.myfirstChild=function(){
+				var child=this.firstChild;
+				while(child!=null&& child.nodeType!=1){
+					child=child.nextSibling;
+				}
+				return child;
+			}
+			
+			console.log(mydiv.firstElementChild )
+			 console.log(mydiv.myfirstChild() );
+			
+			var mydiv2=document.getElementsByTagName("div")[1];
+			
+			console.log(mydiv2.myfirstChild)
+			
+			
+		</script>
+	</body>
+</html>

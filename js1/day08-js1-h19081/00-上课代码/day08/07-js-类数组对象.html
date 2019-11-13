@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<script type="text/javascript">
+	var divs=document.querySelectorAll("div")
+	console.log(divs)
+	console.log( Array.isArray(divs) ,typeof divs);//false "object"
+	
+	divs[0].style.fontSize="30px";
+	
+	
+	//类数组对象:具有以0开始自然数迭增的属性名,还要有length 属性,且不是数组
+	var obj={};
+	obj[0]="a";
+	obj[1]="b";
+	obj.length=2;
+	
+	console.log(obj)
+	console.log(Array.isArray(obj),typeof obj)//false "object"
+	
+	//循环访问类数组属性值的方式
+	for(var i=0;i<obj.length;i++){
+		console.log(obj[i])
+	}
+	
+	console.log(obj[1])
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(name){
+				this.name=name
+			}
+			Person.prototype={
+				lastName:"司"
+			}
+			var person1=new Person("水花");
+			var person2=new Person("雨瑶")
+			
+			//改：直接通过创建出的对象修改原型上的属性,修改不了;结果是给对象新增了自己的属性
+			person1.lastName="钟";
+			console.log(person1.lastName,person2.lastName);//钟 司
+			
+			delete person1.lastName;
+			console.log(person1.lastName,person2.lastName);//司 司
+
+			// person1.__proto__.lastName="钟";
+			// console.log(person1.lastName,person2.lastName);//钟 钟
+
+			//删除
+			// delete person1.__proto__.lastName;//person1.lastName;
+			// console.log(person1.lastName,person2.lastName);//undefined undefined
+			
+			//增:通过对象的__proto__ 可以给原型增添属性
+			person1.__proto__.fortune=10000000;
+			console.log(person1.fortune,person2.fortune);
+
+			//查:获取对象的属性,先找自己有没有,没有就沿着__proto__ 查找
+			//查:循环获取,循环获取可枚举属性(追加的属性默认都是可枚举)
+			for(var x in person1){
+				console.log(x)
+			}
+				
+			//查:检查in ,既可以自己的属性也可以继承的属性
+			console.log( "fortune" in  person1)
+			
+			
+			
+		</script>
+	</body>
+</html>

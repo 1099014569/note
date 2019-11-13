@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="" cellspacing="" cellpadding="">
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>分数</th>
+			</tr>
+		</table>
+		
+		<script type="text/javascript">
+			//构造函数
+			function CreateObj(name,age,gender,grade){
+				this.name=name;
+				this.age=age;
+				this.gender=gender;
+				this.grade=grade;
+			}
+			
+			function objToPage(obj){
+				obj.gender=obj.gender==0?"男":"女";
+				document.querySelector("table").innerHTML+=`<tr>
+																<td>${obj.name}</td>
+																<td>${obj.age}</td>
+																<td>${obj.gender}</td>
+																<td>${obj.grade}</td>
+															</tr>`;
+			}
+			
+			objToPage(  new CreateObj("袁佳伟",20,0,80)  )
+			objToPage(  new CreateObj("韦柳娥",18,1,89)  )
+			objToPage(  new CreateObj("韩旭",19,0,81)  )
+			objToPage(  new CreateObj("秦鑫",19,1,88)  )
+			
+			
+		</script>
+	</body>
+</html>

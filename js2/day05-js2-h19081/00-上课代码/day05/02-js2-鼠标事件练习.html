@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<a href="http://www.hqyj.com">华清远见，良心教育</a>
+		<script type="text/javascript">
+			
+			var myA=document.querySelector("a");
+			
+			var downT,upT;
+			myA.onmousedown=function(){
+				downT=new Date;
+			}
+			
+			// myA.onmouseup=function(ev){
+			// }
+			
+			myA.onclick=function(ev){
+				upT=new Date;
+
+				var event=ev||window.event;
+				if(upT-downT>300){//鼠标按下的时长
+					
+					alert("长摁不发生跳转！");
+					event.preventDefault?event.preventDefault():event.returnValue=false;
+				}
+			}
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

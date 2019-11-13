@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #mycanvas{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" height="600" width="600"></canvas>
+    <script>
+        var mycanvas = document.getElementById('mycanvas');
+        var ctx = mycanvas.getContext('2d');
+        // ctx.moveTo(0,200);
+        // ctx.lineTo(600,200);
+        // ctx.moveTo(0,200);
+        // ctx.lineTo(300,600);
+        // ctx.moveTo(300,600);
+        // ctx.lineTo(600,200);
+        // 控制颜色
+        ctx.strokeStyle = 'black';
+        // 控制线条宽度
+        // ctx.lineWidth = '20';
+        // 填充
+        ctx.fillStyle = 'black';
+        // ctx.fillRect(20,20,100,100);
+        // 不填充
+        // ctx.strokeRect(20,20,100,100);
+        // 绘制圆形
+        ctx.arc(300,300,200,0,2*Math.PI,false);
+        ctx.stroke();
+        // 清楚之前的路径
+        ctx.beginPath();
+        ctx.arc(200,200,20,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(400,200,20,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(300,330,80,0.3,Math.PI-0.3,false);
+        ctx.fill();
+        ctx.beginPath();
+        
+        ctx.arc(300,300,15,-0.3,Math.PI+0.3,true);
+        ctx.fill();
+        ctx.beginPath();
+
+        ctx.arc(300,300,15,-0.3,Math.PI+0.3,true);
+        ctx.fill();
+        ctx.beginPath();
+        // 眼睛
+        ctx.fillStyle = 'white';
+        ctx.arc(190,210,5,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(390,210,5,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.beginPath();
+
+
+
+
+        for( let i = 0; i < 600; i++){
+            var num = parseInt(Math.random()*70)*20;
+            console.log(num);
+        }
+        
+        
+
+
+    </script>
+</body>
+</html>

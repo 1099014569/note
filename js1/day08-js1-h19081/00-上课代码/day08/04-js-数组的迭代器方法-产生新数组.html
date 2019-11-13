@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 迭代器方法:循环数组元素,统一都接受一个函数作为参数
+	/*
+		function(item,index,arr){
+			//各式各样的操作语句
+		}
+	*/
+   var arr=[1,2,4,8,0,3,,,101];
+   
+   //filter过滤，将函数返回值为true 对应的元素item放到新数组里边去
+   var newF=arr.filter(function(item,index,arr){
+	   return item>4;
+   })
+   console.log(newF);//[8,101]
+   
+	//map映射， 将函数返回值放到新数组里去
+	var newM=arr.map(function(item,index,arr){
+		// console.log(item)
+		return item*item
+	})
+	console.log( newM );//[1, 4, 16, 64, 0, 9, empty × 2, 10201]
+	
+	
+	
+	
+</script>
+</body>
+</html>

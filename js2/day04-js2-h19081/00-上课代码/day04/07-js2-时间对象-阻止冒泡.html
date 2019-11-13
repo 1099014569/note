@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+<title></title>
+<style type="text/css">
+		.container {
+			width: 300px;
+			height: 300px;
+			background-color: yellow;
+			position: relative;
+		}
+		.outer {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			position: absolute;
+			top: 0px;
+			left: 300px;
+		}
+		.inner {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 0px;
+			left: 200px;
+		}
+	</style>
+
+</head>
+<body>
+<div class="container">
+	<div class="outer">
+		<div class="inner"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	document.getElementsByTagName("div")[0].onclick=yellowContainer
+	document.getElementsByTagName("div")[1].onclick=greenOuter
+	document.getElementsByTagName("div")[2].onclick=redInner
+	
+	var myContainer,myOuter,myInner1,myInner2;
+	function yellowContainer(ev){
+		myContainer=ev;
+		console.log("yellow-container clicking")
+		
+		var myEvent=ev?ev:window.event;//事件对象
+		myEvent.stopPropagation?myEvent.stopPropagation():myEvent.cancelBubble=true;//阻止冒泡
+		
+		// window.event.stopPropagation();
+		// window.event.cancelBubble=true;
+		
+	}
+	function greenOuter(ev){
+		myOuter=ev;
+		console.log("green-outer clicking");
+		
+		var myEvent=ev?ev:window.event;
+		myEvent.stopPropagation?myEvent.stopPropagation():myEvent.cancelBubble=true;
+		// window.event.stopPropagation()
+		// window.event.cancelBubble=true;
+
+	}
+	function redInner(ev){
+		myInner1=ev;
+		console.log("red-inner clicking-M")
+		
+		var myEvent=ev?ev:window.event;
+		myEvent.stopPropagation?myEvent.stopPropagation():myEvent.cancelBubble=true;
+		
+		// window.event.stopPropagation()
+		// window.event.cancelBubble=true;
+
+	}
+	function redInnerB(ev){
+		myInner2=ev;
+		console.log("red-inner clicking-B")
+	}
+	
+	
+</script>
+
+</body>
+</html>

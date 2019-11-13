@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//循环查找字符串
+			{
+				var str =
+					'JavaScript 是属于网络的脚本语言！JavaScript 被数百万计的网页用来改进设计、验证表单、检测浏览器、创建cookies，以及更多JavaScript的应用。JavaScript 是因特网上最流行的脚本语言。JavaScript很容易使用！你一定会喜欢它的！';
+				var time = 0,
+					start = 0;
+				while (str.indexOf("JavaScript", start) != -1) {
+					time++;
+					document.write(`JavaScript第${time}次出现是在${str.indexOf("JavaScript",start)}的位置<br\>`);
+					start = str.indexOf("JavaScript", start) + 1;
+				}
+				document.write(`JavaScript总共出现了${time}次`);
+
+				// // console.log(str.length);
+				// console.log(str[0]);
+				// var x = 1;
+				// for(var i = 0;i < str.length;i++){
+				//     if(str[i] == 'J'&&str.indexOf("JavaScript",i)==i){
+				//         document.write(`JavaScript第${x}次出现是在${i}的位置<br\>`);
+				//         x++;
+				//     }
+				// }
+				// document.write(`JavaScript总共出现了${x-1}次`);
+			}
+
+
+
+			//replace方法训练
+			{
+				var pNum = 12345678901 + "";
+				var mystr = "*******";
+				pNum = pNum.replace(pNum.slice(0, 7), mystr);
+				console.log(pNum)
+			}
+
+
+
+			document.write("<br><br><br>")
+			//字母首字母转大写
+			{
+				var a = 'all time is no time when it is past';
+				var arr = a.split(" ");
+				console.log(arr); //["all", "time", "is", "no", "time", "when", "it", "is", "past"]
+				for (var i = 0; i < arr.length; i++) {
+					// arr[i]=arr[i].replace(arr[i][0],arr[i][0].toUpperCase());
+					arr[i] = arr[i].substring(0, 1).toUpperCase() + arr[i].substring(1);
+				}
+				console.log(arr); //["All", "Time", "Is", "No", "Time", "When", "It", "Is", "Past"]
+				a = arr.join(" ");
+				console.log(a)
+
+
+				// 			for (var i = 0; i < a.length; i++) {
+				// 				if (i == 0 || a[i - 1] == ' ') {
+				// 					if(i==0){
+				// 						a = a.replace(a[i],a[i].toUpperCase());
+				// 					}else{
+				// 						a = a.replace(" "+a[i]," "+a[i].toUpperCase());
+				// 					}
+				// 				}
+				// 			}
+				// 
+				// 			document.write(a);
+			}
+
+
+
+			//累加和
+			{
+				var Harr = [1, 2, 3, 4, 5, 6, 7, 8, 24, 657, 242];
+				var sum = 0;
+				sum = Harr.reduce(function(a, b, c, d) {
+					return a + b;
+				})
+				
+				// Harr.forEach(function(item){
+				// 	sum+=item;
+				// })
+				
+				// for(var i;i<Harr.length;i++){
+				// 	sum+=Harr[i];
+				// }
+			}
+
+
+			//求最大值
+			{
+				var Marr = [1, 2, 3, 4, 5, 6, 7, 8, 24, 657, 242];
+				
+				// var max=Math.max.apply(null,Marr);
+				
+				// Marr.sort(function(a,b){return a-b});
+				// Marr[Marr.length-1];
+
+
+				// var max=Marr.reduce(function(a,b,c,d){
+				// 	return a>b?a:b;
+				// })
+
+
+				// var max=Marr[0];
+				// for(var x of Marr){
+				// 	max=x>max?x:max;
+				// 	// if(x>max){
+				// 	// 	max=x
+				// 	// }
+				// 	// max=Math.max(max,x);
+				// }
+				// console.log(max);
+			}
+
+
+
+			//数组去重
+			{
+				var Carr = [1, 8, 0, 4, 1, 6, 7, 8, 24, 0, 242];
+				
+				var obj={};//对象属性是唯一的
+				Carr.forEach(function(item){
+					obj[item]=100;
+				})
+				console.log(obj)//{0: 100, 1: 100, 4: 100, 6: 100, 7: 100, 8: 100, 24: 100, 242: 100}
+				Carr.length=0;
+				for(var x in obj){
+					Carr.push(Number(x))
+				}
+				console.log(Carr)
+				
+				
+				// Carr.forEach(function(item, index) {
+				// 	if (Carr.indexOf(item) !== index) {
+				// 		delete Carr[index];
+				// 	}
+				// })
+				
+	// 			function myRepeat(Carr) {
+	// 				for (var i = 0; i < Carr.length; i++) {
+	// 					for (var j = i + 1; j < Carr.length; j++) {
+	// 						if (Carr[i] == Carr[j]) {
+	// 							Carr.splice(j, 1);
+	// 						}
+	// 					}
+	// 
+	// 				}
+	// 				return Carr;
+	// 			}
+	// 			var newArr = myRepeat(Carr);
+	// 			document.write(newArr);
+	// 			
+				
+				// var newArr=[];
+				// for(var x of Carr){
+				// 	if( newArr.indexOf(x)==-1 ){
+				// 		newArr.push(x);
+				// 	}
+				// }
+				// console.log(newArr)
+				
+				
+				// 			var oldLength = Carr.length;
+				// 
+				// 			for (var i = 0; i < Carr.length - 1; i++) {
+				// 				for (var j = i + 1; j < Carr.length; j++) {
+				// 					if (Carr[i] == Carr[j]) {
+				// 						console.log(Carr[i]);
+				// 						delete Carr[i];
+				// 					}
+				// 				}
+				// 			}
+				// 			console.log(Carr);// [empty × 3, 4, 1, 6, 7, 8, 24, 0, 242]
+				// 			for (var x in Carr) {
+				// 				Carr.push(Carr[x]);
+				// 			}
+				// 			console.log(Carr);//[empty × 3, 4, 1, 6, 7, 8, 24, 0, 242,4, 1, 6, 7, 8, 24, 0, 242]
+				// 			Carr.splice(0, oldLength);
+				// 			console.log(Carr);
+			}
+
+
+			//函数连续调用
+			{
+				function test() {
+
+					function subTest() {
+
+					}
+					return subTest;
+				}
+				test()()
+			}
+		</script>
+	</body>
+</html>

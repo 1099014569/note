@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<pre>
+	箭头函数
+	class 类
+	promise 对象
+</pre>
+<script type="text/javascript">
+	//1/语法
+	// 参数 => 函数体
+	// (参数) => {函数体}
+	let fn1=(a,b,c)=>a+10;
+	
+	console.log( fn1(1,2,3) );//11
+	
+	let fn2=a=>{
+		console.log(this)
+		console.log(a);
+		return a+10;
+	}
+	//2/ 返回值和调用方式
+	//箭头函数的函数调用表达式的值只能由函数返回值决定
+	console.log( fn2(10) )
+	
+	//箭头函数不能被当作构造函数调用,不能通过new 调用
+	// console.log( new fn2 )
+	
+	console.log(  fn2.call({a:10})  )
+	
+	//3/ this 指向问题
+	//箭头函数在哪儿创建的this 就指向谁， 指向不可更改
+	var obj={
+		sayHello:(aa,...bb)=>{
+			bb.unshift(aa)
+			console.log(bb)
+			console.log(this);
+			console.log(aa);
+		}
+	}
+	
+	obj.sayHello(100)
+	
+	
+	//4/ 箭头函数是没有arguments 关键字的,灵活运用解析赋值里的...剩余运算符,可以接收所有实参
+	obj.sayHello(100,200,300);
+	
+	
+	
+	
+	
+	
+	
+	// function(a,b,c){
+	// 	
+	// }
+	
+	
+	
+</script>
+</body>
+</html>

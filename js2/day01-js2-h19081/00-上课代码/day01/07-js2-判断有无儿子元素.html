@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="container">
+			gfkahk
+		</div>
+		
+		<input type="password" name="" id="" value="" />
+		<script type="text/javascript">
+			var div=document.getElementsByTagName("div")[0];
+			console.log( div.hasChildNodes() );//true
+			
+			div.__proto__.__proto__.hasChildren=function(){
+				var child=this.childNodes;
+				for(var i=0; child!=null && i<child.length;i++){
+					if(child[i].nodeType==1){
+						return true
+					}
+				}
+				return false
+				
+			}			
+			
+			console.log( div.hasChildren() );//false
+			console.log(document.getElementsByTagName("input")[0].hasChildren());//false
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="fooler.js"></script>
+    <title>魔塔游戏</title>
+    <style>
+        body {
+            /* height: 1000px; */
+            display: flex;
+            justify-content: center
+        }
+        .box {
+            width: 660px;
+            height: 660px;
+            background-color: green;
+            /* position: absolute; */
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin-top: 20px;
+            font-size:0 
+        }
+        .leftbox {
+            width: 200px;
+            height: 660px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+        .leftbox-top {
+            height: 50px;
+            width: 160px;
+            margin: 50px auto;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+        }
+        .leftbox-top span {
+            padding: 20px;
+            box-sizing: border-box;
+            
+        }
+        .leftbox-middle {
+            height: 200px;
+            width: 160px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 20px;
+        }
+        .leftbox-middle p {
+            line-height: 20px;
+           
+        }
+        .leftbox-bottom {
+            height: 160px;
+            width: 160px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .leftbox-bottom span{
+            margin-left: 25px;
+        }
+        .rightbox {
+            width: 200px;
+            height: 660px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="leftbox">
+        <div class="leftbox-top"><span></span></div>
+        <div class="leftbox-middle">
+            <p>生命值：</p>
+            <p>攻击力：</p>
+            <p>防御力：</p>
+            <p>金币：</p>
+        </div>
+        <div class="leftbox-bottom">
+            <div id="name">
+                <img src="img/6.png">
+                <span></span>
+            </div>
+            <div>
+                <img src="img/9.png">
+                <span></span>
+            </div>
+            <div>
+                <img src="img/10.png">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="box"></div>
+    <div class="rightbox"></div>
+    <script>
+        class Game {
+            constructor(gamebox) {
+                this.gamebox = gamebox;
+                this.gameboxwidth = parseInt(getComputedStyle(gamebox,null).width) 
+                this.gameboxheight = parseInt(getComputedStyle(gamebox,null).height) 
+                // 每层初始化位置
+                this.initializationArr = [];
+                // 楼层
+                this.foolerShu = 1;
+
+                this.array = arr[this.foolerShu-1];
+                this.initialization = this.getHeroPosition();
+                // 英雄属性
+                this.heroShuxing = {
+                    heroShengmin : 10000,
+                    heroGongji : 100,
+                    heroFangyu : 20,
+                    heroJinbi : 0,
+                    huangYaoshi : 3,
+                    lanYaoshi : 0,
+                    hongYaoshi : 0,
+                }
+                // 怪物属性
+                this.monster1 = {
+                    hp: 100,
+                    defend: 100,
+                    jinbi : 10,
+                }
+                this.monster2 = {
+                    hp: 100,
+                    defend: 140,
+                    jinbi : 10,
+                }
+                this.monster3 = {
+                    hp: 100,
+                    defend: 180,
+                    jinbi : 10,
+                }
+                // 红药水
+                this.reddeminde = {
+                    hp:100,
+                }
+                // 红宝石
+                this.redbaoshi = {
+                    attack : 10,
+                }
+                // 蓝宝石
+                this.bluebaoshi = {
+                    defend : 10,
+                }
+            }
+            setMap(){
+                gamebox.innerHTML = ''
+                for(let i = 0;i<this.array.length;i++){
+                    for(let j = 0;j<this.array[i].length;j++){
+                        var dom = document.createElement('img');
+                        var domHeight = this.gameboxheight/this.array.length
+                        var domWidth  =this.gameboxheight/this.array[i].length
+                        dom.style.width = domWidth+'px';
+                        dom.style.height = domHeight+'px';
+                        if(this.array[i][j]==0){
+                            dom.src = 'img/0.jpg';
+                        }else if(this.array[i][j]==1 || this.array[i][j]==17){
+                            dom.src = 'img/1.png';
+                        }else if(this.array[i][j]==2){
+                            dom.src = 'img/2.png';
+                        }else if(this.array[i][j]==3){
+                            dom.src = 'img/3.png';
+                        }else if(this.array[i][j]==4){
+                            dom.src = 'img/4.png';
+                        }else if(this.array[i][j]==5){
+                            dom.src = 'img/5.png';
+                        }else if(this.array[i][j]==6){
+                            dom.src = 'img/6.png';
+                        }else if(this.array[i][j]==7){
+                            dom.src = 'img/7.png';
+                        }else if(this.array[i][j]==8){
+                            dom.src = 'img/8.png';
+                        }else if(this.array[i][j]==9){
+                            dom.src = 'img/9.png';
+                        }else if(this.array[i][j]==10){
+                            dom.src = 'img/10.png';
+                        }else if(this.array[i][j]==11){
+                            dom.src = 'img/11.png';
+                        }else if(this.array[i][j]==12){
+                            dom.src = 'img/12.png';
+                        }else if(this.array[i][j]==13){
+                            dom.src = 'img/13.png';
+                        }else if(this.array[i][j]==14){
+                            dom.src = 'img/14.png';
+                        }else if(this.array[i][j]==15){
+                            dom.src = 'img/15.png';
+                        }else if(this.array[i][j]==16){
+                            dom.src = 'img/16.png';
+                        }else if(this.array[i][j]==18){
+                            dom.src = 'img/18.png';
+                        }
+                        this.gamebox.appendChild(dom);
+
+                    }
+                }
+            }
+            // 获取英雄位置
+            getHeroPosition(){
+                for(let i = 0;i<this.array.length;i++){
+                    for(let j = 0;j<this.array[i].length;j++){
+                        if(this.array[i][j] == 4){
+                            return {
+                                i:i,
+                                j:j
+                            }
+                        }
+                    }
+                }
+            }
+            // 判断边界
+            jungdeg(i,j,prei,prej){
+                if(i < 0||i >this.array.length-1||j<0||j>this.array.length-1){
+                    return false;
+                }else{
+                    if(this.meetAll(i,j,prei,prej)){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            // 判断物品和墙壁及其他
+            meetAll(i,j,prei,prej){
+                if(this.array[i][j] == 1){
+                    return false;
+
+                }else if(this.array[i][j] == 2){
+                    this.array[i][j] = 0;
+                    this.heroShuxing.heroShengmin += this.reddeminde.hp;
+                    return true;
+
+                }else if(this.array[i][j] == 3){
+                    if(this.heroShuxing.huangYaoshi > 0){
+                        this.heroShuxing.huangYaoshi --;
+                        this.array[i][j] = 0;
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    
+                }else if(this.array[i][j] == 5){
+                    if(this.heroShuxing.heroGongji > this.monster1.defend){
+                        this.array[i][j] = 0;
+                        this.heroShuxing.heroJinbi += this.monster1.jinbi;
+                        return true;
+                    }else{
+                        // for(let i = 6;i > 0;i--){
+                        //     var nowPosition = this.getHeroPosition();
+                        //     this.array[nowPosition.i][nowPosition.j] = 0;
+                        //     // this.array[prei][prej] = 0;
+                        //     this.array[this.initializationArr[this.foolerShu-1].j][this.initializationArr[this.foolerShu-1].x] = 4;
+                        // }
+                        
+                        // this.foolerShu = 1;
+                        // this.array = arr[this.foolerShu-1];
+                        // this.fooler();
+                        // nowPosition = this.getHeroPosition();
+                        // console.log(nowPosition)
+                        // this.array[nowPosition.i][nowPosition.j] = 0;
+
+                        this.array[prei][prej] = 0;
+                        this.array[this.initializationArr[this.foolerShu-1].j][this.initializationArr[this.foolerShu-1].x] = 4;
+                        newGame.setMap();
+                        return false;
+                    }
+
+                }else if(this.array[i][j] == 6){
+                    this.heroShuxing.huangYaoshi ++;
+                    this.array[i][j] = 0;
+                    return true;
+
+                }
+                else if(this.array[i][j] == 7){
+                    this.array[i][j] = 0;
+                    this.heroShuxing.heroGongji += this.redbaoshi.attack;
+                    return true;
+
+                }else if(this.array[i][j] == 8){
+                    this.array[i][j] = 0;
+                    this.heroShuxing.heroFangyu += this.bluebaoshi.defend;
+                    return true;
+
+                }else if(this.array[i][j] == 9){
+                    this.heroShuxing.lanYaoshi ++;
+                    this.array[i][j] = 0;
+                    return true;
+                    
+                }else if(this.array[i][j] == 10){
+                    this.heroShuxing.hongYaoshi ++;
+                    this.array[i][j] = 0;
+                    return true;
+                    
+                }else if(this.array[i][j] == 11){
+                    if(this.foolerShu < 6){
+                        this.foolerShu ++;
+                        this.array = arr[this.foolerShu-1];
+                        this.fooler();
+                        this.setMap();
+                        return;
+                    }else{
+                        return false;
+                    }
+                }else if(this.array[i][j] == 12){
+                    this.foolerShu --;
+                    this.array = arr[this.foolerShu-1];
+                    this.fooler();
+                    this.setMap();
+                    return;
+                }else if(this.array[i][j] == 13){
+                    alert('小伙子厉害了!');
+                    open('https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1568112247&di=858b7cb9e7b95b659dfe8f422ff480d1&src=http://img2.ph.126.net/fq8pjGJLMhnTtiJT0WjkdA==/6630300306584701466.jpg')
+                    return;
+                    
+                }else if(this.array[i][j] == 14){
+                    if(this.heroShuxing.lanYaoshi > 0){
+                        this.heroShuxing.lanYaoshi --;
+                        this.array[i][j] = 0;
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    
+                }else if(this.array[i][j] == 15){
+                    if(this.heroShuxing.hongYaoshi > 0){
+                        this.heroShuxing.hongYaoshi --;
+                        this.array[i][j] = 0;
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    
+                }else if(this.array[i][j] == 16){
+                    if(this.heroShuxing.heroGongji > this.monster2.defend){
+                        this.array[i][j] = 0;
+                        this.heroShuxing.heroJinbi += this.monster2.jinbi;
+                        return true;
+                    }else{
+                        this.array[prei][prej] = 0;
+                        this.array[this.initializationArr[this.foolerShu-1].j][this.initializationArr[this.foolerShu-1].x] = 4;
+                        newGame.setMap();
+                        return false;
+                    }
+
+                }else if(this.array[i][j] == 17){
+                    this.array[i][j] = 0;
+                    return true;
+                    
+                }else if(this.array[i][j] == 18){
+                    if(this.heroShuxing.heroGongji > this.monster3.defend){
+                        this.array[i][j] = 0;
+                        this.heroShuxing.heroJinbi += this.monster3.jinbi;
+                        return true;
+                    }else{
+                        this.array[prei][prej] = 0;
+                        this.array[this.initializationArr[this.foolerShu-1].j][this.initializationArr[this.foolerShu-1].x] = 4;
+                        newGame.setMap();
+                        return false;
+                    }
+
+                }
+                else{
+                    return true;
+                }
+            }
+            // 交换坐标
+            changeHeroP(i,j,nexti,nextj){
+                
+                if(this.jungdeg(nexti,nextj,i,j)){
+                    let temp = this.array[i][j];
+                    this.array[i][j] = this.array[nexti][nextj];
+                    this.array[nexti][nextj] = temp;
+                    this.setMap();
+                    this.shuXing();
+                }
+                
+            }
+            // 英雄移动
+            move(){
+                
+                window.onkeydown = function(e){
+                    let heroP = this.getHeroPosition();
+                    let heroPI = heroP.i;
+                    let heroPJ = heroP.j;
+                    if(e.keyCode == 37){
+                        console.log('左')
+                        this.changeHeroP(heroPI,heroPJ,heroPI,heroPJ-1);
+                    }else if(e.keyCode == 38){
+                        console.log('上')
+                        this.changeHeroP(heroPI,heroPJ,heroPI-1,heroPJ);
+                    }else if(e.keyCode == 39){
+                        console.log('右')
+                        this.changeHeroP(heroPI,heroPJ,heroPI,heroPJ+1);
+                    }else if(e.keyCode == 40){
+                        console.log('下')
+                        this.changeHeroP(heroPI,heroPJ,heroPI+1,heroPJ);
+                    }
+                }.bind(this)
+            }
+            // 左右框属性
+            shuXing(){
+                var pS = document.getElementsByTagName('p');
+                pS[0].innerHTML = `生命值：${this.heroShuxing.heroShengmin}`;
+                pS[1].innerHTML = `攻击力：${this.heroShuxing.heroGongji}`;
+                pS[2].innerHTML = `防御力：${this.heroShuxing.heroFangyu}`;
+                pS[3].innerHTML = `金币：${this.heroShuxing.heroJinbi}`;
+                var spans = document.getElementsByTagName('span');
+                spans[1].innerHTML = ` ${this.heroShuxing.huangYaoshi}把`;
+                spans[2].innerHTML = ` ${this.heroShuxing.lanYaoshi}把`;
+                spans[3].innerHTML = ` ${this.heroShuxing.hongYaoshi}把`;
+            }
+            // 层数
+            fooler(){
+                var span = document.getElementsByTagName('span')[0];
+                span.innerHTML = `第 ${this.foolerShu} 层`;
+            }
+            // 获取初始每层坐标
+            getInitialization(){
+                for(let i = 0;i < arr.length;i++){
+                    for(let j = 0;j < arr[i].length;j++){
+                        for(let x = 0;x < arr[i][j].length;x++){
+                            if(arr[i][j][x] == 4){
+                                this.initializationArr[i] = {
+                                    j : j,
+                                    x : x,
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            init(){
+                this.setMap();
+                this.move();
+                this.shuXing();
+                this.fooler();
+                this.getInitialization();
+            }
+
+        }
+        var gamebox = document.getElementsByClassName('box')[0]
+        var newGame = new Game(gamebox);
+        console.log(newGame)
+        newGame.init();
+
+        
+
+
+    </script>
+</body>
+
+</html>

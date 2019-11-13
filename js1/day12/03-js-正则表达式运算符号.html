@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//括号: []--按位匹配，内容部分表示取值范围    ()-反向引用,\1  \2  \3
+	var reg=/[ea1][s$]/igm;
+	var str="fesjhdk1"
+	
+	console.log( str.match(reg) );//["es"]
+	
+	
+	var myreg=/(a)\1/igm;
+	var mystr="daakdak";
+	console.log( mystr.match(myreg) );//["aa"]
+	
+	var reg1=/([abcdefg])\1([abcdefg])\2/igm;
+	var str1="aaaggeeahffaao";
+	console.log(str1.match(reg1));// ["aagg", "ffaa"]
+	
+	//或运算符
+	var reg2=/abc|bcd|fgh/igm
+	var str2="abcbcdfgh";
+	console.log( str2.match(reg2) )//["abc", "bcd", "fgh"]
+	
+	
+	//js 转义字符--\  \n     html转义字符:&nbsp;  &lt;	&gt;
+	// console.log("</scr"+"ipt>")
+	// console.log("<\/script>")
+	// console.log("<\/script>\nfailfhi")
+	// document.write("fa&lt;b>k\n<br>hl")
+	
+</script>
+</body>
+</html>

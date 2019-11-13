@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>parse01对象</title>
+
+    <script>
+        //1,准备了一个字符串
+        var data = '{"name":"小刚","age":18,"sex":0}';
+
+
+        class JSON{
+            static parse(data){
+                //1,创建一个对象
+                let object = {};
+                //2,去掉外面的大括号
+                data =data.substring(1,data.length-1);
+                //3,把当前的字符串转为数组
+                let arrays = data.split(",");
+                //4,对数组进行遍历
+                arrays.forEach(function (item) {
+                    //5,把当前字符串的引号去掉
+                    item = item.replace(/"/g,"");
+                    //6,以冒号为分割点转为数组
+                    let bufferArray=item.split(":");
+                    //7,给对象设置属性
+                    object[bufferArray[0]]=bufferArray[1];
+                })
+                //8，把当前的对象返回
+                return object;
+            }
+        }
+        var data = '{"cup":"第八代","monney":"好内存","power":"BYD","type":"1"}';
+
+        console.log(JSON.parse(data))
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

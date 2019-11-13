@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1/括号调用方式,谁调用的指向谁
+// 			function fn() {
+// 				console.log(this);
+// 			}
+// 
+// 			window.fn();
+
+
+			// function fn(num) {
+			// 	console.log("fn: " + num);
+			// 	this.count++;
+			// }
+			// fn.count = 0;
+			// console.log(fn.count)
+			// window.fn(1);
+			// 
+			// console.log(count,fn.count)//NaN 0
+			
+			
+			
+			
+			// var obj={
+			// 	name:"sish",
+			// 	gender:"femail",
+			// 	introduce:function(){
+			// 		return `姓名:${this.name},性别${this.gender}`
+			// 	}
+			// }
+			// 
+			// console.log( obj.introduce()  )
+			
+			
+			// var obj={
+			// 	Tname:"sish",
+			// 	gender:"femail",
+			// 	introduce:function(){
+			// 		return `姓名:${this.Tname},性别${this.gender}`
+			// 	}
+			// }
+			// 
+			// var introduce=obj.introduce;
+			// 
+			// console.log( window.introduce() )
+			
+			
+			
+			var obj={
+				Tname:"sish",
+				gender:"femail",
+				introduce:function(){
+					return `姓名:${this.Tname},性别${this.gender}`
+				}
+			}
+			
+			var obj1={
+				Tname:"si",
+				gender:"mail",
+				introduce:obj.introduce
+			}
+			
+			console.log( obj1.introduce() )
+			
+			
+		</script>
+	</body>
+</html>

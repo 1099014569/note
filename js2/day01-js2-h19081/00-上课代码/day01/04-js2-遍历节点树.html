@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div>
+	<!-- 以下都是div 标签的儿子/后代元素 -->
+	<p></p>
+	<div></div>
+	<img src="" >
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	
+	var mydiv=document.getElementsByTagName("div")[0];
+	console.log( mydiv.childNodes.length );//11
+	console.log( mydiv.childNodes[1] );//注释节点
+	
+	var arr=[];//存储for 筛选出来的元素节点
+	for(var i=0;i<mydiv.childNodes.length;i++){
+		if(mydiv.childNodes[i].nodeType==1){
+			arr.push(mydiv.childNodes[i])
+		}
+	}
+	
+	console.log(mydiv.parentNode);//父节点
+	console.log(mydiv.firstChild);//第一个儿子节点
+	console.log(mydiv.lastChild);//最后一个儿子节点
+	
+	
+	var myp=mydiv.firstChild.nextSibling.nextSibling.nextSibling;;//下一个兄弟节点
+	console.log(myp)
+	
+	var myComment=myp.previousSibling.previousSibling
+	console.log( myComment );//前一个兄弟节点
+	
+	
+	
+</script>
+</body>
+</html>

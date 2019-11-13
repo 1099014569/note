@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Person(name,age,sex) {
+            this.name=name
+            this.age=age;
+            this.sex=sex;
+        }
+        //1,准备一个对象
+        var person = new Person("小刚",18,"男");
+
+        var data =Stringify(person);
+
+        console.log(JSON.parse(data));
+
+        function Stringify(object) {
+            var data ="{";
+            //1,对对象进行枚举
+            for(key in object){
+                //2,分别获得键和值
+                var value = object[key];
+                //3,判断是否是number
+                if(typeof value=="number"){
+                    data=data+'"'+key+'":'+value+',';
+                }else{
+                    data=data+'"'+key+'":"'+value+'",';
+                }
+
+            }
+            //4,去掉最后的那个逗号
+            data=data.substring(0,data.length-1);
+            //5,加上最后那个大括号
+            data = data+"}";
+            return data;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

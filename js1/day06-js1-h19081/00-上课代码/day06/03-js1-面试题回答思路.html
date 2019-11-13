@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		null 和undefined 区别是什么？
+		用var 声明的变量  和 没有用var 声明的变量区别？
+		js 里this 的指向问题？
+		js 原型了解么？
+		 
+		1、概念
+		2、特点
+		3、出现的情况--作用
+		（4、两个一起出现的情况）
+
+		var a=100;
+		b=200;
+		function fn(){
+			var b=100;
+			a=200;//局部作用空间里优先访问局部变量，没有改变量时访问全局变量
+			console.log(a);
+		}
+		fn()
+		console.log(a);
+		
+		
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var person = {
+            name:'胡歌',
+            age:36
+        }
+        console.log(person.name);
+        console.log(person['age']);
+
+        var obj = new Object({name:'胡歌',age:36});
+        console.log(obj);
+        // obj.name = '胡歌';
+        // obj.age = 36;
+        console.log(obj);
+
+        // 包装对象
+        var num = 1213,
+            str = '1dsf',
+            boo = true;
+        var n   = new Number(num);
+        console.log(n);
+        console.log(typeof n);
+        var s   = new String(str);
+        console.log(typeof s);
+        var b   = new Boolean();
+        console.log(typeof b);
+
+    </script>
+</body>
+</html>

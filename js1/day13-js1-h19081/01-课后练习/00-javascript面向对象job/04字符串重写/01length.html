@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>length</title>
+    <script>
+
+      class String{
+          constructor(data){
+              this.data=data;
+          }
+          get value(){
+              return this.data;
+          }
+          get length(){
+              var length=0;
+              while((typeof this.data[length])!='undefined'){
+                  length++;
+              }
+              return length;
+          }
+      }
+
+      var string = new String("你好");
+
+      console.log(string.value);
+      console.log(string.length);
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

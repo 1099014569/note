@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组筛选</title>
+	</head>
+	<body>
+		<pre>3、将数组中价格大于500 的商品放到下表中</pre>
+		<table id="filter" border="" cellspacing="" cellpadding="">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>价格(￥)</th>
+					<th>颜色</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		<script src="00-源数据.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var newArr=arrProduct.filter(function(item){
+				return item.price>500
+			})
+			
+			newArr.forEach(function(item){
+				objToPage(item,"filter")
+			})
+			
+			
+		</script>
+	</body>
+</html>

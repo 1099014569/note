@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>新闻1</div>
+		<div>新闻2</div>
+		<div>新闻3</div>
+		<div>新闻4</div>
+		<div>新闻5</div>
+		<div>新闻6</div>
+		<div>新闻7</div>
+		<div>新闻8</div>
+		<div>新闻9</div>
+		<div>新闻10</div>
+		<div>新闻11</div>
+		<div>新闻12</div>
+		<div>新闻13</div>
+		<div>新闻14</div>
+		<div>新闻15</div>
+		<div>新闻16</div>
+		<div>新闻17</div>
+		<div>新闻18</div>
+		<div>新闻19</div>
+		<div>新闻20</div>
+		<div>新闻21</div>
+		<div>新闻22</div>
+		<div>新闻23</div>
+		<div>新闻24</div>
+		<div>新闻25</div>
+		<div>新闻26</div>
+		<div>新闻27</div>
+		<div>新闻28</div>
+		<div>新闻29</div>
+		<div>新闻30</div>
+		<div data-myname="div" data-test="100" this-name="mydiv">1234689708-8</div>
+		
+		<script type="text/javascript">
+			let div=document.getElementsByTagName("div")[document.getElementsByTagName("div").length-1];
+			//自定义属性对象--元素.dataset
+			console.log(div.dataset.myname)
+			
+			var divs=document.getElementsByTagName("div");
+			for(let i=0;i<divs.length;i++){
+				divs[i].dataset.dianjl="0"
+				divs[i].onclick=function(){
+					// divs[i].dataset.dianjl=Number(divs[i].dataset.dianjl)+1
+					divs[i].setAttribute("data-dianjl",Number(divs[i].getAttribute("data-dianjl"))+1)
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

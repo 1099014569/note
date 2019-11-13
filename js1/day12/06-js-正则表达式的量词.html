@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 所有的量词默认做贪婪匹配
+			// w+	---一个到多个
+			// w*	---0个到多个
+			// w?	---一个或0个
+			
+			// w{x,y}	---x~y个
+			// w{x,}	---x~infinnity个
+			// w{x}		--x个，eg:银行卡密码^/d{6}$
+			
+			
+			var str="fbbbgahfaaaaaaaaaacc"
+			var reg=/(\w)\1+/igm;
+			
+			console.log( str.match(reg)  );// ["bbb", "aaaaaaaaaa", "cc"]
+			
+			console.log( str.match(/(\w)\1?/igm) );//["f", "bb", "b", "g", "a", "h", "f", "aa", "aa", "aa", "aa", "aa", "cc"]
+			
+			console.log( str.match(/(\w)\1*/igm) );// ["f", "bbb", "g", "a", "h", "f", "aaaaaaaaaa", "cc"]
+			
+			
+			var str2=prompt("请用户输入注册密码");
+			var reg2=/^\w{6,16}$/igm;//限定整个字符串的样子
+			console.log( reg2.test(str2) )
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

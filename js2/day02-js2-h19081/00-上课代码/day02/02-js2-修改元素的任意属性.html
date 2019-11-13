@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+.box {
+	background-color: red;
+	width: 100px;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+<div data-myname="div" data-test="100" this-name="mydiv">1234689708-8</div>
+<span>123</span>
+<p>wenduan</p>
+<a href="">连接标签</a>
+<img src="" alt="">
+
+<script type="text/javascript">
+
+let div=document.getElementsByTagName("div")[0];
+
+console.log( div.getAttribute("this-name") )
+div.setAttribute("class","box")
+
+// 小练习：给body的子标签元素统一设置一个”this-name”的属性，属性值为这些元素自己的标签名nodeName
+var child=document.body.children;
+for(var i=0;i<child.length;i++){
+	child[i].setAttribute("this-name",child[i].nodeName.toLowerCase())
+	
+}
+
+
+</script>
+</body>
+</html>

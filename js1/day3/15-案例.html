@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">按钮</div>
+    <script>
+        document.querySelector('.mydiv').onclick = function(){
+            var nowdate = new Date();
+            var day     = nowdate.getDay();
+            console.log(day);
+
+            switch(day){
+                case 1:
+                    document.write('今天是星期一');
+                    break;
+                case 2:
+                    document.write('今天是星期二');
+                    break;
+                case 3:
+                    document.write('今天是星期三');
+                    break;
+                default:
+                    document.write('其它情况');
+            }
+        }
+    </script>
+</body>
+</html>

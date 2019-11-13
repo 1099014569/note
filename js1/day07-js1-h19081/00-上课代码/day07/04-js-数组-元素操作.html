@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [1, 2, 3];
+			//增
+			arr[arr.length] = 100;
+			console.log(arr);
+
+			console.log(arr.push("a", "b")); //push 方法往数组最后增添元素,返回数组最终的长度
+			console.log(arr)
+
+			console.log(arr.unshift(true)) //unshift 方法往数组头部增添元素,返回数组最终的长度
+			console.log(arr) //[true, 1, 2, 3, 100, "a", "b"]
+
+			//删
+			delete arr[2]
+			console.log(arr[2]); //delete 删除数组的某个位置的值,值删掉,位置还在
+
+			console.log(arr.pop()) //pop 方法删除数组最后的一个元素,返回删除的那个元素值
+			console.log(arr); //[true, 1, empty, 3, 100, "a"]
+
+			console.log(arr.shift()) //shift 方法删除数组头部的一个元素,返回删除的那个元素值
+			console.log(arr);
+			
+			
+			//查
+			for(var i=arr.length-1;i>=0;i--){//var i=0;i<arr.length;i++
+				console.log(arr[i])
+			}
+			
+			for(var x in arr){
+				console.log(arr[x]);
+			}//会跳过没有值的地方
+			
+			for(var ele of arr){
+				console.log(ele)
+			}
+			
+		</script>
+	</body>
+</html>

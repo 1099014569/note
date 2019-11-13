@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="Colothes.js"></script>
+    <script>
+
+        //1,获得一个产品集合(100个产品)
+        var colothes = getClothes(100);
+        //2,进行过滤
+     var buffer=colothes.filter(function (colothe) {
+
+            if(colothe.color=="黑色"&&colothe.size==1){
+                return true;
+            }else{
+                return false;
+            }
+        });
+
+     console.log(buffer);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Cat.prototype={
+			// 	color:"gray",
+			// 	sayHello:function(){
+			// 		console.log("喵~")
+			// 	},
+			// 	type:"英短"
+			// }
+			
+			// Cat.prototype={constructor:Cat}
+			function Cat(name){
+				// var this={__proto__:Cat.prototype}
+				this.name=name;
+				//return this;
+			}
+			
+			var cat1=new Cat("小明");
+			
+			//绝大多数--原型链上的最终原型Object.prototype,终点是null
+			
+			// 找一个对象的原型__proto__,对应构造函数的prototype
+			cat1.__proto__==Cat.prototype
+			Cat.prototype.__proto__==Object.prototype
+			console.log(Object.prototype.__proto__)//null
+			
+			
+			var num=new Number(12);
+			console.log(num.__proto__==Number.prototype);
+			console.log(Number.prototype.__proto__==Object.prototype)
+			
+			var arr=[];//new Array;
+			console.log(arr.__proto__==Array.prototype)
+			Array.prototype.__proto__==Object.prototype
+			
+			
+			// var obj=Object.create(null);
+			// console.log(obj.__proto__);//undefined
+			
+			
+			
+		</script>
+	</body>
+</html>

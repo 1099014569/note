@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// js原字符:
+// \w		--wrod,匹配英文字符/数字/_ 
+// \W		--[^\w]
+
+// \s		--space,空白字符
+// \S		--[^\s]
+
+// \d		--data,数字
+// \D		--[^\d],非数字
+
+// \b		--border,单词边界
+// \B		--[^\b]
+
+// .		--任意字符,除了行结束符和换行符
+var reg=/[^4]/igm;//[^]取非
+var str="4814916dak417074";
+
+console.log(str.match(reg));// ["8", "1", "9", "1", "6", "d", "a", "k", "1", "7", "0", "7"]
+var reg1=/[\s\S]/igm;//任意字符
+console.log(str.match(reg1));
+
+
+var str1=`day day study day  day up`
+
+
+</script>
+</body>
+</html>

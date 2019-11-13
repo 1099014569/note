@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// 高阶函数:函数参数是函数	函数返回值是函数
+			
+			// 回调函数:函数参数是函数,限制语句的先后执行顺序
+			// 2个定时器方法:setTimeOut
+			
+			function net(myfn,i){
+				console.log(i)
+				myfn();
+			}
+			function outer(){
+				var i=10;
+				
+				setTimeout(net,2000,fn,i);//创建了计时器,所有代码都运行完才开始计时
+				
+				function fn(){
+					i="abc";//一堆复杂运算操作
+					console.log(i)
+				}
+				
+			}
+			outer()
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

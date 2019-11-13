@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>音频</title>
+		<style type="text/css">
+			#audio {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				border: 15px solid black;
+				display: block;
+				margin: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="audio">
+			
+		</div>
+		<button type="button">播放</button>
+		<button type="button" style="margin-left: 30px;">暂停</button>
+		<input type="range" name="volumn" value="" min="0" max="100"/>
+		
+		<audio src="00mv-img/menu.mp3" >
+			当前浏览器不支持audio
+		</audio>
+		<audio class="audio">
+			<source src="./00mv-img/menu.ogg" type="audio/ogg">
+			<source src="00mv-img/menu.mp3" type="audio/mp3">
+		</audio>
+		
+		<script type="text/javascript">
+			// 播放/暂停/静音/恢复/音量+/音量-功能实现
+			var btn=document.querySelectorAll("button");
+			btn[0].onclick=function(){
+				document.querySelector(".audio").play()
+			}
+			
+			btn[1].onclick=function(){
+				document.querySelector(".audio").pause()
+			}
+			
+			document.querySelector("input").onchange=function(){
+				console.log(this.value);
+				document.querySelector(".audio").volume=this.value/100;
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

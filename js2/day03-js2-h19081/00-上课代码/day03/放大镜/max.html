@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="max.css">
+    <title>放大镜</title>
+</head>
+<body>
+    <div class="box">
+        <img src="./img/hezi.jpg" alt="渺小一生" />
+        <div class="block"></div>
+    </div>
+   
+    <div class="max">
+        <img class="bImg" src="./img/max.jpg" alt="max" />
+    </div>
+    <script>
+    /* onmouseenter
+       onmouseleave
+       onmousemove=function(ev){
+           ev,事件对象上存储有鼠标的位置信息
+    } */
+    var leftBox=document.getElementsByClassName("box")[0];
+    var yBox=document.getElementsByClassName("block")[0];
+    var maxBox=document.getElementsByClassName("max")[0];
+    var rightImg=document.getElementsByClassName("bImg")[0];
+    leftBox.onmouseenter=function(){
+        yBox.style.display="block";
+        maxBox.style.display="block";
+
+    }
+    leftBox.onmouseleave=function(){
+        yBox.style.display="none";
+        maxBox.style.display="none";
+    }
+    leftBox.onmousemove=function(event){
+        console.log(event.clientX,event.clientY);
+        console.log(leftBox.offsetLeft,yBox.offsetLeft);
+        var x = event.clientX - leftBox.offsetLeft- yBox.offsetWidth/2;
+        var y = event.clientY - leftBox.offsetTop - yBox.offsetHeight/2;
+        console.log(x,y);
+        if (x < 0) {
+            x = 0;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+        if (x > leftBox.offsetWidth - yBox.offsetWidth) {
+            x = leftBox.offsetWidth - yBox.offsetWidth;
+        }
+        if (y > leftBox.offsetHeight - yBox.offsetHeight) {
+            y = leftBox.offsetHeight - yBox.offsetHeight;
+        }
+        yBox.style.left = x + 'px';
+        yBox.style.top = y + 'px';
+        rightImg.style.left = -(800/350) * x + 'px';
+        rightImg.style.top = -(800/350) * y + 'px';
+    }
+    </script>
+</body>
+</html>

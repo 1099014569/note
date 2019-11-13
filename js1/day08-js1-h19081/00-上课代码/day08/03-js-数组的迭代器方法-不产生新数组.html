@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 迭代器方法:循环数组元素,统一都接受一个函数作为参数
+	/*
+		function(item,index,arr){
+			//各式各样的操作语句
+		}
+	*/
+   var arr=[1,2,4,8,0,3,,,101];
+   arr.forEach(function(item,index,arr){
+	   document.write(item+"索引位置为"+index+"<br>")
+   })
+   
+   //every 是将每一次调用函数的结果进行逻辑与&&,结果要么false 要么为true
+   var myE=arr.every(function(item,index,arr){
+	   console.log(item)
+	   return item>80
+   })
+   console.log( myE );//false
+   
+   //some 是将每一次调用函数的结果进行逻辑或|| ,结果要么false 要么为true
+   var myS=arr.some(function(item,index,arr){
+	   console.log(item)
+	   return item>4;
+   })
+   console.log(myS)
+	
+	
+	
+	
+</script>
+</body>
+</html>

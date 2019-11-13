@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// [概念]
+			// 作用域链:是函数的作用空间,保存着执行期上下文的集合.		
+
+			//[特点]
+			// js 函数都对应有自己的作用域链:一个函数产生之后就继承得到自己所在环境的作用域链
+			// 	被调用前一刻产生自己的执行期上下文
+			//	被调用完成,自己的执行期上下文"销毁"
+
+			//一个函数只要还能访问到就具有作用域链
+			// var a=100;
+			// function fn(){
+			// 	console.log(a);//100
+			// }
+			// fn();
+			// fn();
+
+
+			// fn-作用域链:
+			// AO-执行期上下文-局部作用空间-fn{
+			// 	
+			// }
+
+			// window{
+			// 	a:100,
+			// 	fn:function fn(){……
+			// }
+
+
+			// var a=100;
+			// function outer(){
+			// 	var a=200;
+			// 	function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	
+			// 	return inner;
+			// }
+			// 
+			// var myfn=outer();
+			// myfn();
+			// myfn();
+
+
+
+
+			// inner/myfn作用域链：
+			// <!-- inner--AO{
+			// 	
+			// }
+			//  -->
+			// outer--AO{
+			// 	a:201,
+			// 	inner:function(){}
+			// }
+			// 
+			// window--GO{
+			// 	a:100,
+			// 	myfn:(inner:function(){}),
+			// 	outer:function outer(){……
+			// }
+			// 
+			// outer 作用域链：
+			// window--GO{
+			// 	a:100,
+			// 	myfn:(inner:function(){}),
+			// 	outer:function outer(){……
+			// }
+
+
+			// var a=100;
+			// function outer(){
+			// 	var a=200;
+			// 	function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	
+			// 	return inner;
+			// }
+			// 
+			// var myfn1=outer();
+			// var myfn2=outer();
+			// console.log(myfn1==myfn2);//false
+			// myfn1();//200
+			// myfn1();//201
+			// myfn2();//200
+
+			//  myfn1 作用域链：
+			// <!-- inner--AO{
+			// 	 
+			//  } -->
+			// 
+			// outer--AO{
+			// 	a:202,
+			// 	inner:function(){……}
+			// }
+			// 
+			// 
+			// windoe-GO{
+			// 	a:100,
+			// 	myfn1:inner:function(){……},
+			// 	myfn2:function(){……},
+			// 	outer:function outer(){……
+			// }
+			// 
+			// inner-myfn2作用域链:
+			// <!-- AO--myfn2{
+			// 	
+			// } -->
+			// 
+			// AO--outer{
+			// 	a:201,
+			// 	inner:function(){……}
+			// }
+			// 
+			// windoe-GO{
+			// 	a:100,
+			// 	myfn1:inner:function(){……},
+			// 	myfn2:function(){……},
+			// 	outer:function outer(){……
+			// }
+			// 
+			// outer 作用域链:
+			// windoe-GO{
+			// 	a:100,
+			// 	myfn1:inner:function(){……},
+			// 	myfn2:function(){……},
+			// 	outer:function outer(){……
+			// }
+
+
+
+			// var a=100;
+			// function outer(){
+			// 	var a=200;
+			// 	var arr=[];
+			// 	arr[0]=function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	arr[1]=function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	
+			// 	return arr;
+			// }
+			// 
+			// var arr=outer();
+			// console.log(arr[0]==arr[1])//false
+			// arr[0]();//200
+			// arr[0]();//201
+			// arr[0]();//202
+			// arr[1]();//203
+
+			//函数生成则继承自己所在环境的作用链
+			// window-arr[0] / window-arr[1] 作用链：
+			// AO--window-arr[0]{
+			// 	
+			// }
+			// 
+			// outer-AO{
+			// 	a:204,
+			// 	arr:[function inner(){……,function inner(){……]
+			// }
+			// 
+			// 
+			// window-GO{
+			// 	a:100,
+			// 	arr:[function inner(){……,function inner(){……],
+			// 	outer:function outer(){……
+			// }
+			// 
+			// outer 作用链：
+			// 
+			// window-GO{
+			// 	a:100,
+			// 	arr:[function inner(){……,function inner(){……],
+			// 	outer:function outer(){……
+			// }
+
+
+			// var a=100;
+			// function outer(){
+			// 	var a=200;
+			// 	var obj={};
+			// 	obj.fn1=function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	obj.fn2=function inner(){
+			// 		console.log(a++)
+			// 	}
+			// 	
+			// 	return obj;
+			// }
+			// 
+			// var obj=outer();
+			// console.log(obj.fn1==obj.fn2)//false
+			// obj.fn1();//200
+			// obj.fn1();//201
+			// obj.fn1();//202
+			// obj.fn2();//203
+// //题一
+// 			function a(a) {
+// 				function b() {
+// 					console.log(a,b);//123 undefined
+// 					var b = 234;
+// 				}
+// 				b();
+// 			}
+// 			var glob = 100;
+// 			a(123);
+
+// //题二
+// 			function a() {
+// 				function b() {
+// 					var b = 234;
+// 					aa = 0;
+// 				}
+// 				var aa = 123;
+// 				b();
+// 				console.log(aa);//0
+// 			}
+// 			var glob = 100;
+// 			a();
+
+// //题三
+// function demo(e){
+// 	function e() {	}
+// 	arguments[0]=2;
+// 	document.write(e+"<br>");//2
+// 	if(a){
+// 		var b=123;		//存在变量提升
+// 		function c() {  //没有函数提升
+//       
+//         }
+// 	}
+// 	var c;
+// 	a=10;
+// 	var a;
+// 	document.write(b+"<br>");//undefined
+// 	f=123;
+// 	document.write(c+"<br>");//undefined
+// 	document.write(a+"<br>");//10
+// }
+// var a;
+// demo(1);
+// document.write(a+"<br>");//undefined
+// document.write(f+"<br>");//123
+		
+		//题四,闭包:是一个访问上一层函数局部变量的函数,即便上一层函数已经关闭
+		 function a() {
+		 	var aaa=123;
+		 	function b() {
+		 		var bbb=234;
+		 		console.log(aaa);//123
+		 	}
+		 	return b;
+		 }
+		
+		 var glob=100;
+		 var demo=a();
+		 demo();
+		
+			
+			
+		</script>
+	</body>
+</html>

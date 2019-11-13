@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stringify</title>
+    <script>
+        function Person(name,age,sex,house) {
+            this.name=name
+            this.age=age;
+            this.sex=sex;
+            this.house=house;
+        }
+        var array =[{name:"川大花园",address:'科华北路99号'},{name:"北大花园",address:'北大北路99号'}];
+        //1,准备一个对象
+        var person = new Person("小刚",18,"男",array);
+
+
+        console.log(JSON.stringify(person));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

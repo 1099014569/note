@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var str = ' hello world ';
+        console.log(str.length);
+        // 去掉字符串前后的空格
+        var newstr = str.trim();
+        console.log(str.trim().length);
+        // substring(start,end)
+        console.log(str.substring(3,5));
+        // 获取字符串对应下标的字符
+        console.log(str.charAt(5));
+        // 找到对应字符串下标，如果找不到，返回-1  第二个参数从对应字符下标开始查找
+        console.log(str.indexOf('w',8));
+
+        // 不接受负值
+        console.log(str.substring(5,3));
+        // slice(start,end)  可以接受负值
+        console.log(str.slice(-5,-3));
+        // substr(start,length)
+        console.log(str.substr(3,6));
+    </script>
+</body>
+</html>

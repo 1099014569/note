@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<table border="" cellspacing="" cellpadding="" style="height: 60px;width: 400px;">
+	<thead>
+		<tr >
+			<th>选择</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>分数</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+<button>全选</button>
+<button>反选</button>
+<button>全不选</button>
+<p>所选学生总分为:<span>0</span></p>
+
+<script type="text/javascript">
+	objToPage(  new CreateObj("袁佳伟1",20,0,70)  )
+	objToPage(  new CreateObj("韦柳娥1",18,1,79)  )
+	objToPage(  new CreateObj("韩旭1",19,0,61)  )
+	objToPage(  new CreateObj("秦鑫1",19,1,80)  )
+	objToPage(  new CreateObj("袁佳伟",20,0,80)  )
+	objToPage(  new CreateObj("韦柳娥",18,1,89)  )
+	objToPage(  new CreateObj("韩旭",19,0,81)  )
+	objToPage(  new CreateObj("秦鑫",19,1,88)  )
+	var CheckBoxs=document.getElementsByTagName("input");
+	for(let i=0;i<CheckBoxs.length;i++){
+		CheckBoxs[i].onchange=function(){
+			var bodyTr=document.querySelectorAll("tbody tr");
+			var sum=0;
+			for(let i=0;i<bodyTr.length;i++){
+				if(bodyTr[i].firstElementChild.firstElementChild.checked==true){
+					sum+=Number(bodyTr[i].lastElementChild.innerText)
+					
+				}
+			}
+			document.querySelector("span").innerHTML=sum
+		}
+	}
+	
+	
+	//全选
+	document.querySelector("button").onclick=function(){
+		var CheckBoxs=document.getElementsByTagName("input");
+		for(let i=0;i<CheckBoxs.length;i++){
+			CheckBoxs[i].checked=true
+		}
+		var bodyTr=document.querySelectorAll("tbody tr");
+		var sum=0;
+		for(let i=0;i<bodyTr.length;i++){
+			sum+=Number(bodyTr[i].lastElementChild.innerText)
+		}
+		document.querySelector("span").innerHTML=sum
+	}
+	
+	//反选
+	document.getElementsByTagName("button")[1].onclick=function(){
+		var CheckBoxs=document.getElementsByTagName("input");
+		for(var i=0;i<CheckBoxs.length;i++){
+			CheckBoxs[i].checked=!CheckBoxs[i].checked
+		}
+		var bodyTr=document.querySelectorAll("tbody tr");
+		var sum=0;
+		for(let i=0;i<bodyTr.length;i++){
+			if(bodyTr[i].firstElementChild.firstElementChild.checked==true){
+				sum+=Number(bodyTr[i].lastElementChild.innerText)
+				
+			}
+		}
+		document.querySelector("span").innerHTML=sum
+	}
+	
+	//全不选
+	document.getElementsByTagName("button")[2].onclick=function(){
+		var CheckBoxs=document.getElementsByTagName("input");
+		for(var i=0;i<CheckBoxs.length;i++){
+			CheckBoxs[i].checked=false;
+		}
+		document.querySelector("span").innerHTML=0
+	}
+	
+	//构造函数
+	function CreateObj(name,age,gender,grade){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+		this.grade=grade;
+	}
+	
+	function objToPage(obj){
+		obj.gender=obj.gender==0?"男":"女";
+		document.querySelector("table tbody").innerHTML+=`<tr>
+														<td><input type='checkbox'></td>
+														<td>${obj.name}</td>
+														<td>${obj.age}</td>
+														<td>${obj.gender}</td>
+														<td>${obj.grade}</td>
+													</tr>`;
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

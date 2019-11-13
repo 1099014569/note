@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function getNumber() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function(){
+						var num = Math.ceil(Math.random()*10);
+						
+						if(num > 6) {
+							resolve("数据复合要求" + num)
+						} else {
+							reject("操作失败，数据太小" + num)
+						}
+					}, 2000)
+				})
+			}
+			
+			getNumber().then(
+				function(data) {
+					console.log(data)
+					return "123"
+				},
+				function(err) {
+					console.log(err);
+				}
+			)
+
+//			getNumber().then(function(data) {
+//				console.log("then----" + data);//执行成功，对应了resolve
+//				console.log(some);
+//			})
+//			.catch(function(data) {
+//				console.log("catch----" + data);//执行失败，对应reject
+//			})
+
+			
+			
+		</script>
+	</body>
+</html>

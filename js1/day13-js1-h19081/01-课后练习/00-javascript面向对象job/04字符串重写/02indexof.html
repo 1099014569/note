@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>indexof</title>
+    <script>
+
+      class String{
+          constructor(data){
+              this.data=data;
+          }
+          get value(){
+              return this.data;
+          }
+          get length(){
+              let length=0;
+              while((typeof this.data[length])!='undefined'){
+                  length++;
+              }
+              return length;
+          }
+
+          // indexof(element){
+          //     //你好啊，同学，今天你在做神马
+          //     let index=0;
+          //     while( this.data[index]!=element&&(typeof this.data[index])!='undefined'){
+          //         index++;
+          //     }
+          //     if((typeof this.data[index])=='undefined')
+          //         index=-1;
+          //
+          //     return index;
+          // }
+
+          indexof(element){
+              //1,设置开始的下标为-1
+              let index=-1;
+              //2,获得字符串的长度
+              let length = this.length;
+              //3,遍历
+              for(let i=0;i<length;i++){
+               if(this.data[i]==element){
+                   index=i;
+                   break;
+               }
+              }
+              return index;
+          }
+      }
+
+      var string = new String("你好啊，同学，今天你在做神马");
+
+
+      console.log(string.indexof('做'));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

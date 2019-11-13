@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        document.write('<h1>我是h1</h1>');
+
+        window.onload = function(){
+            // document.write('页面加载完成后写入的内容会把之前的内容覆盖掉');
+
+            console.log(document.querySelector('div').innerHTML);
+            document.querySelector('div').innerHTML = '新内容';
+        }
+    </script>
+</body>
+</html>

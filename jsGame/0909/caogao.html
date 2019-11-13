@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="fooler.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            /* height: 1000px; */
+            display: flex;
+            justify-content: center
+        }
+        .box {
+            width: 660px;
+            height: 660px;
+            background-color: green;
+            /* position: absolute; */
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin-top: 20px;
+            font-size:0 
+        }
+        .leftbox {
+            width: 200px;
+            height: 660px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+        .leftbox-top {
+            height: 50px;
+            width: 160px;
+            margin: 50px auto;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+        }
+        .leftbox-top span {
+            padding: 20px;
+            box-sizing: border-box;
+            
+        }
+        .leftbox-middle {
+            height: 200px;
+            width: 160px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 20px;
+        }
+        .leftbox-middle p {
+            line-height: 20px;
+           
+        }
+        .leftbox-bottom {
+            height: 160px;
+            width: 160px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .leftbox-bottom span{
+            margin-left: 25px;
+        }
+        .rightbox {
+            width: 200px;
+            height: 660px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="leftbox">
+        <div class="leftbox-top"><span></span></div>
+        <div class="leftbox-middle">
+            <p>生命值：</p>
+            <p>攻击力：</p>
+            <p>防御力：</p>
+            <p>金币：</p>
+        </div>
+        <div class="leftbox-bottom">
+            <div>
+                <img src="img/6.png">
+                <span></span>
+            </div>
+            <div>
+                <img src="img/9.png">
+                <span></span>
+            </div>
+            <div>
+                <img src="img/10.png">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="box"></div>
+    <div class="rightbox"></div>
+
+    <script>
+        class Game{
+            constructor(gamebox){
+                this.width = parseInt(getComputedStyle(gamebox,null).width);
+                this.height = parseInt(getComputedStyle(gamebox,null).height);
+                this.array = arr[0];
+            }
+            setMap(){
+                for(let i = 0;i < this.array.length;i++){
+                    for(let j = 0;j < this.array[i].length;j++){
+                        var img = document.createElement('img');
+                        img.style.width = this.width/this.array[j].length + 'px';
+                        img.style.height = this.height/this.array[i].length + 'px';
+                        if(this.array[i][j] == 0){
+                            img.src = 'img/0.jpg';
+                        }else if(this.array[i][j] == 1){
+                            img.src = 'img/1.png';
+                        }else if(this.array[i][j] == 2){
+                            img.src = 'img/2.png';
+                        }else if(this.array[i][j] == 3){
+                            img.src = 'img/3.png';
+                        }else if(this.array[i][j] == 4){
+                            img.src = 'img/4.png';
+                        }else if(this.array[i][j] == 5){
+                            img.src = 'img/5.png';
+                        }else if(this.array[i][j] == 6){
+                            img.src = 'img/6.png';
+                        }else if(this.array[i][j] == 7){
+                            img.src = 'img/7.png';
+                        }else if(this.array[i][j] == 8){
+                            img.src = 'img/8.png';
+                        }else if(this.array[i][j] == 9){
+                            img.src = 'img/9.png';
+                        }else if(this.array[i][j] == 10){
+                            img.src = 'img/10.png';
+                        }else if(this.array[i][j] == 11){
+                            img.src = 'img/11.png';
+                        }
+                        gamebox.appendChild(img);
+                    }
+                }
+            }
+            // 获取英雄位置
+            getheroPosition(){
+                for(let i = 0;i < this.array.length;i++){
+                    for(let j = 0;j < this.array[i].length;j++){
+                        if(this.array[i][j] == 4){
+                            return {
+                                i : i,
+                                j : j
+                            }
+                        }
+                    }
+                }
+            }
+            // 判断边界
+            jungdeg(i,j){
+                if(i < 0 || i > this.array.length-1 || j < 0 || j > this.array[i].length-1){
+                    return false;
+                }else{
+                    if(this.meetAll(i,j)){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            // 物品和其他
+            meetAll(i,j){
+                if(this.array[i][j] == 1){
+                    return false;
+                }else if(this.array[i][j] == 2){
+                    
+                }
+                else{
+                    return true;
+                }
+            }
+            // 交换
+            changePosition(i,j,nexti,nextj){
+                if(this.jungdeg(nexti,nextj)){
+                    gamebox.innerHTML = '';
+                    var temp = this.array[i][j];
+                    this.array[i][j] = this.array[nexti][nextj];
+                    this.array[nexti][nextj] = temp;
+                    this.setMap();
+                }
+            }
+            // 英雄移动
+            move(){
+                window.onkeydown = function(e){
+                    
+                    var heroP = this.getheroPosition();
+                    var heropI = heroP.i;
+                    var heropJ = heroP.j;
+                    if(e.keyCode == 37){
+                        console.log('左');
+                        this.changePosition(heropI,heropJ,heropI,heropJ-1);
+                    }else if(e.keyCode == 38){
+                        this.changePosition(heropI,heropJ,heropI-1,heropJ)
+                    }else if(e.keyCode == 39){
+                        this.changePosition(heropI,heropJ,heropI,heropJ+1)
+                    }else if(e.keyCode == 40){
+                        this.changePosition(heropI,heropJ,heropI+1,heropJ)
+                    }
+                }.bind(this)
+            }
+            init(){
+                this.setMap();
+                this.move();
+            }
+            
+        }
+        var gamebox = document.getElementsByClassName('box')[0];
+        var newGame = new Game(gamebox);
+        newGame.init();
+
+
+
+
+
+    </script>
+</body>
+</html>

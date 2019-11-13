@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//4/ new 自定义构造函数的过程:函数内部会申请一片堆内存空间,让this 指向这片空间;
+				//						给这片空间增加属性并赋值;
+				//						最后再return 返回this;
+			function CreateObj(name,age){
+				// var this={}
+				console.log(this)
+				this.name=name;
+				this.age=age;
+				this.sayStudy=function(){
+					console.log("js1 对象创建")
+				}
+				//return this;
+			}
+			
+			
+			var obj1=new CreateObj("杨武春",18);
+			console.log(obj1)
+			
+			var obj2=new CreateObj;
+			console.log(obj1==obj2);//false
+			console.log(obj1,obj2);
+			
+		</script>
+	</body>
+</html>

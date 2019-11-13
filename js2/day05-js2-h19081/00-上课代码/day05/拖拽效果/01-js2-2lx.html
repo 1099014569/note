@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			div {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div></div>
+    <div style="background-color: black;left: 200px;"></div>
+    <div style="background-color: gray;left: 400px;"></div>
+    <div style="background-color: red;left: 600px;"></div> -->
+		<script>
+			// 利用 onmousedown onmouseup onmousemove实现连续拖拽方块    
+			var divs = document.getElementsByTagName('div');
+
+			function move(ev) {
+				myEvent = ev || window.event;
+				myTarget = myEvent.target;
+				// console.log(myTarget);
+				// for(let i = 0;i < divs.length;i++){
+				//     if(divs[i] == myTarget){
+				var x = myEvent.clientX - myTarget.offsetLeft;
+				var y = myEvent.clientY - myTarget.offsetTop;
+
+				document.onmousemove = function(e) {
+					// var y = myEvent.clientY - (myEvent.clientY - divs[i].offsetX)
+					// console.log(2*myEvent.clientY - divs[i].offsetTop,2*myEvent.clientX - divs[i].offsetLeft)
+					// console.log(divs[i].style.top,divs[i].style.left)
+					// console.log(myEvent.clientY - myEvent.offsetY,myEvent.clientX - myEvent.offsetX)
+					
+					console.log( e.clientY - y  )
+					myTarget.style.top = e.clientY - y + 'px';
+					myTarget.style.left = e.clientX - x + 'px';
+					// myEvent.stopPropagation ? myEvent.stopPropagation() : myEvent.cancelBubble = true;
+				}
+
+				document.onmouseup = function(ev) {
+					document.onmousemove = false;
+					// myEvent.stopPropagation ? myEvent.stopPropagation() : myEvent.cancelBubble = true;
+				}
+				// }
+				// }
+
+
+			}
+
+			document.addEventListener('mousedown', move, false);
+			// div.addEventListener('mouseup',leave,false);
+			arrColor = ['red', 'yellow', 'gray', 'pink'];
+
+			for (let i = 0; i < 5; i++) {
+				var numColor = parseInt(Math.random() * 10 % 4);
+				console.log(numColor);
+				document.body.appendChild(document.createElement('div'));
+				document.getElementsByTagName('div')[i].style.left = i * 200 + 'px';
+				document.getElementsByTagName('div')[i].style.backgroundColor = arrColor[numColor];
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 同：call/apply 都可以调用函数,传参改变 this的指向
+			function fn(a, b) {
+				console.log(this); //{num: 100}
+				console.log(a, b); //1 2
+				console.log(arguments) //[1,2,3,4]
+			}
+			//异:
+			//call 是可以接收n 个参数,参数1 是改变this指向的,其余参数是传递给函数的实参
+			fn.call({
+				num: 100
+			}, 1, 2, 3, 4);
+
+			var obj = {};
+			obj[0] = 100;
+			obj[1] = 200;
+			obj[2] = 300;
+			obj.length = 3;
+			//apply 是只接收两个参数,参数1 是改变this指向的,参数2 只能是数组或类数组
+			fn.apply({
+				num: 100
+			}, [1, 2, 3, 4]);
+
+
+			function foo() {
+				bar.call(null, arguments); //bar.apply(null,arguments);
+			}
+
+			function bar(x) {
+				console.log(arguments);
+			}
+			foo(1, 2, 3, 4, 5)
+
+
+			function test() {
+				function inner() {
+					console.log(arguments)
+				}
+				inner(arguments)
+			}
+			test(1, 2, 3, 4, 5);
+			
+			
+			var arr=[1,20,3,40,5,7];
+			var max=Math.max.apply(null,arr);
+			
+			console.log(max)
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

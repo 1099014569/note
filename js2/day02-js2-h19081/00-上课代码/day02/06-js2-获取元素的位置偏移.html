@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	* {
+		margin: 0px;
+		padding: 0px;
+	}
+	body {
+		display: flex;
+		justify-content: center;
+	}
+	.box {
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		margin-top: 50px;
+		padding: 20px;
+		border: 5px solid black;
+		display: inline-block;
+	}
+	
+	.outer {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.inner {
+		width: 50px;
+		height: 50px;
+		background-color: white;
+	}
+</style>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="outer box">
+	<div class="inner"></div>
+</div>
+<script type="text/javascript">
+	
+	var box=document.getElementsByClassName("box")[0];
+	var outer=document.getElementsByClassName("box")[1];
+	var inner=document.querySelector(".inner");
+	
+	console.log(inner.offsetParent)
+	
+	//offsetLeft/offsetTop 获取元素距离最近的有定位属性的父级元素的偏移量,若没有有定位属性的父级元素,则返回该元素距离文档的坐标
+	console.log(box.offsetLeft,box.offsetTop)
+	
+	console.log( inner.getBoundingClientRect().y )
+	
+	
+	
+</script>
+
+</body>
+</html>

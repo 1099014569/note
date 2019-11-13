@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            widows: 100%;
+        }
+
+        #mycanvas {
+            border: 1px solid #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mycanvas" height="600" width="600"></canvas>
+    <script>
+        class snakeGame {
+            constructor(line, vertial, canvas) {
+                this.line = line;
+                this.vertial = vertial;
+                this.mycanvas = canvas;
+                this.ctx = mycanvas.getContext('2d');
+                this.gamewidth = this.mycanvas.width;
+                this.gameheight = this.mycanvas.height;
+                this.boxwidth = this.gamewidth / this.line;
+                this.boxheight = this.gameheight / this.vertial;
+
+                this.snakearr = [
+                    { x: 0, y: 0 },
+                    { x: 20, y: 0 },
+                ];
+                this.snakehead = {};
+                this.settime = null;
+                this.direction = 'right';
+                this.changeX = 20;
+                this.changeY = 0;
+
+                this.boolear = true;
+
+                this.numx = null;
+                this.numy = null;
+
+            }
+            setMap() {
+                for (let i = 1; i < this.line; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = 'red';
+                    this.ctx.moveTo(this.boxheight * i, 0);
+                    this.ctx.lineTo(this.boxheight * i, this.gamewidth);
+                    this.ctx.stroke();
+                }
+                for (let i = 1; i < this.vertial; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = 'red';
+                    this.ctx.moveTo(0, this.boxwidth * i);
+                    this.ctx.lineTo(this.gameheight, this.boxwidth * i);
+                    this.ctx.stroke();
+                }
+            }
+            drawsanke() {
+                for (let i = 0; i < this.snakearr.length; i++) {
+                    if (i == this.snakearr.length - 1) {
+                        this.ctx.fillStyle = 'red';
+                        this.snakehead = this.snakearr[i]
+                    } else {
+                        this.ctx.fillStyle = 'black';
+                    }
+                    this.ctx.fillRect(this.snakearr[i].x + 1, this.snakearr[i].y + 1, this.boxwidth - 2, this.boxheight - 2);
+                }
+            }
+            move() {
+                this.settime = setInterval(function () {
+
+                    var newsnakehead = {};
+                    newsnakehead.x = this.snakehead.x + this.changeX;
+                    newsnakehead.y = this.snakehead.y + this.changeY;
+                    if (this.judgeGameover(newsnakehead.x, newsnakehead.y)) {
+                        if (newsnakehead.x == this.numx && newsnakehead.y == this.numy) {
+                            this.eat();
+                        }
+                        this.snakearr.push(newsnakehead)
+                        var num = this.snakearr.shift();
+                        this.ctx.clearRect(num.x + 1, num.y + 1, this.boxwidth - 2, this.boxheight - 2);
+                        this.drawsanke();
+                        this.boolear = true;
+                    } else {
+                        clearInterval(this.settime);
+                        alert('Game Over !!!');
+                        window.location.reload();
+                    }
+
+
+                }.bind(this), 200)
+            }
+            judgeDirection() {
+                window.onkeydown = function (e) {
+                    if (this.boolear) {
+                        if (e.keyCode == 37 && this.direction != 'right') {
+                            this.direction = 'left';
+                            this.changeX = -20;
+                            this.changeY = 0;
+                        } else if (e.keyCode == 38 && this.direction != 'down') {
+                            this.direction = 'up';
+                            this.changeX = 0;
+                            this.changeY = -20;
+                        } else if (e.keyCode == 39 && this.direction != 'left') {
+                            this.direction = 'right';
+                            this.changeX = 20;
+                            this.changeY = 0;
+                        } else if (e.keyCode == 40 && this.direction != 'up') {
+                            this.direction = 'down';
+                            this.changeX = 0;
+                            this.changeY = 20;
+                        }
+                        this.boolear = false;
+                    }
+
+                }.bind(this)
+            }
+            // 判断边界
+            judgeGameover(x, y) {
+                if (x < 0 || x > this.gamewidth - this.boxwidth || y < 0 || y > this.gameheight - this.boxheight) {
+                    return false;
+                } else {
+                    if (this.judgebody(x, y)) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+            // 判断自撞
+            judgebody(x, y) {
+                for (let i = 0; i < this.snakearr.length; i++) {
+                    if (this.snakearr[i].x == x && this.snakearr[i].y == y) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            // 生成食物
+            produce() {
+                this.numx = parseInt(Math.random() * this.vertial) * this.boxwidth;
+                this.numy = parseInt(Math.random() * this.line) * this.boxheight;
+                for (let i = 0; i < this.snakearr.length; i++) {
+                    if (this.snakearr[i].x == this.numx && this.snakearr[i].y == this.numy) {
+                        console.log(11111)
+                        this.produce();
+                    } else {
+                        this.ctx.fillRect(this.numx + 1, this.numy + 1, this.boxwidth - 2, this.boxheight - 2);
+                    }
+                }
+            }
+            // 吃掉食物
+            eat() {
+                this.snakearr.unshift({
+                    x: this.numx,
+                    y: this.numy,
+                })
+                console.log(this.snakearr.length)
+                this.produce();
+                // this.ctx.clearRect(this.numx+1,this.numy+1,this.boxwidth-2,this.boxheight-2);
+
+            }
+            // 赢得游戏
+            // win(){
+            //     for(let i = 0; i< this.snakearr.length;i++){
+            //         if()
+            //     }
+            // }
+            // 草稿
+            big() {
+                for (let i = 0; i < 29; i++) {
+                    var newobj = {
+                        x: 0,
+                        y: i * 20 + 20,
+                    }
+                    var newobj2 = {
+                        x: i * 20 + 20,
+                        y: i * 20 + 20,
+                    }
+                    var newobj3 = {
+                        x: i * 20 + 40,
+                        y: 0,
+                    }
+                    this.snakearr.unshift(newobj);
+                    this.snakearr.unshift(newobj2);
+                    this.snakearr.push(newobj);
+                }
+
+            }
+            init() {
+                this.setMap();
+                this.drawsanke();
+                this.move();
+                this.judgeDirection();
+                this.produce();
+                // this.big()
+            }
+        }
+
+
+
+        var mycanvas = document.getElementById('mycanvas');
+        var newGame = new snakeGame(30, 30, mycanvas);
+        newGame.init();
+
+
+
+    </script>
+</body>
+
+</html>

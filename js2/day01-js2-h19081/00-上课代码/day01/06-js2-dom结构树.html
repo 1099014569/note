@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="outer">
+			<!-- 以下都是div 标签的儿子/后代元素 -->
+			<p></p>
+			<div></div>
+			<img src="" >
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			//document 和元素节点对象都能继承的方法：getElementsByTagName\getElementsByClassName\querySelectorAll\querySelector
+			var mydiv=document.getElementById("outer")
+			console.log( mydiv.getElementsByTagName("li") );
+			
+			//HTMLDocument.prototype.body/head/forms
+			console.log( document.body.style.background="red" )
+			
+			// Document.prototype.documentElement
+			console.log(document.documentElement);
+			console.log(document)
+			
+			
+			console.log( document.__proto__==Document.prototype )
+			
+			console.log( document.__proto__==HTMLDocument.prototype );//true
+			console.log( HTMLDocument.prototype.__proto__== Document.prototype );//true
+			console.log( Document.prototype.__proto__==Node.prototype );//true
+			
+			
+			
+		</script>
+	</body>
+</html>

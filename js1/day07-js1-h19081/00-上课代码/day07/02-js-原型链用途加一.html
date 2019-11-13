@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+		<pre>
+			原型：
+				概念--构造函数都有一个prototype 属性,是一个对象;
+				特点--它是构造函数构造出来的对象的公共祖先.
+				用处--(1)提取对象的公共属性和方法  (2)可以构建原型链实现继承
+						(3)给对象追加通用属性和方法
+		</pre>
+	<body>
+		<script type="text/javascript">
+			var str=new String("123");//String.prototype.toString
+			console.log(str.toString());//"123"
+			
+			
+			var obj={};//Object.prototype.toString
+			console.log(  obj.toString()  );//"[object Object]"
+			
+			console.log(str.toString  == obj.toString );//false
+			console.log(obj.toString == Object.prototype.toString);//true
+			console.log( str.toString == String.prototype.toString );
+			
+			delete str.__proto__.toString;//
+			console.log(str.toString());//"[object String]"
+			
+			
+			
+			
+			str.__proto__.lianjie=function(newStr){//通过原型追加通用属性和方法
+				
+				return this+newStr;
+			}
+			var str1="hello",str2=" World!";
+			console.log( str1.lianjie(str2) )
+			
+		</script>
+	</body>
+</html>

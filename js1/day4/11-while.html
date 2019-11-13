@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+            假设某人有100,000现金。
+            每经过一次路口需要进行一次交费。交费规则为：
+            当他现金大于50,000时每次需要交5%；
+            如果现金小于等于50,000时每次交5,000。
+            请写一程序计算此人可以经过多少次这个路口。
+    </pre>
+    <script>
+        // 满足条件就一直循环，不满足就跳出循环
+        /* while(条件){
+            // 循环的代码块
+        } */
+        var num = 5;
+        while(num>1){
+            console.log(num);
+            num--;
+        }
+        // 练习
+        var money = 100000;
+        var numb  = 0;
+        while(money>=5000){
+            if(money>50000){
+                money = money-money*5/100;
+            }else{
+                money = money - 5000;
+            }
+            numb++;
+        }
+        console.log(numb);
+    </script>
+</body>
+</html>

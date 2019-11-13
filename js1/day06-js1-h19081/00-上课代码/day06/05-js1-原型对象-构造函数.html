@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//构造函数,都有一个prototype 属性,是一个对象;
+			//	它是构造函数构造出来的对象的公共祖先.
+			console.log(Fn.prototype);
+			function Fn(){
+				// var this={__proto__:Fn.prototype}
+				
+				//return this
+			}
+
+			var fn1=new Fn;
+			console.log(fn1.__proto__ == Fn.prototype);
+			
+			var fn2=new Fn;
+			console.log(fn2.__proto__==fn1.__proto__)
+			
+			
+		</script>
+	</body>
+</html>

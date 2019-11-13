@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// w(?=a)	正向断言,该符号不占位置
+	// w(?!a)	反向断言,该符号不占位置
+	var str="abflahabfkaha";
+	var reg=/a(?=bf)/igm;
+	
+	console.log( str.match(reg) );//["a", "a"]
+	
+	var reg1=/\w(?!a)/igm;
+	console.log(str.match(reg1));//["a", "b", "f", "a", "a", "b", "f", "a", "a"]
+	
+	//XXYY;
+	var str3="aabbssggssssaaaa";
+	var reg3=/(\w)\1((?!\1)\w)\2/igm;//(\w)\1((\w)(?!\1))\2
+	
+	//["aabb", "ssgg", "ssaa"]
+	console.log( str3.match(reg3) );//["aabb", "ssgg", "ssss", "aaaa"]
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 函数整体提升
+        myfun();
+        // 变量提升不会提升值
+        console.log(a);
+        
+        var a = 100; 
+        function myfun(){
+            var name = '篮球';
+            console.log(name);
+        } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			input {
+				padding-left: 20px;
+				color: yellow;
+			}
+/* 			input::-webkit-input-placeholder{
+				color:red;
+				font-size:20px;
+			} */
+		</style>
+	</head>
+	<body>
+		
+		<form action="">
+			
+			<!-- 聚焦：判断内容是否为提示词，如果是需要清空内容；color设置为black -->
+			<!-- 失焦：判断内容是否为空，如果为空设置value 值为提示词，color 设置为灰色 -->
+			用户名：<input type="text"  value="请输入用户名"/>
+			
+		</form>
+		<script type="text/javascript">
+			
+			var input=document.getElementsByTagName("input")[0];
+			
+			input.oninput=function(){
+				console.log("oninput")
+			}
+			
+			input.onfocus=function(){
+				console.log("onfocus")
+			}
+			
+			input.onblur=function(){
+				console.log("onblur")
+			}
+			
+			input.onchange=function(){
+				console.log("onchange")
+			}
+			
+			
+		</script>
+	</body>
+</html>

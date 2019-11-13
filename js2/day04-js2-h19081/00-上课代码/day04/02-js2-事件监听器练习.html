@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+</head>
+<body>
+<ul>
+	<li>a</li>
+	<li>a</li>
+	<li>a</li>
+	<li>a</li>
+</ul>
+<div style="width: 100px;height: 100px;background-color: red;"></div>
+<script type="text/javascript">
+	var lis=document.getElementsByTagName("li");
+	for(let i=0;i<lis.length;i++){
+		lis[i].addEventListener("click",function(){
+			console.log(i);
+		},false)
+		
+	}
+	
+	// 封装一个函数,addEvent(elem,type,handle)完成事件绑定,解决兼容性问题
+	function addEvent(elem,type,handle){
+		if(elem.addEventListener){
+			console.log(11111111111111)
+			elem.addEventListener(type,handle,false);
+		}else if(elem.attachEvent){
+			console.log(222222222222222)
+			elem.attachEvent("on"+type,function(){
+				handle.call(elem);
+			})
+		}else{
+			elem["on"+type]=handle;
+		}
+	}
+	addEvent(document.getElementsByTagName("div")[0],"click",function(){
+		this.style.background="green";
+	})
+	
+	
+	
+</script>
+</body>
+</html>

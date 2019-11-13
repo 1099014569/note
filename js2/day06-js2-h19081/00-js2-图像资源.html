@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图像资源</title>
+	</head>
+	<body>
+		
+		<img src="../day05/img/03.jpg" >
+		
+		<button type="button">切换图片</button>
+		
+		<script type="text/javascript">
+			
+			var button=document.querySelector("button");
+			button.onclick=function(){
+				//作用同于document.createElement("img")
+				var myImg=new Image()
+				
+				//读到代码再下载图片资源,节省带宽,缓存图片
+				myImg.src="./00mv-img/img/km1.jpg";
+				console.log(myImg);
+				
+				//将下载好的图片放到界面上去
+				document.querySelector("img").src="./00mv-img/img/km1.jpg";
+			}
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

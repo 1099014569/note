@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="post">
+			用户名：<input type="text" value="">
+			<br>
+			密码：<input type="password" />
+			<br>
+			籍贯：
+			<select>
+				<option value ="">==请选择省份==</option>
+			</select>
+			
+			<br>
+			自我介绍：
+			<textarea rows="25" cols="150">	
+			</textarea>
+			<input type="submit" value="注册" name="" />
+			<input type="reset" name="" id="" />
+		</form>
+		<script src="select相关数据.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var mySelect=document.getElementsByTagName("select")[0];
+			for(let i=0;i<menu.length;i++){//追加省份相关信息的option 选项
+				mySelect.innerHTML+=`<option value="${menu[i].pid}">${menu[i].name}</option>`
+			}
+			
+			var newS=document.createElement("select");//创建装载城市option 的select 元素
+			mySelect.onchange=function(){
+				if(mySelect.value==""){//如果用户未选择省份,则删除选择城市的select 元素
+					document.forms[0].removeChild(newS)
+				}
+				
+				newS.innerHTML="";//在判断用户选择了哪个省份之前(追加城市选项),将选择城市的select 元素清空!
+				for(let i=0;i<menu.length;i++){
+					if(mySelect.value==menu[i].pid){
+						console.log(menu[i].children)
+						for(let j=0;j<menu[i].children.length;j++){
+							newS.innerHTML+=`<option value="${menu[i].children[j].cid}">${menu[i].children[j].name}</option>`
+						}
+						document.forms[0].insertBefore(newS,mySelect.nextElementSibling)
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			
+			// console.log(mySelect)
+			// 
+			// mySelect.value 
+			// mySelect.selectedIndex
+			// mySelect.options
+			// 
+			// 
+			// mySelect.options[0].value/text
+			
+			
+		</script>
+	</body>
+</html>

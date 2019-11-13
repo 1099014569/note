@@ -1,0 +1,35 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.lunbo {
+	width: 520px;
+	height: 280px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 80px;
+	border: 1px solid red;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.lunbo .circle {
+	position: absolute;
+	bottom: 10px;
+	list-style: none;
+}
+
+.lunbo .circle .active{
+	background-color: red;
+}
+
+.lunbo .circle li {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	float: left;
+	margin-right: 4px;
+	background-color: white;
+}

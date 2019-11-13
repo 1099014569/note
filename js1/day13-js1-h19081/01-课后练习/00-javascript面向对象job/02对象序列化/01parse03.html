@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        function Perosn(name,age) {
+           this.name=name;
+           this.age=age;
+           this.sex=15;
+        }
+
+        var person = new Perosn("小花",17,11);
+        var data = "{name:'小刚',age:18,sex:0}";
+
+
+        function parse(data) {
+            var object = new Object();
+            //2,去掉外面的{}
+            var buffer = data.substring(1,data.length-1);
+            //取值
+            while(buffer.indexOf(':')!=-1){
+                //(1)获得:出现的第一次位置
+                var index=buffer.indexOf(':');
+                //(2)获得,出现的第一次位置
+                var endindex= buffer.indexOf(',');
+                //(3)获得key值
+                var key= buffer.substring(0,index);
+                //(4)获得值
+                if(endindex==-1){
+                    var value=buffer.substr(index+1);
+                }else{
+                    var value=buffer.substring(index+1,endindex);
+                }
+                // if(key in object){
+                //     object[key]= value;
+                // }
+
+                object[key]=value;
+                if(endindex==-1){
+                    buffer='';
+                }else{
+                    buffer=buffer.substr(endindex+1);
+                }
+            }
+            return object;
+        }
+        console.log(parse(data,person));
+        console.log(data);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

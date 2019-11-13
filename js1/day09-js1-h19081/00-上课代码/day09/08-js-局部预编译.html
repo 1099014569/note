@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 函数(局部)预编译,在函数调用前一刻发生:
+	//  0\创建一个AO 对象--局部作用空间
+	// 	1\形参和变量提升--undefined
+	// 	2\实参赋值
+	// 	3\函数提升
+	// 	4\执行语句
+	function fn(a) {
+		console.log(a);//function a() {}
+		var a=123;
+		console.log(a);//123
+		function a() {}
+		console.log(a);//123
+		var b = function() {}
+		console.log(b);//function() {}
+		function d() {}
+	}
+	fn(1);
+	
+	
+	
+</script>
+</body>
+</html>

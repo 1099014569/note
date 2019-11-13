@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//当函数内部没有该变量时,再逐层向外查找变量
+			//当全局也没有该变量时,如果要赋值,就会在全局创建该变量;其他取值的情况都会报错
+			// function test(){
+			// 	var a=b=123;
+			// 	// console.log(1+b);
+			// }
+			// test();
+			// test()
+			
+			
+			// console.log(test);//function test(test) {……
+			// function test(test) {
+			// 	console.log(test);//function test() {}
+			// 	var test=234;
+			// 	console.log(test);//234
+			// 	function test() {}
+			// }
+			// test(1);
+			// var test=123;
+			
+			var x=1,y=z=0;
+			function add(n){
+				return n=n+1;
+			}
+			y=add(x);
+			function add(n){
+				return n=n+3;
+			}
+			z=add(x);
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// function a() {
+			// 	var num=100;
+			// 	function b() {
+			// 		num++;
+			// 		console.log(num);//101  102
+			// 	}
+			// 	return b;
+			// }
+			// var demo=a();
+			// demo();
+			// demo();
+			
+			function Person(name,age,sex){
+				//var this={__proto__:Person.prototype}
+				var a=0;
+				this.name=name;
+				this.sex=sex;
+				function sss(){
+					a++;
+					document.write(a);//1  2  1
+				}
+				this.say=sss;
+				//return this
+			}
+
+
+			var oPerson = new Person();
+			oPerson.say();
+			oPerson.say();
+			var oPerson1= new Person();
+			oPerson1.say();
+			console.log(oPerson==oPerson1)
+			
+			
+			// sss--this.say--oPerson.say作用域链：
+			// <!-- oPerson.say-AO{
+			// 	
+			// }
+			//  -->
+			// Person--AO{
+			// 	this:{name:undefined,sex:undefined,say:sss},
+			// 	name:undefined,
+			// 	age:undefined,
+			// 	sex:undefined,
+			// 	a:2,
+			// 	sss:function sss(){……
+			// }
+			// 
+			// window{
+			// 	oPerson:this:{name:undefined,sex:undefined,say:sss},
+			// 	oPerson1:{name:undefined,sex:undefined,say:sss}
+			// 	Person:function Person(name,age,sex){……
+			// }
+			// 
+			// 
+			// sss-this.say--oPerson1.say 作用链：
+			// AO{}
+			// 
+			// Person-AO{
+			// 	this:{name:undefined,sex:undefined,say:sss},
+			// 	name:undefined,
+			// 	age:undefined,
+			// 	sex:undefined,
+			// 	a:1,
+			// 	sss:function sss(){……
+			// }
+			// 
+			// 
+			// window{
+			// 	oPerson:this:{name:undefined,sex:undefined,say:sss},
+			// 	oPerson1:{name:undefined,sex:undefined,say:sss}
+			// 	Person:function Person(name,age,sex){……
+			// }
+			// 
+			// Person /作用域链：
+			// window{
+			// 	oPerson:this:{name:undefined,sex:undefined,say:sss},
+			// 	oPerson1:{name:undefined,sex:undefined,say:sss}
+			// 	Person:function Person(name,age,sex){……
+			// }
+			
+			
+			
+			
+			
+			
+			//原始类型值不可更高改
+			var str="abcd";
+			str=str.replace("a","1");
+			console.log(str);//"1bcd"
+			// str=new String(str);
+			str.test="fkagkdhfal";
+			console.log( typeof str );//
+			console.log(str.test);
+			
+			//引用类型值可更改
+			var arr=[];
+			arr.push(100,200);
+			console.log(arr);
+			var myarr=arr;
+			console.log(myarr);//[100,200]
+			arr.push(300,400)
+			arr=[];
+			console.log(myarr);//[100, 200, 300, 400]
+			
+			var obj={};
+			var myobj={};
+			console.log(obj==myobj);
+			obj=myobj;
+			myobj.name="123";
+			console.log(obj.name);//"123"
+			myobj.say=function(){
+				console.log("abcd")
+			}
+			console.log(obj.say==myobj.say);//true
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

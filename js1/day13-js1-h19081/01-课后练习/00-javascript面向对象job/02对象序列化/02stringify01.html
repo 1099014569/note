@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stringify</title>
+    <script>
+        function Person(name,age,sex) {
+            this.name=name
+            this.age=age;
+            this.sex=sex;
+        }
+        //1,准备一个对象
+        var person = new Person("小刚",18,"男");
+        //2,准备一个字符串
+        var data ='{';
+        //3,遍历对象
+        for(key in person){
+            //(4)设置key值
+            data=data+'"'+key+'"';
+            //(5)获得值
+            var value = person[key];
+            //(6)对值进行判断
+            if(typeof value =="number"){
+                data=data+':'+value+',';
+            }else{
+                data=data+':"'+value+'",';
+            }
+        }
+
+        data= data.substring(0,data.length-1);
+        data=data+'}'
+
+        console.log(data);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

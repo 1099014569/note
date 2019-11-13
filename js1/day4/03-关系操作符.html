@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 比较操作符：要转换为number类型或者string类型再进行比较
+        var str1 = 'DDsrfsf';
+        console.log(str1.toLowerCase());//.toLowerCase()转换为小写
+        console.log(str1.toUpperCase());//.toUpperCase()转换为大写
+
+        // in操作符：判断对象里面有没有某个属性(自己有的属性，继承的属性)
+        var person = {
+            name:'a',
+            age:12,
+            isshow:true
+        }
+        console.log(person);
+        console.log('age1' in person);
+        console.log('toString' in person);// true
+        console.log('isPrototypeOf' in person);// true
+
+        // instanceof:判断一个对象是否属于某个构造函数
+        var a=new String(),b=function(){};
+        console.log(a instanceof String);//true
+        console.log(b instanceof Function);//true
+
+
+    </script>
+</body>
+</html>

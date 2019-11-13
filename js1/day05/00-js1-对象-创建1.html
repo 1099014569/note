@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			原始类型（基本类型）：number/string/boolean/null/undefined,存储于栈内存
+			引用类型：数组，对象，函数，存储于堆内存等
+			万物皆对象
+		</pre>
+		<script type="text/javascript">
+			// 数据类型:创建方式,特殊值,方法,使用
+			// 1/ Object 直接量
+			var obj1={
+				name:"包柳",
+				age:18,
+				sayHello:function(){
+					console.log("good morning");
+				},
+				gender:true
+			}
+			
+			var obj11={
+				name:"包柳",
+				age:18,
+				sayHello:function(){
+					console.log("good morning");
+				},
+				gender:true
+			}
+			console.log(obj1==obj11)
+			
+			// 2/ 构造函数(内置构造函数)  new Number  	 new String		new Boolean
+			var obj2=new Object;//var obj2={}
+			var obj3=new Object;
+			
+			console.log(obj2==obj3);
+			
+			obj2.name="肖晗";
+			obj2.age=19;
+			obj2.run=function(){
+				return "日行千里";
+			}
+			
+			console.log(  obj2.run()  )
+			
+			
+			//3/ 工厂模式
+			function myObj(na,ag){
+				var obj={
+					name:na,
+					age:ag,
+					study:function(){
+						console.log("study js1");
+					}
+				}
+				
+				return obj;
+			}
+			
+			var myObj1=myObj("宁青",17);
+			var myObj2=myObj("杨茜",18);
+			
+			console.log(myObj1==myObj2);
+			console.log(myObj1,myObj2)
+			
+		</script>
+	
+	</body>
+</html>

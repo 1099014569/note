@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="outer">
+			<!-- 以下都是div 标签的儿子/后代元素 -->
+			<p>文段内容</p>
+			<div></div>
+			<img src="" >
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var mydiv=document.getElementById("outer");
+			//removeChild 由父节点调用,参数为需要删除的元素，返回值为被删除的元素,相当于剪切
+			var mydiv2=mydiv.removeChild( mydiv.firstElementChild )
+			console.log(mydiv2)
+			
+			document.body.appendChild(mydiv2);
+			
+			
+			//自己删除自己 remove()
+			var mydiv3=mydiv2.remove();
+			console.log(mydiv3);//undefined
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

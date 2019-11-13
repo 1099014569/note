@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>第1 个文段</div>
+		<div>第2 个文段</div>
+		<div>第3 个文段</div>
+		<div>第4 个文段</div>
+		<div>第5 个文段</div>
+		<div>第6 个文段</div>
+		<div>第7 个文段</div>
+		<div>第8 个文段</div>
+		<div>第9 个文段</div>
+		<div>第10 个文段</div>
+		<div>第11 个文段</div>
+		<div>第12 个文段</div>
+		<div>第13 个文段</div>
+		<div>第14 个文段</div>
+		<div>第15 个文段</div>
+		<div>第16 个文段</div>
+		<div>第17 个文段</div>
+		<div>第18 个文段</div>
+		<div>第19 个文段</div>
+		<div>第20 个文段</div>
+		<div>第21 个文段</div>
+		<div>第22 个文段</div>
+		<div>第23 个文段</div>
+		<div>第24 个文段</div>
+		<div>第25 个文段</div>
+		<div>第26 个文段</div>
+		<div>第27 个文段</div>
+		<div>第28 个文段</div>
+		<div>第29 个文段</div>
+		<div>第30 个文段</div>
+
+		<script type="text/javascript">
+
+			var divLength = document.querySelectorAll("div").length;
+			for (var i = 0; i < divLength; i++) {
+				
+				(function (j){
+					 document.querySelectorAll("div")[j].onclick=function() {
+					 		console.log(j+1)
+					 	}
+				})(i)
+				
+				// document.querySelectorAll("div")[i].onclick = function(j){
+				// 	function myfn() {
+				// 		console.log(j+1)
+				// 	}
+				// 	return myfn;
+				// }(i)
+			}
+
+
+
+
+
+
+			// function test() {
+			// 	var arr=[];
+			// 	for(var i=0;i<10;i++){
+			// 		arr[i]=function(){
+			// 			document.write(i+"    ");
+			// 		
+			// 		}
+			// 	}
+			// console.log(arr[0]==arr[1]);//false
+			// 	return arr;
+			// }
+			// var myArr = test();
+			// for(var j=0;j<10;j++){
+			// 	myArr[j]();
+			// }
+
+
+			//循环创建多个函数的情况下,易产生闭包问题
+			// var arr = [];
+			// for (var i = 0; i < 10; i++) {
+			// 	arr[i] = function() {
+			// 		console.log(i)
+			// 	}
+			// }
+			// for (var j = 0; j < 10; j++) {
+			// 	arr[j]();
+			// }
+
+			//解决闭包问题
+// 			for (var x = 0; x < 10; x++) {
+// 				arr[x] = function(x) {
+// 					function fn() {
+// 						console.log(x)
+// 					}
+// 					return fn;
+// 				}(x)
+// 			}
+// 
+// 			for (var j = 0; j < 10; j++) {
+// 				arr[j]();
+// 			}
+		</script>
+	</body>
+</html>

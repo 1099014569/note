@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // var a=1,b=2,c=3;
+        // if(a&&b&&c){
+        //     console.log(1324);
+        // }
+        /* function fn(){
+            var r = window.prompt('请输入手机号：');
+            if(r.length!=11){
+                alert('请输入11位的手机号');
+                fn();
+            }else if(isNaN(r)||parseInt(r).length!=r.length){
+                alert('请输入11位的手机号数字');
+                fn();
+            }else{
+                alert('输入的手机号正确');
+            }
+        }
+        fn(); */
+        
+
+        var s;
+        var arr = [];
+        var num = 4;
+        function fn1(){
+            s   = window.prompt('请输入成绩：');
+            var score = Math.floor(s/10)-5;
+            switch(score){
+                case 10:
+
+                case 9:
+                    alert('优秀');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                    break;
+                case 8:
+                    alert('良好');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                    break;
+                case 5:case 4:
+            }
+
+            /* if(num>0){
+                s   = window.prompt('请输入成绩：');
+                if(90<=s&&s<=100){
+                    alert('优秀');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                }else if(80<=s&&s<=89){
+                    alert('良好');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                }else if(70<=s&&s<=79){
+                    alert('一般');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                }else if(60<=s&&s<=69){
+                    alert('及格');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                }else if(0<=s&&s<=59){
+                    alert('不及格');
+                    arr[arr.length] = s;
+                    num--;
+                    fn1();
+                }else{
+                    alert('请输入正确的成绩');
+                }
+            } */
+        }
+        fn1();
+        console.log(arr);
+
+    </script>
+</body>
+</html>

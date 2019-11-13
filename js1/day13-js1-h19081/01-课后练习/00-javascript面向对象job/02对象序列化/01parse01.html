@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        //1,准备了一个字符串
+        var data = '{"name":"小刚","age":18,"sex":0}';
+        //2,创建一个对象
+        var object={};
+        //3,去掉去掉外面的大括号
+        data=data.substring(1,data.length-1);
+        //console.log(data);
+        //4,找到第一个逗号位置
+        var index = data.indexOf(',');
+        //5,获得逗号前面的字符串
+        var buffer = data.substring(0,index);
+        //console.log(buffer);
+        //6,获得冒号的位置
+        var colonIndex = buffer.indexOf(':');
+        //7,分别获得冒号左边的字符串和右边的字符串
+        var key = buffer.substring(1,colonIndex-1);
+        var value=buffer.substring(colonIndex+1,buffer.length);
+        //8,去掉值外面可能存在的引号
+        if(value.indexOf('"')!=-1){
+            value=value.substring(1,value.length-1);
+        }
+        //9,设置对象的相关属性
+        object[key]=value;
+        console.log(object)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

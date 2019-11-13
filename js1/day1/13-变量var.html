@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 严格模式
+        // 'use strict';
+        // 在严格模式下，变量未声明，就会报错
+        var a = 10;
+        console.log(a);  
+        // 变量要先声明，再使用
+        var b;
+        b = 'adaf';
+        console.log(b);  
+        function myfun(){
+            var name = '篮球';
+            console.log(name);
+            // 没有用var声明，就是全局变量
+            hobby = '约会';
+            // 函数里面可以用外面的变量
+            console.log(a,b);
+        }
+        myfun();
+        console.log(name);
+        console.log(hobby);
+    </script>
+</body>
+</html>

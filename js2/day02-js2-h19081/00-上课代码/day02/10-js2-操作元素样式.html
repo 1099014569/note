@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 0 auto;
+				margin-top: 50px;
+				padding: 20px;
+				border: 5px solid black;
+			}
+			
+			.mybox {
+				width: 12.5rem;
+				height: 12.5rem;
+				background-color: pink;
+				margin: 0 auto;
+				margin-top: 50px;
+				padding: 50px;
+				border: 10px solid black;
+			}
+			
+			div:before {
+				content: "1111111111111111111111111";
+				display: block;
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+			}
+			
+			.test:before {
+				content: "1111111111111111111111111";
+				display: block;
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- style="width: 300px;" -->
+		<div >1</div>
+		<script type="text/javascript">
+			
+			//如果改的属性比较多，推荐使用class进行样式修改；或通过改变引用的CSS文件改变样式。
+			document.querySelector("div").classList.add("mybox")
+			
+			//只能用来获取行内样式属性的值
+			console.log( document.querySelector("div").style.width )
+			
+						
+			console.log( getComputedStyle(document.querySelector("div"),"before").width )			
+			
+			//修改伪元素的样式属性值,解法如下
+			document.querySelector("div").classList.add("test")
+			
+			
+			document.querySelector("div").onclick=function(){
+				console.log( "onclick" )
+				this.style.width=parseInt(getComputedStyle(this,null).width)+50+"px";
+			}
+			
+			document.querySelector("div").ondblclick=function(){
+				console.log( "ondblclick" )
+				this.style.width=parseInt(getComputedStyle(this,null).width)-150+"px";
+			}
+			
+			//"200px"
+			console.log( getComputedStyle(document.querySelector("div"),null).width )
+			//chrome 不支持currentStyle, IE独有,IE8以下返回相对值"12.5px"
+			console.log( document.querySelector("div").currentStyle )
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

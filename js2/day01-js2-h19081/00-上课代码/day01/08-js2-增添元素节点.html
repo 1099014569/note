@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>第N+1个文段</div>
+		<div>第N+2个文段</div>
+		
+		<div>第N+3个文段</div>
+		<div class="mydiv">
+			abc
+		</div>
+		<script type="text/javascript">
+			//createElement 创建节点的方法,参数是标签名
+			var div=document.createElement("div");
+			
+			div.innerHTML="<h2>二级标题</h2>";
+			div.style.background="red";
+			div.style.color="white";
+			
+			console.log( div );
+			//父级节点调用insertBefore(a,b)/appendChild
+			document.body.insertBefore(div,document.querySelectorAll("div")[2])
+			document.body.appendChild(div)
+			
+			//对界面上已存在的元素而言,appendChild/insertBefore 相当于剪切-粘贴效果
+			document.body.appendChild(document.querySelector("div"))
+			
+			// document.body.innerHTML+=div;
+			var myImg=document.createElement("img");
+			myImg.src="https://www.baidu.com/img/bd_logo1.png";
+			document.body.appendChild(myImg)
+			
+			var mydiv=document.getElementsByClassName("mydiv")[0]
+			mydiv.appendChild(myImg);
+			
+		</script>
+	
+	</body>
+</html>

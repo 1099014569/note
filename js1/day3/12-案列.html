@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">按钮</div>
+    <img style="display: none;" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3357786243,3135716437&fm=26&gp=0.jpg" alt="">
+    <script>
+        document.querySelector('.mydiv').onclick = function(){
+            console.log(document.querySelector('img').style.display);
+            if(document.querySelector('img').style.display == 'none'){
+                document.querySelector('img').style.display = 'block';
+            }else if(document.querySelector('img').style.display == 'block'){
+                document.querySelector('img').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

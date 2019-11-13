@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="outer">
+			<!-- 以下都是div 标签的儿子/后代元素 -->
+			<p>文段内容</p>
+			<div></div>
+			<img src="" >
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var mydiv=document.getElementById("outer");
+			
+			//innerHTML htnl内容,可读可写
+			console.log( mydiv.innerHTML )
+			mydiv.innerHTML+="<div>追加的内容</div>";
+			mydiv.innerHTML="<div><b>追加的内容</b></div>";
+			
+			//innerText 普通文本内容,可读可写
+			console.log( mydiv.innerText )
+			mydiv.innerText="<b>新追加的内容</b>";
+			
+		</script>
+	</body>
+</html>

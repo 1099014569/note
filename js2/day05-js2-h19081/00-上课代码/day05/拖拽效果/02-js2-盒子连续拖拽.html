@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 小练习（承上启下）：利用 onmousedown onmouseup onmousemove实现连续拖拽方块
+        var box=document.getElementsByTagName("div")[0];
+		var x,y;
+        box.onmousedown=function(ev) {
+            var event=ev||window.event;
+            x=event.clientX-box.offsetLeft;
+            y=event.clientY-box.offsetTop;
+            console.log(x,y);
+			
+			document.onmousemove=function(ev){
+			    var event=ev||window.event;
+			    var moveX=event.clientX-x;
+			    var moveY=event.clientY-y;
+			    box.style.left=moveX+"px";
+			    box.style.top=moveY+"px";
+			}
+        }
+
+        document.onmouseup=function(){
+            document.onmousemove=null;
+        }
+    </script>
+</body>
+</html>

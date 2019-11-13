@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	.box {
+		width: 500px;
+		height: 500px;
+		background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567661729321&di=c7dba703f9a9af8b4f748234fb45dc5e&imgtype=0&src=http%3A%2F%2Fi3.sinaimg.cn%2Fdy%2Fo%2F2015-06-03%2F1433284520_PNsBaD.jpg);
+		background-size: 50% 50%;
+		background-position: center;
+		background-color: gray;
+		opacity: 0.8;
+		position: absolute;
+		top: 30px;
+		left: 434px;
+		background-repeat: no-repeat;
+	}
+
+	.box span {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		font-size: 20px;
+		font-weight: 400;
+		opacity: 0.99;
+		color: white;
+	}
+</style>
+</head>
+<body>
+
+<div style="width: 500px;height: 80px;background-color: red;border-radius: 8px;text-align: center;line-height: 80px;margin: 0 auto;margin-top: 200px;font-size: 30px;font-weight: 600;color: white;word-spacing: 5px;position: relative;">六 合 彩
+</div>
+<div class="box" style="display: none;"><span>X</span></div>
+
+<script type="text/javascript">
+	document.getElementsByTagName("div")[0].onclick = function() {
+		this.nextElementSibling.style.display = "block";
+	}
+	
+
+	document.getElementsByTagName("span")[0].onclick = function() {
+
+		this.parentElement.style.display = "none";
+		document.getElementsByTagName("div")[0].style.opacity = "0.5";
+		
+		//句柄式写法解除事件绑定,给事件属性重新赋值,false/null
+		document.getElementsByTagName("div")[0].onclick =false;
+	}
+</script>
+</body>
+</html>

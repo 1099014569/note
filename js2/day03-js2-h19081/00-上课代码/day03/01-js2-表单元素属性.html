@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<form action="" method="post">
+	昵称：<input type="text" value="">
+	<br>
+	年龄：<input type="number" />
+	<br>
+	籍贯：
+	<select>
+		<option value ="">==请选择省份==</option>
+		<option value="sc">四川</option>
+		<option value="gz">贵州</option>
+		<option value="hb">湖北</option>
+		<option value="ln">辽宁</option>
+	</select>
+	<br>
+	自我介绍：
+	<textarea rows="25" cols="150">	
+	</textarea>
+</form>
+<script type="text/javascript">
+	var nicheng=document.getElementsByTagName("input")[0];
+	var age=document.getElementsByTagName("input")[1];
+	
+	var provin=document.getElementsByTagName("select")[0];
+	var intro=document.getElementsByTagName("textarea")[0];
+	
+	//可读可写
+	console.log(nicheng.value,age.type)
+	
+	//form 属性值为该元素所属的表单
+	console.log(provin.form)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

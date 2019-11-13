@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	div {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		background-color: black;
+	}
+
+</style>
+</head>
+<body>
+<div></div>
+<script type="text/javascript">
+	// 只有鼠标左键才是点击事件
+	var div=document.querySelector("div")
+	div.onclick=function(){
+		console.log("onclick");
+	}
+
+	div.onmousedown=function(){
+		console.log("onmousedown")
+	}
+	
+	div.onmouseup=function(){
+		console.log("onmouseup")
+	}
+	
+	//onmouseover	onmouseout  有事件冒泡事件捕获机制
+	//onmouseenter	onmouseleave	没有事件冒泡事件捕获机制
+	div.onmouseenter=function(){
+		console.log("onmouseenter")
+	}
+	
+	div.onmouseleave=function(){
+		console.log("onmouseleave")
+	}
+	
+	
+</script>
+</body>
+</html>

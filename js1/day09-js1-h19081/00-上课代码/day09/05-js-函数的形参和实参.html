@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+function test(a,b,c,d){
+	console.log(a,b,c,d);
+}
+//js 的函数调用不限制传参个数也不限制传参类型,传参位置一一对应
+test(  1,  function(){}  );
+
+{function fn(){
+	console.log(arguments);
+}
+fn(1,2,3,4,false,function(){},[]);}
+
+function myfn(a,b,c,d,e){
+	console.log(a,b);
+	console.log(arguments[0]);
+	//形参接收到实参之后,与实参之间就有映射效果
+	// a=100;
+	// console.log(arguments[0]);
+	// 
+	// arguments[0]="a";
+	// console.log(a);
+	console.log(e);//形参没有接收到实参,则没有映射效果
+	arguments[4]=400;
+	console.log(e);
+}
+console.log( myfn(1,2,3,4) )
+
+var arr=["a","b","c"];
+arr.forEach(function(){
+	document.write(`${arguments[0]}&nbsp;&nbsp;&nbsp;&nbsp;${arguments[1]}<br>`)
+})
+
+
+</script>
+</body>
+</html>

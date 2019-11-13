@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj1={
+				name:"包柳",
+				age:18,
+				sayHello:function(){
+					console.log("good morning");
+				},
+				gender:true
+			}
+			
+			//增:给对象没有的属性赋值,就是给对象本身新增了个属性
+			obj1.school="云南民族大学";
+			console.log(obj1);//打印引用类型是打印堆地址的快照信息
+			
+			//改:给对象已有的属性重写赋值
+			obj1.name="韦同学";
+			console.log(obj1);
+
+			obj1.age=22;
+			
+			//查--检查 in   /    获取值： 点号.和中括号[]     /		循环获取-for……in
+			console.log( "company" in obj1 );//false
+			console.log( "school" in obj1 );//true
+			console.log( "toString" in obj1 );//true,继承的属性
+			
+			console.log( obj1.sayHello )
+			
+			console.log( obj1["sayHello"] )
+			function getProp(obj,prop){
+				// console.log( obj.prop )//访问对象没有的属性,值为undefined
+				console.log( obj[prop] );
+			}
+			getProp(obj1,"school")
+			
+			// var userIn=prompt("请输入需要访问的属性名");
+			// alert( obj1[userIn] )
+			
+			
+			for(var x in obj1){//循环得到自己的属性
+				console.log(obj1[x])
+			}
+			
+			//删除:delete 删除对象自己的属性(delete 以最终结果为主)
+			console.log(delete obj1.name);
+			console.log( obj1.name );
+			
+			console.log(delete obj1.toString );//true
+			console.log( obj1.toString );
+			
+			console.log( delete obj1.company );//true
+			
+			
+		</script>
+	</body>
+</html>

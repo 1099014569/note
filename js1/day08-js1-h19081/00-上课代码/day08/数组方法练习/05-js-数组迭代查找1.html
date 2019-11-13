@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>5、数组中的每一种商品类型都是日用品么?</pre>
+		<p id="every"></p>
+		<script src="00-源数据.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var isTrue=arrProduct.every(function(item){
+				
+				return item.type=="日用品"
+				
+			})
+			
+			if(isTrue){
+				document.querySelector("#every").innerHTML="是";
+			}else{
+				document.querySelector("#every").innerHTML="否";
+			}
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 1\ js语法要求
+			// 2\ var 变量声明
+			// 2\ typeof 操作符
+			// eg:
+			console.log( typeof typeof 5 );//"string"
+			console.log( typeof 5/0 );//"number"/0--NaN
+			
+			// 3\ js数据类型
+			// 4\ 原始类型与引用类型的区别
+			// 5\ null 和 undefined 的区别  --概念-- 特点--作用(出现的情况)
+			// 6\ boolean 类型 --Boolean()
+			// // "NaN"	"undefined"		"null"
+			// 7\ number 类型  --NaN isNaN()   Infinity isFinite()
+			// 				Number()   "12.34.0" 
+			//				parseInt("12ab56",2/8/16)
+			//				parseFloat("0x567")
+							// Math.ceil()/Math.floor()/Math.round()/Math.max()
+							// Math.pow(2,10)/Math.random()
+			//				 console.log(parseFloat("0x567"))
+							// console.log(Number([]) )
+			
+			// 8\ String 	indexOf(查找的字符,start)  没有时返回-1;lastIndexOf
+			// 			substring(start,end可选)  str.substring(0,3)
+			// 			substr(start,length)
+			// 			slice(start,end)
+			// 			match(reg)
+			// 			split 
+			// 			replace
+			// 			toUpperCase/toLowerCase
+			// 
+			// var str="jgjdgkhdkafkafksh";
+			// console.log( str.indexOf("a",str.indexOf("a")+1) )
+			
+			
+			// 9\ 内置对象:String/Number/boolean/Object/Function/Array/Math/Date/Error……
+			// 10\ Object	直接量/new Object/工厂模式/new 构造函数/Object.create(追加原型对象或null)
+							// 操作对象属性
+							// this 指向--概念-- 特点--作用(出现的情况)
+							// 原型/原型链--概念-- 特点--作用(出现的情况)
+							// 继承三种方式
+			// 11\ 数组		[]		new Array
+							// 元素的增删改查
+			// arr[arr.length]=1  push(多个参数)  unshift(多个参数)
+			// delete 操作符		pop()		shift()		arr.length=10
+			// arr[索引]
+			// indexOf 	arr[索引]
+			// toString()		join()
+			// 截取: slice(start,end)	splice(start,length,val3,val4……)
+			// 拼接:concat
+			// 排序:sort(function(a,b){ return a-b})
+			// 迭代器:forEach(function(item,index,arr){})
+			// 		every(function(item,index,arr){})
+			// 		some(function(item,index,arr){})
+			// 		filter(function(item,index,arr){})
+			// 		map(function(item,index,arr){})
+			// 累加: reduce(function(pre,item,index,arr){},初始值可选)
+			// 类数组对象: arguments	 document.querySelectorAll()[索引]
+			
+			//12\ 函数	函数声明		函数定义		new Function()
+			//			函数的调用方式
+						// 函数()	new 函数		函数.call()/apply()		立即函数()
+						// call/apply
+						// Math.max.apply(null,[1,465,354655,429])
+						// arguments.length  arguments.callee	arguments映射
+						// 高阶函数-回调函数-函数参数是一个函数,限制语句执行的先后顺序
+						// var time= setTimeout(function(){},1000,实参1,实参2……)
+						// clearTimeout(time)
+						// var interval=setInterval(function(){},1000,实参1,实参2……)
+						// clearInterval(interval)
+						
+						// 作用域链--概念-- 特点--作用(出现的情况)
+						// 作用域链与函数预编译之间的关系是什么？
+						// 闭包--概念-- 特点--作用(出现的情况)
+						// cookie localStrorage  sessionStorage  
+			//13 正则表达式		/匹配规则/igm		new RegExp(匹配规则,"igm");
+				// ^--行起始位置  		[^n]---非		$--行结束符
+				// \w \W		\d \D		\s \S	\b \B		点号.
+				// []--一位		()--反向引用  \1 \2
+				// +  *  ?  {x}	{x,y}	{x,}
+				// s(?=str)	s(?!str)
+				// ? 在量词后边加问号
+				// \ 转义
+				// 
+				// 检测: reg.test(str)
+				// 分组: str.match(reg)
+				// 	  reg.exec(str)
+				// 	 str.split(reg)
+				// 替换: str.replace(reg,"")
+				// 	  str.replace(reg,function(){
+				// 		  return arguments[0].toUpperCase()
+				// 	  })
+					
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

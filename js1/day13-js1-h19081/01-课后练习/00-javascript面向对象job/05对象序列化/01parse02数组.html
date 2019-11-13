@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>parse01对象</title>
+
+    <script>
+        //1,准备了一个字符串
+        var infor ='{title:"学生信息",persons:[{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}]"}'
+        //persons:[{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}]
+        class JSON{
+            //'{"cup":"第八代"}
+            //'{"cup":"第八代","monney":"好内存","power":"BYD","type":"1"}';
+
+            //'    "cup":"第八代","monney":"好内存","power":"BYD","type":"1"
+            //      "cup":"第八代"
+            static parse(data){
+                //1,创建一个对象
+                let object = {};
+                //2,去掉外面的大括号
+                data =data.substring(1,data.length-1);
+                //3,根据逗号去遍历数据
+                while(data.indexOf(":")!=-1){
+                    //1,获得冒号的位置
+                    let index = data.indexOf(":");
+                    //2,判断当前的数据是否是数组
+                    if(data[index+1]=='['){
+                    //解析数组,获得字符串的数据
+                        let end = data.indexOf(']');
+                        //end下标获得字符串
+                        let buffer=data.substring(0,end+1);
+
+                        let ob=JSON.parseArray(buffer);
+                        //枚举对象属性
+                        for(let key in ob){
+                            object[key]=ob[key];
+                        }
+                        //去掉中括号的内容
+                        data=data.substring(end+1,data.length-1);
+
+                    }else{
+
+                    //解析对象
+                    //(1)获得对象的字符串数据
+                        let index1 =data.indexOf(",");
+                    if(index1!=-1){
+                        //获得逗号前面的数据
+                      let bufferData = data.substring(0,index1);
+                        var bufferObject= JSON.parseObject(bufferData);
+                        //枚举对象属性
+                        for(let key in bufferObject){
+                            object[key]=bufferObject[key];
+                        }
+                        data = data.substring(index1+1,data.length)
+                    }else{
+                     //当前的数据只有一个键值对,只有类似这个信息  title:"学生信息
+                     var bufferObject= JSON.parseObject(data);
+                     //枚举对象属性
+                        for(let key in bufferObject){
+                            object[key]=bufferObject[key];
+                        }
+                        data="";
+                    }
+
+                    }
+
+
+                }
+
+                return object;
+            }
+            //{name:"小明",age:18,sex:0}
+            static parseObject(data){
+                //1,创建一个对象
+                let object = {};
+                //2,去掉字符串的引号
+                data=data.replace(/"/g,"");
+                //3,以逗号为分割线获得数组
+                let array = data.split(",");
+                //4,遍历数组
+                array.forEach(function (item) {
+                    let bufferArray = item.split(":");
+                    object[bufferArray[0]]=bufferArray[1];
+                })
+                return object;
+            }
+//persons:[{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}]
+            //{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}//buffer
+            //{name:"小明",age:18,sex:0}  dataBuffer
+            //转为一个对象
+            static parseArray(data){
+                //1,创建一个数组对象
+                let object = {};
+                //获得中括号之间的数据
+                let start =data.indexOf('[');
+                let end = data.indexOf(']');
+                let buffer = data.substring(start+1,end);
+                //1,创建一个数组
+                let array=[];
+                while(buffer.indexOf('{')!=-1){
+                    //1，获得{}之间的字符串
+                    let start = buffer.indexOf('{');
+                    let end=buffer.indexOf("}");
+                    let dataBuffer = buffer.substring(start,end+1);
+
+                    //2,把当前的
+                    let object=JSON.parseObject(dataBuffer);
+                    //3,把当前的对象添加到数组里面
+
+                    array.push(object);
+                    //4,处理后面的字符串
+                    buffer=buffer.substr(end+2);
+
+                }
+
+                let key =  data.substring(0,start-1);
+
+                object[key]=array;
+                return object;
+            }
+        }
+        var infor ='{title:"学生信息",persons:[{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}]"}'
+        console.log(JSON.parse(infor))
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

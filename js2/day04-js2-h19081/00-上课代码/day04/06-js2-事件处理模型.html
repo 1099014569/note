@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+		<style type="text/css">
+			.container {
+				width: 300px;
+				height: 300px;
+				background-color: yellow;
+				position: relative;
+			}
+			.outer {
+				width: 200px;
+				height: 200px;
+				background-color: green;
+				position: absolute;
+				top: 0px;
+				left: 300px;
+			}
+			.inner {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+			事件的三个阶段	a) 先捕获，后目标，再冒泡；整个事件处理过程，会有个event事件对象在整个事件过程传播
+		</pre>
+		<div class="container">
+			<div class="outer">
+				<div class="inner"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 事件冒泡: 结构上存在嵌套关系的dom 元素就存在事件冒泡的事件处理机制(自底向上)
+			// 事件捕获:  结构上存在嵌套关系的dom 元素就存在事件捕获的事件处理机制(自上向下)
+			document.getElementsByTagName("div")[0].addEventListener("click",yellowContainer,true)
+			document.getElementsByTagName("div")[1].addEventListener("click",greenOuter,true)
+			document.getElementsByTagName("div")[0].addEventListener("click",yellowContainer,false)
+			document.getElementsByTagName("div")[1].addEventListener("click",greenOuter,false)
+			
+			document.getElementsByTagName("div")[2].addEventListener("click",redInnerM,false)
+			document.getElementsByTagName("div")[2].addEventListener("click",redInnerB,true)
+			
+			// document.getElementsByTagName("div")[0].attachEvent("onclick",yellowContainer)
+			// document.getElementsByTagName("div")[1].attachEvent("onclick",greenOuter)
+			// document.getElementsByTagName("div")[2].attachEvent("onclick",redInner)
+			
+			
+			var myContainer,myOuter,myInner1,myInner2;
+			function yellowContainer(ev){
+				myContainer=ev;
+				console.log("yellow-container clicking")
+			}
+			
+			// document.getElementsByClassName("container")[0].onclick=yellowContainer
+			// document.getElementsByClassName("outer")[0].onclick=greenOuter
+			// document.getElementsByClassName("inner")[0].onclick=redInner
+			
+			function greenOuter(ev){
+				myOuter=ev;
+				console.log("green-outer clicking")
+			}
+			
+			
+			function redInnerM(ev){
+				myInner1=ev;
+				console.log("red-inner clicking-M")
+			}
+			function redInnerB(ev){
+				myInner2=ev;
+				console.log("red-inner clicking-B")
+			}
+			
+		</script>
+	</body>
+</html>

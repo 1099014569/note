@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.原始数据类型：数字、字符串、null、布尔类型、undefined
+        2.引用类型：函数、数组、对象
+     -->
+    <script>
+        var num = 20.1325;
+        console.log(num);
+        // 只要是''引起来的都是字符串  
+        var str = '字符串';
+        //对象的简单创建
+        var person = {
+            name:'胡歌',
+            age:36,
+            single:true,
+            say:function(){
+                console.log(num);
+                /* confirm('确认删除？');
+                alert('弹框');
+                window.prompt('请输入：'); */
+                console.log(this);
+            }
+        }
+        console.log(person);
+        person.say();
+        console.log(person.name);
+        // 创建数组
+        var arr = [1,2,''];
+        console.log(arr);
+        var a = arr[1];
+        console.log(a);
+    </script>
+</body>
+</html>

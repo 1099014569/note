@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮1">
+    <input type="button" value="按钮2">
+    <input type="button" value="按钮3">
+
+    <script>
+        /* 
+            for(语句一;语句二;语句三){
+                // 代码块
+            }
+         */
+        //  语句一：初始化一个变量
+        // 语句二：判断条件
+        // 语句三：每次都会在循环后执行
+        /* for(var i=0;i<4;i++){
+            console.log(i);
+        } */
+        // 语句1,2,3都是可以省略掉的
+        var i=0;
+        for(;;){
+            if(i>=4){
+                break;
+            }
+            console.log(i);
+            i++;
+        }
+        // 循环数组
+        var arr = ['ada',13,'wsfsf'];
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
+        // 循环添加点击事件
+        var inputs = document.querySelectorAll('input');
+        for(var j=0;j<inputs.length;j++){
+            /* inputs[j].onclick = function(){
+                console.log(j);
+            } */
+            console.log(j);
+            (function(j){
+                inputs[j].onclick = function(){
+                    console.log(j);
+                }
+            })(j)
+        }
+    </script>
+</body>
+</html>

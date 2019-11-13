@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02stringify</title>
+    <script>
+
+      let house=[
+          {
+              name:"中南海",
+              address:"天安门附近",
+              room:[{number:11,office:"军机处"},{number:10,office:"办公厅"}],
+              price:9999999999999
+          },
+          {
+              name:"白宫",
+              address:"华盛顿附近",
+              room:[{number:11,office:"NASA"},{number:10,office:"五角大楼"}],
+              price:'白菜价'
+          }
+      ];
+
+
+        class Person{
+            constructor(name,age,house){
+                this.name=name;
+                this.age=age;
+                this.house=house;
+            }
+        }
+
+        let person = new Person("小刚",19,house);
+
+
+
+        class JSON{
+            static stringify(object){
+                let buffer=JSON.stringifyObject(object);
+                return buffer;
+          }
+
+          static stringifyObject(object){
+                let buffer="{";
+                for(let key in object){
+                    if(Array.isArray(object[key])){
+                        buffer =buffer+'"'+key+'"'+":"+JSON.stringifyArray(object[key])+',';
+                    }else{
+                        var valueBuffer="";
+                        if(typeof object[key]=='number'){
+                            valueBuffer=object[key];
+                        }else{
+                            valueBuffer='"'+object[key]+'"';
+                        }
+                        buffer =buffer+ '"'+key+'":'+valueBuffer+','
+                    }
+
+                }
+
+                //去掉最后的那个逗号
+              buffer=buffer.substring(0,buffer.length-1);
+              buffer=buffer+"}";
+
+                return buffer;
+          }
+           // {title:"学生信息",persons:[{name:"小明",age:18,sex:0},{name:"小丽",age:18,sex:1},{name:"小杨",age:22,sex:0}]"}'
+
+            static stringifyArray(array){
+                let buffer="[";
+                array.forEach(function (item) {
+                    buffer=buffer+ JSON.stringifyObject(item)+",";
+                })
+                buffer=buffer.substring(0,buffer.length-1);
+                buffer=buffer+"]";
+                return buffer;
+            }
+        }
+
+      console.log(person);
+      console.log(JSON.stringify(person));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

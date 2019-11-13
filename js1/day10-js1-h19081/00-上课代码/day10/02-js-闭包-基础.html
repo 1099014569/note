@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 闭包:是一个访问上一层函数局部变量的函数,即便上一层函数已经关闭
+			
+			// function myfn(){
+			// 	var n=0;
+			// 	console.log(++n);
+			// }
+			// 
+			// myfn();
+			// myfn();
+
+
+			
+			// var n=0;
+			// function myfn(){
+			// 	console.log(++n);
+			// }
+			// myfn();
+			// myfn();
+			// myfn();
+			// // n=100;
+			// myfn();
+			
+			// 闭包用途:函数累加器
+			function myfn(){
+				var n=0;
+				
+				function fn(){
+					console.log(++n);
+				}
+				return fn;
+			}
+			
+			var fn=myfn();
+			fn();
+			fn()
+			fn()
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

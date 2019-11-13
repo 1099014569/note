@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function async1() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("async1....");
+						resolve("任务1 的数据")
+					}, 1000)
+				});
+			}
+			
+			function async2() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("async2....");
+						resolve("任务2的数据")
+					}, 2000)
+				});
+			}
+			
+			function async3() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("async3....");
+						resolve("任务3的数据")
+					}, 3000)
+				});
+			}
+			
+			async1().then(function(data) {
+				console.log(data);
+				return async2();
+			}).then(function(data) {
+				console.log(data);
+				
+				return async3();
+			}).then(function(data) {
+				console.log(data);
+			})
+		</script>
+	</body>
+
+</html>

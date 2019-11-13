@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//			async function helloAsync() {
+			//				return "helloAsync";
+			//			}
+			//
+			//			console.log(helloAsync()) // Promise {<resolved>: "helloAsync"}
+			//
+			//			helloAsync().then(data => {
+			//				console.log(data); // helloAsync
+			//			})
+
+			function show() {
+				return new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("异步任务执行完成");
+						resolve("111"); //成功
+					}, 1000);
+				})
+			}
+			async function test() {
+				var a = await show();
+				console.log(a);
+				console.log("test...")
+			}
+			test();
+
+
+
+			function testAwait() {
+				console.log("testAwait");
+				return "abc"
+			}
+			async function helloAsync() {
+				var a = await testAwait();
+				console.log(a)
+				console.log("helloAsync");
+			}
+			helloAsync();
+		</script>
+	</body>
+
+</html>

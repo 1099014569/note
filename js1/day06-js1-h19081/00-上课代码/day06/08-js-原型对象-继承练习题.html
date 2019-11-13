@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			function Person(name){
+				//var this={__proto__:Person.prototype}
+				this.name=name
+				//return this;
+			}
+			Person.prototype={
+				lastName:"司"
+			}
+			var person1=new Person("水花");
+			
+			Person.prototype={
+				lastName:"杨"
+			}
+			var person2=new Person("茜");
+			
+			console.log(person1.lastName);
+			console.log(person2.lastName);
+			
+			
+			// Person.prototype={lastName:"杨"}
+			// function Person(name){
+			// 	//var this={__proto__:Person.prototype}
+			// 	this.name=name
+			// 	//return this;
+			// }
+			// 
+			// var person1=new Person("茜");
+			// var person2=new Person("过");
+			// Person.prototype={
+			// 	lastName:"邓"
+			// }
+			// 
+			// console.log(person1.lastName);//"杨"
+			
+			
+			// var obj1={};
+			// var obj2=obj1;
+			// obj1.name="sish";
+			// console.log(obj2.name);
+			
+			
+			// Person.prototype={lastName:"邓"}
+			// function Person(name){
+			// 	//var this={__proto__:Person.prototype}
+			// 	this.name=name
+			// 	//return this;
+			// }
+			// var person1=new Person("茜");
+			// var person2=new Person("过");
+			// // person1.__proto__.lastName="杨"
+			// person1.__proto__={
+			// 	lastName:"杨"
+			// }
+			// console.log(person1.lastName,person2.lastName)
+			
+			
+		</script>
+	</body>
+</html>

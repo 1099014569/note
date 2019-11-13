@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			原型：
+				概念--构造函数,都有一个prototype 属性,是一个对象;
+				特点--它是构造函数构造出来的对象的公共祖先.
+				用处--提取对象的公共属性和方法
+		</pre>
+		<script type="text/javascript">//cat1.constructor 值是什么,怎么理解？
+		
+		
+			// Object.prototype={constructor:Object}
+			Cat.prototype={
+				color:"gray",
+				sayHello:function(){
+					console.log("喵~")
+				},
+				type:"英短"
+			}
+			function Cat(name){
+				// var this={__proto__:Cat.prototype}
+				this.name=name;
+				//return this;
+			}
+			var cat1=new Cat("小明");
+			console.log(cat1.type);
+			console.log( cat1.sayHello() )
+			
+			var cat2=new Cat("小华");
+			console.log(cat2.sayHello())
+			
+			console.log(cat1.constructor)
+			
+		</script>
+	</body>
+</html>

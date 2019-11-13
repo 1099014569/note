@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">点了一下</div>
+    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3357786243,3135716437&fm=26&gp=0.jpg" alt="">
+    <script>
+        // 点击事件
+        var mydiv = document.querySelector('.mydiv');
+        mydiv.onclick = function(){
+            console.log(this);
+            mydiv.style.color = 'red';
+            document.querySelector('img').src = 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3775805866,1434593229&fm=26&gp=0.jpg';
+        }
+    </script>
+</body>
+</html>

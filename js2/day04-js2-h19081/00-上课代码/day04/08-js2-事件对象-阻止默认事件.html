@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="IE=7"/>
+</head>
+<body>
+
+<form action="" method="post">
+	用户名：<input type="text" name="" id="" value="" />
+	<br>
+	密码：<input type="password" name="" id="" value="" />
+	<br>
+	<input type="submit" />
+</form>
+
+<ul style="display: none;">
+	<li>复制</li>
+	<li>全选</li>
+	<li>粘贴</li>
+	<li>画图</li>
+</ul>
+
+<script type="text/javascript">
+	//句柄式写法阻止默认事件
+	// document.forms[0].onsubmit=function(){
+	// 	alert("表单验证不通过")
+	// 	return false;
+	// }
+	
+	
+	document.oncontextmenu=function(ev){//右键菜单事件
+		var myEvent=ev?ev:window.event;
+		myEvent.preventDefault?myEvent.preventDefault():myEvent.returnValue=false;//阻止右键菜单默认弹出的功能
+		
+		//显示自定义菜单,并设置好位置
+		document.getElementsByTagName("ul")[0].style.display="block";
+		document.getElementsByTagName("ul")[0].style.position="absolute";
+		document.getElementsByTagName("ul")[0].style.top=ev.clientY+"px";
+		document.getElementsByTagName("ul")[0].style.left=ev.clientX+"px";
+	}
+	//点击界面其他位置,让自定义菜单隐藏
+	document.onclick=function(){
+		document.getElementsByTagName("ul")[0].style.display="none";
+	}
+	//鼠标滑动选择自定义菜单,改变背景色
+	var lis=document.querySelectorAll("li");
+	for(let i=0;i<lis.length;i++){
+		lis[i].onmouseenter=function(){
+			
+			for(let j=0;j<lis.length;j++){
+				lis[j].style.backgroundColor="white";
+			}
+			this.style.backgroundColor="#ccc";
+			
+		}
+	}
+	
+	
+	// addEventListener--》"submit"
+	document.forms[0].attachEvent("onsubmit",function(ev){
+		alert("表单验证不通过")
+		var myEvent=ev?ev:window.event;//事件对象
+		myEvent.preventDefault?myEvent.preventDefault():(myEvent.returnValue=false);//阻止默认事件
+		
+	},false)
+	
+	
+</script>
+</body>
+</html>

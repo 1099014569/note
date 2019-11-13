@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	var  arr=[];
+	var userIn=prompt("请输入员工工资")
+	while( userIn!=="退出" ){
+		arr.push( Number(userIn) );
+		userIn=prompt("请输入员工工资");
+	}
+	for(var i=0;i<arr.length;i++){
+		document.write(arr[i]+"<br>")
+	}
+
+	// for(userIn=prompt("请输入员工工资");userIn!=="退出";userIn=prompt("请输入员工工资");){
+	// 	arr.push( Number(userIn) );
+	// }
+
+
+var arr = [];
+var userIn = prompt("请输入")
+while (userIn !== "-1") {
+arr.push((userIn));
+userIn = prompt("请输入");
+}
+arr.splice(0, 2, "hello", "hello");
+
+for (var i = 0; i < arr.length; i++) {
+document.write(arr[i] + "<br>")
+}
+
+
+
+		function myIndexOf(arr, item) {
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] === item) {
+					return i
+				}
+			}
+			return -1;
+		}
+		var arr=[],arr1=[1,2,8,100,-1,0];
+		console.log( myIndexOf(arr1,-1) );
+		
+		arr.__proto__.myIndexOf=function(item,start){
+			for (var i = start||0; i < this.length; i++) {
+				if (this[i] === item) {
+					return i
+				}
+			}
+			return -1;
+		}
+		
+		console.log( arr1.myIndexOf(2,1)  )
+		
+		
+		
+		
+	</script>
+</body>
+</html>

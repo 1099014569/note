@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//sort ,不传参时按照字符编码排序
+var arr=[1,2,4,8,0,3,200,100,101]
+console.log( arr.sort() );//[0, 1, 100, 101, 2, 200, 3, 4, 8]
+
+//sort,传参,参数是一个函数
+console.log( arr.sort(fn) )
+function fn(a,b){
+	console.log(a,b)
+	return b-a;
+	// if(a>b){
+	// 	return 1;
+	// }else{
+	// 	return -1;
+	// }
+}
+
+var arrObj=[{grade:100,age:18},{grade:88,age:22},{grade:84,age:21},{grade:70,age:17}];
+arrObj.sort( sortObj("grade",true) );
+
+function sortObj(prop,isTrue){
+	return function myfn(a,b){
+			if(isTrue){
+				return b[prop]-a[prop];//降序
+			}
+			return a[prop]-b[prop];//升序
+		}
+}
+console.log(arrObj)
+
+var names = ['Ana', 'ana', 'john', 'John'];//["ana", "Ana", "John", "john"]
+names.sort( sortStr );
+function sortStr(a,b){
+	if( a.toUpperCase()>b.toUpperCase() ){
+		return 1;
+	}
+	else{
+		return -1;
+	}
+}
+console.log(names)
+
+
+
+</script>
+</body>
+</html>

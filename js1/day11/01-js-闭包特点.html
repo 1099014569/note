@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//[闭包特点]
+			// 1\ 全局下可以使用闭包操作局部变量
+			// 2\ 闭包可能会导致内存泄漏
+			function fun(n, o) {				
+					console.log(o); //undefined 0 1 1
+					return {
+							fun: function (m) {
+									return fun(m, n);
+							}
+					};
+			}
+			var c = fun(0).fun(1); 
+			
+			//避免内存泄漏,当一个值没有变量再对它进行引用时,浏览器的垃圾回收机制就会回收该空间
+			c=null;
+			
+			
+			//[闭包用途]
+			// 1/ 实现公有变量,eg:函数累加器
+			
+			// 2/可以实现缓存
+			function obj(){
+				var monney="";
+				var obj={
+					setM:function(val){
+						monney=val
+					},
+					getM:function(){
+						var myM=monney;
+						monney="";
+						return myM;
+					}
+				}
+				return obj;
+			}
+			var myobj=obj();
+			var obj1=obj();
+			
+			//3/ 实现封装,属性(变量)私有化
+			var person=function obj(){
+				var monney="";
+				var obj={
+					setM:function(val){
+						monney=val
+					},
+					getM:function(){
+						var myM=monney;
+						monney="";
+						return myM;
+					}
+				}
+				return obj;
+			}();
+			person.setM(1000);
+			
+			//4/ 模块化开发:	通过立即执行函数暂存操作全局的某个值
+			{
+				var i=0;
+				var a=function(j){
+					
+					return function (){	console.log(j)	};
+					
+				}(i)
+				i=10;
+				a();
+			}
+			
+			//5/类和继承: 通过闭包产生一个对象,让新对象的原型可以指向该对象
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

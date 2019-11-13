@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// function fn(){
+			// 	 y=100;
+			// }
+			// fn();
+			// console.log(y);
+			
+			// window{
+			// 	fn:function fn(){
+			// 		 y=100;
+			// 	},
+			//	y:100
+			// }
+			
+			
+			
+			// function fn(){
+			// 	var y=100;
+			// 	function fn1(){	};
+			// 	y++;
+			// 	console.log(y);
+			// }
+			// fn();
+			// fn();
+			// console.log(y);
+			
+			// window{
+			// 	fn:function fn(){
+			// 		 y=100;
+			// 	}
+			// }
+
+			// 函数体每一次被调用,在被调用的前一刻,会有函数预编译:
+			// 	1\ 形参和变量提升,
+			// 	2\ 实参赋值
+			// 	3\ 函数提升
+			// 	4\ 执行语句
+			// fn-AO(active object){
+			// 	y:100,
+			// 	fn1:function fn1(){
+			// 		
+			// 	}
+			// }
+			
+			
+			// var a=100;
+			// function fn(){
+			// 	a=200;
+			// }
+			// console.log(a,fn());//100 undefined
+			// console.log(fn(),a);//undefined 200
+			
+			
+			var a=100;
+			function fn(a){
+				a=200;
+				console.log(a);//函数体内优先访问自己的变量,找不到时再找全局变量
+			}
+			fn();
+			console.log(a);
+			
+		</script>
+	</body>
+</html>

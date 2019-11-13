@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+// window.innerWidth
+// window.innerHeight
+
+//标准模式
+// document.documentElement.clientWidth/clientHeight
+
+//混杂模式
+// document.body.clientHeight/clientWidth
+console.log(document.compatMode)
+
+if(document.compatMode=="CSS1Compat"){
+	// document.documentElement.clientWidth/clientHeight
+}else{
+	// document.body.clientHeight/clientWidth
+}
+
+
+
+
+
+</script>
+</body>
+</html>

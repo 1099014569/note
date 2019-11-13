@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <script>
+
+        class String {
+            constructor(data) {
+                this.data = data;
+            }
+
+            get value() {
+                return this.data;
+            }
+
+            get length() {
+                let length = 0;
+                while ((typeof this.data[length]) != 'undefined') {
+                    length++;
+                }
+                return length;
+            }
+
+            // indexof(element){
+            //     //你好啊，同学，今天你在做神马
+            //     let index=0;
+            //     while( this.data[index]!=element&&(typeof this.data[index])!='undefined'){
+            //         index++;
+            //     }
+            //     if((typeof this.data[index])=='undefined')
+            //         index=-1;
+            //
+            //     return index;
+            // }
+
+            indexOf(element) {
+                //1,设置开始的下标为-1
+                let index = -1;
+                //2,获得字符串的长度
+                let length = this.length;
+                //3,遍历
+                for (let i = 0; i < length; i++) {
+                    if (this.data[i] == element) {
+                        index = i;
+                        break;
+                    }
+                }
+                return index;
+            }
+
+            lastIndexOf(element) {
+                //1,设置开始的下标为-1
+                let index = -1;
+                //2,获得字符串的长度
+                let length = this.length - 1;
+                //3,遍历
+                for (let i = length; i >= 0; i--) {
+                    if (this.data[i] == element) {
+                        index = i;
+                        break;
+                    }
+                }
+                return index;
+            }
+
+            split(element) {
+                //1，准备一个数组
+                let buffer = [];
+                //2,设置找到第一个分割符号的位置
+                let index = -1;
+                //3,获得缓存的数据
+                let dataBuffer = this.data;
+                while ((index = dataBuffer.indexOf(element)) != -1) {
+                    //(1)获得下标数据
+                    let data = dataBuffer.substring(0, index);
+                    //(2)把找到的数据放到数组里面
+                    buffer.push(data)
+                    //(3)去掉逗号前面的数据
+                    dataBuffer = dataBuffer.substring(index + 1, dataBuffer.length);
+                }
+                //最后没有逗号的时候，最后面的数据还没有添加到数组
+                buffer.push(dataBuffer);
+
+                return buffer;
+
+            }
+
+            substr(index) {
+                //1,获得字符串的长度
+                let length = this.length - 1;
+                //2,设置一个缓存的字符串
+                let buffer = '';
+                for (let i = index; i < length; i++) {
+                    buffer = buffer + this.data[i];
+                }
+                return buffer;
+
+            }
+
+            subString(start, end) {
+                //1,获得一个缓存的字符串
+                let dataBuffer = this.data;
+                //2,获得字符串的长度
+                let length = this.length;
+                //3,判断合法性
+                if (start < 0)
+                    start = 0;
+
+                if (end >= length)
+                    end = length - 1;
+
+                //4,创建一个新字符串
+                let buffer = '';
+                for (let i = start; i < end; i++) {
+                    buffer = buffer + dataBuffer[i];
+                }
+                return buffer;
+            }
+
+            trim() {
+                // let p=/ /g;
+                // this.data=this.data.replace(p,'');
+                //1,获得字符串的长度
+                let length = this.length;
+                while (this.data[0] == ' ') {
+                    this.data = this.substr(1);
+                }
+
+                while (this.data[this.length - 1] == ' ') {
+                    this.data = this.subString(0, this.length - 2);
+                }
+            }
+
+            forEach(call) {
+                //1,获得数组的长度
+                let length = this.length;
+                for (let i = 0; i < length; i++) {
+                    call(this.data[i]);
+                }
+            }
+
+            //有一个字符不符合规定，就终止
+            every(call) {
+                //1,获得数组的长度
+                let length = this.length;
+                for (let i = 0; i < length; i++) {
+                    if (call(this.data[i]))
+                        break;
+                }
+            }
+
+            some(call) {
+                //1,获得数组的长度
+                let length = this.length;
+                for (let i = 0; i < length; i++) {
+                    if (!call(this.data[i]))
+                        break;
+                }
+            }
+
+            map(call){
+                //1,获得数组的长度
+                let length = this.length;
+                //2,创建一个缓存的字符串
+                let buffer='';
+                for (let i = 0; i < length; i++) {
+                    buffer = buffer+ call(this.data[i]);
+                }
+
+                return buffer;
+            }
+
+            filter(call){
+                //1,获得数组的长度
+                let length = this.length;
+                //2,创建一个缓存的字符串
+                let buffer='';
+                for (let i = 0; i < length; i++) {
+                    if(!call(this.data[i])){
+                        buffer=buffer+"XXX（根据相关法律，不予显示）";
+                    }else{
+                        buffer=buffer+this.data[i];
+                    }
+
+                }
+
+                return buffer;
+            }
+
+        }
+
+        var string = new String("你好做1啊，同学，今天坏你在做神马");
+
+        var buffer= string.filter(function (item) {
+            return item!='好';
+        })
+
+        console.log(buffer);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+    <style>
+        #mycanvas {
+            border: 1px solid #000;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="600" height="600"></canvas>
+    <script>
+
+        class snakeGame {
+            constructor(line, vertical, canvas) {
+                //当前的横向数
+                this.line = line;
+                //当前纵向数
+                this.vertical = vertical;
+                this.gamewidth = canvas.width;
+                this.gameheight = canvas.height;
+                this.boxwidth = this.gamewidth / this.vertical;
+                this.boxheight = this.gameheight / this.line
+                this.ctx = canvas.getContext('2d')
+                this.snakearr = [
+                    // {x:100,y:100},
+                    // {x:120,y:100},
+                    // {x:140,y:100},
+                    { x: 160, y: 100 },
+                    { x: 180, y: 100 },
+                    { x: 200, y: 100 },
+                    { x: 220, y: 100 },
+                    { x: 240, y: 100 },
+                    { x: 260, y: 100 },
+                    { x: 280, y: 100 },
+                ]
+                this.snakeHead = {
+
+                }
+                this.settime = null
+                this.direction = 'right'
+                this.dwx = 20;
+                this.dwy = 0;
+                this.type = true
+            }
+            setMap() {
+                for (let i = 1; i < this.line; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = 'red'
+                    this.ctx.moveTo(0, i * this.boxheight)
+                    this.ctx.lineTo(this.gamewidth, i * this.boxheight)
+                    this.ctx.stroke()
+                }
+                for (let i = 1; i < this.vertical; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = 'red'
+                    this.ctx.moveTo(i * this.boxwidth, 0)
+                    this.ctx.lineTo(i * this.boxwidth, this.gameheight);
+                    this.ctx.stroke()
+                }
+            }
+            drawsnake() {
+                for (let i = 0; i < this.snakearr.length; i++) {
+                    if (i == this.snakearr.length - 1) {
+                        this.ctx.fillStyle = 'red'
+                        this.snakeHead = this.snakearr[i]
+                        console.log(this.snakeHead)
+                    } else {
+                        this.ctx.fillStyle = 'green'
+                    }
+                    this.ctx.fillRect(this.snakearr[i].x + 1, this.snakearr[i].y + 1, this.boxwidth - 2, this.boxheight - 2)
+                }
+            }
+            move() {
+                var that = this;
+                this.settime = setInterval(function () {
+                    console.log(that)
+                    var snakex = that.snakeHead.x + that.dwx;
+                    var snakey = that.snakeHead.y + that.dwy;
+                    if (that.jungedeg(snakex, snakey)) {
+                        var snakedom = {
+                            x: snakex,
+                            y: snakey
+                        }
+                        that.snakearr.push(snakedom)
+                        var delet = that.snakearr.shift()
+                        that.ctx.clearRect(delet.x + 1, delet.y + 1, that.boxwidth - 2, that.boxheight - 2)
+                        that.drawsnake()
+                        that.type = true
+                    } else {
+                        clearInterval(that.settime)
+                        alert('Game Over!!!')
+                        window.location.reload()
+                    }
+
+                }, 500)
+            }
+            //边界判定
+            jungedeg(x, y) {
+                if (x < 0 || x > this.gamewidth - this.boxwidth || y < 0 || y > this.gameheight - this.boxheight) {
+                    return false
+                } else {
+                    if(this.meetbody(x,y)){
+                        return true
+                    }else{
+                        return false
+                    }
+                    
+                }
+            }
+            //碰到自己
+            meetbody(x,y){
+                for(let i= 0;i<this.snakearr.length;i++){
+                    if(this.snakearr[i].x==x&&this.snakearr[i].y==y){
+                        return false
+                    }
+                }
+                return true
+            }
+            changedirection() {
+                window.onkeydown = function (e) {
+                    if (this.type) {
+                        if (e.keyCode == 37 && this.direction != 'right') {
+                            this.direction = 'left'
+                            this.dwx = -20;
+                            this.dwy = 0;
+
+                        } else if (e.keyCode == 38 && this.direction != 'down') {
+                            this.direction = 'up';
+                            this.dwx = 0;
+                            this.dwy = -20;
+
+                        } else if (e.keyCode == 39 && this.direction != 'left') {
+                            this.direction = 'right';
+                            this.dwx = 20;
+                            this.dwy = 0
+                        } else if (e.keyCode == 40 && this.direction != 'up') {
+                            this.direction = 'down'
+                            this.dwx = 0;
+                            this.dwy = 20
+                        }
+                        this.type = false
+                    }
+
+                }.bind(this)
+            }
+
+            init() {
+                this.setMap()
+                this.drawsnake()
+                this.move()
+                this.changedirection()
+            }
+        }
+        var mycanvas = document.getElementById('mycanvas')
+        var newgame = new snakeGame(30, 30, mycanvas)
+        newgame.init()
+
+    </script>
+</body>
+
+</html>

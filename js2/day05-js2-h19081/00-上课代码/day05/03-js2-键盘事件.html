@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			document.onkeydown=function(ev){
+				var event=ev||window.event;
+				// console.log(event.charCode)//0
+				console.log("onkeydown")
+			}
+			
+			document.onkeypress=function(ev){
+				var event=ev||window.event;
+				console.log(event.charCode);//可以用于监听用户键入了什么字符
+				console.log("onkeypress")
+			}
+			
+			document.onkeyup=function(){
+				console.log("onkeyup")
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// 全局预编译,所有代码执行前发生
+	// 1/语法检查
+	// 2/变量提升
+	// 3/函数提升
+	// 4/执行语句
+	console.log(a);//function a(){}
+	var a=123;
+	function a(){}
+	console.log(a);//123
+	
+	// window-GO{
+	// 	a:123
+	// }
+	
+	
+</script>
+</body>
+</html>

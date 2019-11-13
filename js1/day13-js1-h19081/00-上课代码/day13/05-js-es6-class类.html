@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//语法：class--constructor--原型上追加属性
+			class People {
+				constructor(name,color,factory) {
+					this.name=name;
+					this.color=color
+				    this.factory=factory
+				}
+				sayHello(age){
+					console.log("my age is"+age);
+				}
+				
+			}
+			
+			//继承方式 :class--extends--constructor--super
+			class Student extends People {
+				constructor(a,b,c,num) {
+					super(a,b,c);
+					this.num=num
+				}
+				
+			}
+			
+			var myStudent=new Student("abcd","yellow","小日本",100);
+			console.log(myStudent)
+			
+			
+			var mypeople=new People("abcd","yellow","小日本")
+			
+			console.log(mypeople)
+			
+			
+		</script>
+	</body>
+</html>

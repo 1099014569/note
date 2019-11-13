@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+
+    <script>
+        // 1.行内  内部  外部
+        // 2.只能由数字、_、英文、$组成,不能能以数字开头
+        // 3.number、boolean、undefined、null、string、object、数组、函数
+        alert('弹框');  
+        document.querySelector('div').innerHTML = '新内容';
+        console.log(document.querySelector('div'));
+        window.prompt('请输入：');
+        confirm('确认删除？');
+        myfun();
+        // 断点调试
+        // debugger;
+        console . log(121314);
+        function myfun(){
+            console.log('函数内部');
+        }
+        console.log(a);
+        var a = 'dad';
+
+    </script>
+</body>
+</html>

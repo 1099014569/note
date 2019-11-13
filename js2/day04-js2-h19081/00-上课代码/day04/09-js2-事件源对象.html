@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+
+		<script type="text/javascript">
+			
+			var lis=document.getElementsByTagName("li");
+			// for(var i=0;i<lis.length;i++){
+			// 	lis[i].onclick=function(){
+			// 		console.log(this.innerText)
+			// 	}
+			// }
+			
+			//事件委托:利用事件冒泡，和事件源对象进行事件处理
+			
+			// 2、优点：
+			// 	a) 性能：不需要循环所有的元素一个个绑定事件
+			// 	b) 灵活：当有新的子元素时不需要重新绑定事件
+
+			document.querySelector("ul").onclick=function(ev){
+				var myEvent=ev||window.event;
+				var myTarget=myEvent.target||myEvent.srcElement
+				console.log(myTarget.innerHTML)
+			}
+			
+			var newLi=document.createElement("li");
+			newLi.innerHTML="5";
+			document.querySelector("ul").appendChild(newLi)
+			
+			var newLi1=document.createElement("li");
+			newLi1.innerHTML="6";
+			document.querySelector("ul").appendChild(newLi1)
+			
+			var newLi2=document.createElement("li");
+			newLi2.innerHTML="7";
+			document.querySelector("ul").appendChild(newLi2)
+			
+			
+			
+		</script>
+	</body>
+</html>

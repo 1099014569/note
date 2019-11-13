@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div style="width: 100px;height: 100px;background-color: red;"></div>
+<script type="text/javascript">
+	
+	document.getElementsByTagName("div")[0].onclick=changeB
+	function changeB(ev){
+		this.style.background="green";
+	}
+	
+	function changP(ev){
+		this.style.position="relative";
+		this.style.top=parseInt( getComputedStyle(this,null).top )+5+"px";
+	}
+	
+	//句柄式的写法,同一个事件类型只能绑定一个事件处理函数
+	document.getElementsByTagName("div")[0].onclick=changP
+	//该解法不利于协作开发
+	document.getElementsByTagName("div")[0].onclick=function(){
+		changeB.call(this);
+		changP.call(this);
+	}
+	
+	
+	
+	
+</script>
+</body>
+</html>

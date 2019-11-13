@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="mydiv" style="font-size: 30px;">div</div>
+    <script>
+        // Number()
+        console.log(Number('1324'));
+        console.log(Number(true));//1
+        console.log(Number(null));//0
+        console.log(Number(undefined));//NaN
+        console.log(Number(''));//0
+
+        console.log(parseInt('12.342sdsf'));//12
+        console.log(parseFloat('12.342sdsf'));//12.342
+
+        var mydiv = document.querySelector('.mydiv');
+        mydiv.onclick = function(){
+            console.log(mydiv.style.fontSize);
+            console.log(parseInt(mydiv.style.fontSize));
+            mydiv.style.fontSize = parseInt(mydiv.style.fontSize)*2 + 'px';
+        }
+    </script>
+</body>
+</html>

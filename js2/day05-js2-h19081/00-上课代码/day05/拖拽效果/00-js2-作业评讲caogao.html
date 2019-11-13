@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: black;
+        }
+    
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        document.querySelector('div').onmousedown = function(ev){
+           
+            var y = ev.clientY - this.offsetTop;
+            var x = ev.clientX - this.offsetLeft;
+            document.onmousemove= function(e){
+				
+				// e.clientY -		ev.clientY + this.offsetTop  鼠标移动的距离+元素之前的偏移量
+                document.querySelector('div').style.top = e.clientY - y + 'px';
+                document.querySelector('div').style.left = e.clientX - x + 'px';
+            }
+            document.onmouseup = function(){
+                document.onmousemove = false;
+            }
+        }
+    
+    </script>
+</body>
+</html>

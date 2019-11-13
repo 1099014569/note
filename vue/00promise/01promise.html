@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		
+		<!--<button onclick="show()"> 点击执行promise</button>-->
+		
+		<script type="text/javascript">
+			function show() {
+				var p = new Promise(function(resolve, reject) {
+					setTimeout(function() {
+						console.log("异步操作完成");
+
+						resolve("随便什么数据");
+					}, 3000)
+				})
+
+				return p;
+			}
+			
+			show().then(function(data) {
+				console.log(data);
+			})
+		</script>
+	</body>
+
+</html>

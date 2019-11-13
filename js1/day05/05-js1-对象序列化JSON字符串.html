@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj={
+			name:"包柳",
+			age:18,
+			sayHello:function(){
+				console.log("good morning");
+			},
+			gender:true
+		}
+		
+		document.write(obj);
+		
+		//方法名,方法参数,方法结果
+		var str=JSON.stringify(obj)
+		console.log(str)//json 字符串,前后端通信的数据格式
+		document.write(str);//'{"name":"包柳","age":18,"gender":true}'
+		
+		var mystr=`{"name":"包柳","age":18,"gender":true}`;//手动创建JSON 字符串
+		var newObj=JSON.parse(mystr);
+		console.log(newObj.age);
+		
+		
+	</script>
+</body>
+</html>

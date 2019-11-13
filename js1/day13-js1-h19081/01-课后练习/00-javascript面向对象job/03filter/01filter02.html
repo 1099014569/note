@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        var colors=['白色','黑色','灰色','蓝色','绿色','军绿色','银色','黄色'];
+
+
+
+        var brands=['安踏','361','特步','红星尔特','耐克','阿迪达斯','李玲'];
+
+        
+        function Clothe(brand,color,price,size) {
+            this.brand=brand;
+            this.color=color;
+            this.price=price;
+            this.size=size;
+        }
+
+        var clothes=[];
+
+        //1,获得颜色的数量
+        var colorsLength = colors.length;
+        //2,获得品牌的数量
+        var brandsLength =brands.length;
+
+        for(var i=0;i<100;i++){
+           var random = Math.floor(Math.random()*15);
+
+           var color="";
+           if(random<5){
+               color=colors[1];
+           }else if(random>=5&&random<8){
+               color=colors[0];
+           }else{
+               var randomBuffer = Math.floor(Math.random()*(colorsLength-2));
+               color=colors[randomBuffer];
+           }
+
+           //获得品牌
+           var brand =brands[Math.floor(Math.random()*brandsLength)];
+
+           //获得价格   100-1000
+            var price = 99+Math.floor(Math.random()*900)
+            //获得尺寸
+            var size = Math.floor(Math.random()*3);//0 小号   1  中号  2  大号
+           var  clothe = new Clothe(brand,color,price,size);
+            clothes.push(clothe);
+
+        }
+        
+        
+        function Filiter(brand,color,size,priceStart,priceEnd) {
+
+          var buffer=  clothes.filter(function (clothe) {
+                if(clothe.brand==brand&&clothe.color==color&&clothe.size==size&&clothe.price>=priceStart&&clothe.price<=priceEnd){
+                    return true;
+                }else{
+                    return false;
+                }
+
+            })
+
+            return buffer;
+            
+            
+        }
+
+        console.log(Filiter("361","黑色",1,120,888));
+
+        //1，创建100个产品，黑色占 1/3  白色   1/5
+        //2, 写一个过滤器，按照颜色，品牌，价格，尺寸  进行过滤
+
+
+
+
+
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

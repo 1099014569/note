@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body> 
+		<div id="outer">
+			<!-- 以下都是div 标签的儿子/后代元素 -->
+			<p>文段内容</p>
+			<div></div>
+			<img src="" >
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li class="myli">3
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var mydiv=document.getElementById("outer");
+			// //[p, div, img, ul, li, li, li, ul, li, li, li, li, li]
+			// mydiv.__proto__.__proto__.traverse=function(){
+			// 	var arr=[];
+			// 	var child=this.children;
+			// 	function myInner(child){
+			// 		for(var i=0;i<child.length;i++){
+			// 				arr.push(child[i]);
+			// 				if(child[i].children.length>0){
+			// 					myInner(child[i].children)
+			// 				}
+			// 		}
+			// 	}
+			// 	myInner(child);
+			// 	
+			// 	return arr;
+			// }
+			// var nodeArr=mydiv.traverse()
+			// console.log(mydiv.traverse())
+			
+			// 封装函数，返回元素e的第n个兄弟元素节点，n为正，返回后面的兄弟元素节点；n为负，返回前面的；n为0，返回自己。
+			
+			// function findSibling(e,n){
+			// 	if(n>0){
+			// 		while(n>0 && e!=null){
+			// 			e=e.nextElementSibling;
+			// 			n--
+			// 		}
+			// 	}else if(n<0){
+			// 		while(n<0  && e!=null){
+			// 			e=e.previousElementSibling;
+			// 			n++
+			// 		}
+			// 	}
+			// 	return e;
+			// 	
+			// }
+			// 
+			// var myli=document.getElementsByClassName("myli")[0];
+			// 
+			// console.log( findSibling(myli,5) )
+			
+			
+			
+			// mydiv.__proto__.__proto__.myChildren=function(){
+			// 	var child=this.childNodes;
+			// 	var arr=[];
+			// 	for(var i=0; child!=null && i<child.length;i++){
+			// 		if(child[i].nodeType==1){
+			// 			arr.push(child[i])
+			// 		}
+			// 	}
+			// 	return arr
+			// 	
+			// }
+			
+			
+			// <div class="example">
+			// 	<p class="slogan">XXX，你最帅</p>
+			// </div>
+			
+			// var newDiv=document.createElement("div");
+			// newDiv.classList.add("example");
+			// 
+			// var newP=document.createElement("p");
+			// newP.className="slogan";
+			// newP.innerHTML="张浩，你最帅";
+			// 
+			// document.body.appendChild(newDiv);
+			// newDiv.appendChild(newP)
+			
+			// document.body.innerHTML+=` <div class="example">
+			//  	<p class="slogan">XXX，你最帅</p>
+			//  </div>
+			// `
+			
+			Element.prototype.insertAfter=function(a,b){
+				var nextB=b.nextElementSibling;
+				if(nextB==null){
+					this.appendChild(a);
+				}else{
+					console.log(a,nextB)
+					this.insertBefore(a,nextB);
+				}
+			}
+			
+			var myimg=document.createElement("img");
+			myimg.src="https://www.baidu.com/img/bd_logo1.png";
+			var myP=mydiv.firstElementChild;
+			mydiv.insertAfter(myimg,myP);
+			
+			
+			// function reverse(arr){
+			// 	var newArr=[];
+			// 	for(var x of arr){
+			// 		newArr.unshift(x)
+			// 	}
+			// 	return newArr
+			// }
+			// console.log(nodeArr,reverse(nodeArr))
+			
+			
+		</script>
+	</body>
+</html>

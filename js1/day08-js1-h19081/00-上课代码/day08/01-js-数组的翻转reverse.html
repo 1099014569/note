@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//reverse 方法,将原数组元素进行翻转
+	var arr=[1,2,3,100,200];
+	console.log( arr.reverse()==arr )
+	
+	arr.__proto__.myReverse=function(){
+		var newArr=[];
+		while(this.length!=0){
+			newArr.push( this.pop() )
+		}
+		for(var x of newArr){
+			this.push(x);
+		}
+		return this;
+		// for(var i=0;i<parseInt(this.length/2);i++){
+		// 	var x=this[i];
+		// 	this[i]=this[this.length-1-i];
+		// 	this[this.length-1-i]=x;
+		// }
+		// return this;
+	}
+	var arr1=["a","b","c"];
+	console.log( arr1.myReverse(),arr1 )
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

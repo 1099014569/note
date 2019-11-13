@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// setTimeout:参数1 --等待被调用的函数
+			// 			  参数2--时间量number 类型,单位为ms
+			// 			  参数3/参数4/参数5……--当参数1 -函数被调用时,传递给它的实参
+			
+			// 创建计时器,等待页面所有代码都执行完毕才会开始计时;
+			// 计时器开始计时,时间到达之后,调用一遍参数1-函数
+			
+			setTimeout(function() {
+				console.log(arguments)
+			}, 10,68,false,"abc");
+			
+			var a=200;
+			setTimeout(function(){
+				console.log(a)//2000
+			},1000)
+			a=2000
+			
+			
+			//间隔1 s 分别打印出:1  2  3  4  5
+			for(var i=0;i<5;i++){
+				// (function (i){
+				// 	setTimeout(function(){
+				// 		console.log(i+1)
+				// 	},1000*(i+1));
+				// })(i)//闭包
+				
+				// setTimeout(function(i){
+				// 	console.log(i)
+				// },1000*(i+1),i+1);//参数3
+				
+				var fn=(function(i){
+					function inner(){
+						console.log(i+1)
+					}
+					return inner
+				})(i)
+				
+				setTimeout(fn,1000*(i+1));//闭包
+			}
+			
+			//清除setTimeout 计时器,clearTimeout(计时器的序号)
+			var mynum=0;
+			var num=setTimeout(function(){
+				console.log(mynum)
+			},2000);
+			
+			mynum++;
+			if(mynum!=0){
+				clearTimeout(num);
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			原型：
+				概念--构造函数都有一个prototype 属性,是一个对象;
+				特点--它是构造函数构造出来的对象的公共祖先.
+				用处--(1)提取对象的公共属性和方法  (2)可以构建原型链实现继承
+		</pre>
+		<script type="text/javascript">
+			//继承方式1 :	通过Object.create(原型对象或null)
+			
+			//继承方式2:		改变构造函数原型prototype 的指向(动物--人--同学)
+			
+			//继承方式3:		构造函数里通过call/apply(this)调用另一个构造函数
+			
+			// Granpa.prototype={constructor:Granpa}
+			// function Granpa(){
+			// 	this.lastName="陶";
+			// }
+			// 
+			// Parent.prototype=new Granpa;//{lastName:"陶",__proto__:Granpa.prototype}
+			// function Parent(){
+			// 	this.factory="华清远见";
+			// 	this.fortune=1000000000;
+			// }
+			// 
+			// Son.prototype=new Parent();//{factory:"华清远见",fortune:1000000000,__proto__:Parent.prototype}
+			// function Son(name,age){
+			// 	this.name=name;
+			// 	this.age=age;
+			// }
+			// 
+			// var son1=new Son("金华",50)
+			// console.log(son1.constructor)
+			
+			
+			// var obj=Object.create(son1);
+			// console.log(obj.lastName);
+			
+			
+			function Granpa(){
+				this.lastName="陶";
+			}
+			
+			function Parent(){
+				Granpa.call(this)
+				this.factory="华清远见";
+				this.fortune=1000000000;
+			}
+			
+			function Son(name,age){
+				//var this={__proto__:Son.prototype}
+				Parent.call(this);
+				
+				this.name=name;
+				this.age=age;
+				//return this;
+			}
+			
+			var son1=new Son("金华",44);
+			console.log(son1);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<pre>6、数组中是不是有日用品类型的商品？</pre>
+<p id="some"></p>
+<hr>
+<script src="00-源数据.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var isTrue=arrProduct.some(function(item){
+		return item.type=="日用品"
+	})
+	
+	if(isTrue){
+		document.querySelector("#some").innerHTML="是";
+	}else{
+		document.querySelector("#some").innerHTML="否";
+	}
+	
+	
+</script>
+</body>
+</html>

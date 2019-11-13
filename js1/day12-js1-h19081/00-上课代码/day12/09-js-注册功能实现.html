@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="">
+			用户名：<input type="text" />*6位以上的数字/字母/下划线
+			<br>
+			电话号：<input type="text" />
+			<br>
+			邮箱账户：<input type="text" />*eg：（数字/字母/下划线1位）@(数字/字母/下划线1).com
+			<br>
+			密码：<input type="text" />*必要有数字，字母，特殊字符\W,6~16位
+			<br>
+			验证密码：<input type="text" />
+			<br>
+			<button type="button">注册</button>
+		</form>
+		<script type="text/javascript">
+			document.querySelector("button").onclick=function(){
+				var inputs=document.querySelectorAll("input");
+				var userN=inputs[0].value;
+				var uReg=/\w{6,}/igm;
+				if(!uReg.test(userN)){
+					alert("用户名须为6位以上的数字/字母/下划线")
+					return;
+				}
+				var phoneN=inputs[1].value;
+				var pReg=/^1[34785]\d{9}$/igm;
+				if(!pReg.test(phoneN)){
+					alert("电话号无效")
+					return;
+				}
+				var email=inputs[2].value;
+				var eReg=/^\w+@\w+\.com/igm;
+				if(!eReg.test(email)){
+					alert("邮箱账户无效")
+					return;
+				}
+				var passW=inputs[3].value;//"abc1def"
+				// 必要有数字，字母[a-z]，特殊字符\W,6~16位
+				var paReg=/^(?=.*\d+)(?=.*[a-z]+)(?=.*\W+).{6,16}$/igm;
+				
+				if(!paReg.test(passW)){
+					alert("密码必要有数字，字母，特殊字符\W,6~16位")
+					return;
+				}
+				
+				var passRe=inputs[4].value;
+				if(passRe!==passW){
+					alert("重复密码不正确")
+				}
+				
+				alert("注册成功")
+			}
+			
+			
+		</script>
+	</body>
+</html>

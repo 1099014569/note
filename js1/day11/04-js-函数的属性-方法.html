@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function fnOuter(a,b,c,d){
+		//arguments 属性:索引 length callee
+		if(arguments.length!=arguments.callee.length){
+			// throw new Error("传参个数有误")
+		}
+		
+		function fnInner(){
+			console.log(arguments.callee)//function fnInner,arguments.callee指向所处的函数(正在调用的函数)
+		}
+		fnInner()
+		
+		console.log(a,b,c,d)
+		console.log(arguments.length)
+	}
+	
+	// 函数的属性:length   call  apply
+	console.log(fnOuter.length);//形参个数
+	
+	fnOuter(false,"2",3,4,5,6)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

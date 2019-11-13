@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//new 操作符调用一个函数，结果一定是引用类型;
+			//绝大多数引用类型都有valueOf 和 toString 方法
+			
+			//valueOf结果,偏向于计算
+			var num=new Boolean(123);//包装对象:Number Boolean String
+			console.log( typeof num.valueOf() )//原始值
+			
+			var arr=[100,false,{name:"sish"},undefined];
+			var obj={name:"sish"};//数组\Object对象\函数
+			console.log( typeof arr.valueOf() )//引用值本身
+			var fn=function(){};
+			var myError=new Error("自定义的错误对象");
+			
+			
+			var time=new Date;//时间对象
+			console.log(time.valueOf())//数字,单位为数字
+			
+			
+			//toString 得到字符串结果,偏向于显示
+			console.log( typeof num.toString() );
+			console.log(  arr.toString() )//数组去掉中括号,里边每一项都转成字符串类型
+			
+			console.log(  obj.toString() );//"[object Object]"
+			document.write( obj );//隐式调用toString()
+			
+			console.log(time.toString())//时间字符串
+			
+			console.log(fn.toString());//函数体
+			
+			console.log(myError.toString())//Error: 自定义的错误对象
+			
+			
+			
+			
+			console.log( 123*[100] );//12300
+			console.log( 123*{} );//NaN
+			
+			
+			var future=new Date("2019-11-11");
+			console.log( future-time );
+			
+			
+			
+		</script>
+	</body>
+</html>

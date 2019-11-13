@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 400px;
+				height: 60px;
+				background-color: red;
+				text-align: center;
+				line-height: 60px;
+				border-radius: 30px;/*胶囊式的矩形框，取值高度的一半*/
+				font-size: 20px;
+				color: white;
+				font-weight: 700;
+				margin: 0 auto;
+				margin-top: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			// setInterval:参数1 --等待被调用的函数
+			// 			   参数2--时间量number 类型,单位为ms
+			// 			   参数3/参数4/参数5……--当参数1 -函数被调用时,传递给它的实参
+			
+			// 创建计时器,等待页面所有代码都执行完毕才会开始计时;
+			// 计时器开始计时,时间到达之后,每隔参数2-时间 就调用一遍参数
+			
+			// clearInterval(计时器序号),清楚计时器并不会立即停止参数1-函数的调用执行
+			
+			var num=1;
+			var myIn=setInterval(function(){
+				// console.log(num)
+				if(num>5){
+					clearInterval(myIn);
+					return;
+				}
+				console.log(num++);
+			},1000)
+			
+			
+			
+			
+			
+			setInterval(function(){
+				var timeNow=new Date;
+				var futureTi=new Date("2019-11-11");
+				
+				var num=futureTi-timeNow;//单位是ms
+				
+				var day=parseInt(num/1000/60/60/24);
+				var hour=parseInt(num/1000/60/60%24);
+				var min=parseInt(num/1000/60%60);
+				var seco=parseInt(num/1000%60);
+				document.querySelector("div").innerHTML=(`距离双十一还有${day}天${hour}小时${min}分钟${seco}秒`)
+			},1000)
+			
+			
+			
+		</script>
+	</body>
+</html>
